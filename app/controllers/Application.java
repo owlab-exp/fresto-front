@@ -19,5 +19,11 @@ public class Application extends Controller {
 	sb.append("http://fresto1.owlab.com:9999/getR0");
         return ok(sb.toString());
     }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public static Result feedUIEvent() {
+	    RequestBody body = request.body();
+	    ok("Got json: " + body.asJson());
+    }
   
 }
