@@ -1,7 +1,9 @@
 package controllers;
 
 import play.*;
+import play.data.*;
 import play.mvc.*;
+import play.mvc.Http.*;
 
 import views.html.*;
 
@@ -20,10 +22,31 @@ public class Application extends Controller {
         return ok(sb.toString());
     }
 
-    @BodyParser.Of(BodyParser.Json.class)
-    public static Result feedUIEvent() {
-	    RequestBody body = request.body();
-	    ok("Got json: " + body.asJson());
-    }
+    //@BodyParser.Of(BodyParser.Json.class)
+    //public static Result feedUIEvent() {
+    //        RequestBody body = request().body();
+    //        Logger.info("UI Event = " + body);
+    //        Logger.info("UI Event = " + body.asJson());
+    //        return ok("RECV_OK");
+    //}
   
+    public static Result whatIsMyIPAddress() {
+	    String remote = request().remoteAddress();
+	    return ok(remote);
+
+    }
+
+
+    public static Result feedUIEvent() {
+	    DynamicForm data = Form.form().bindFromRequest();
+	    String stage = data.get("stage");
+	    String clientId = data.get("clientId");
+	    String uuid = data.get("uuid");
+	    String targetUrl = data.get("targetUrl");
+	    String timestamp = data.get("timestamp");
+
+	    Logger.info(stage + "," + clientId + "," + uuid + "," + targetUrl + "," + timestamp);
+
+	    return ok("RECV_OK");
+    }
 }

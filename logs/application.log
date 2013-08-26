@@ -1,3 +1,1026 @@
-2013-08-26 16:26:03,400 - [INFO] - from play in main 
+2013-08-26 17:02:03,610 - [INFO] - from play in main 
 Listening for HTTP on /0.0.0.0:9999
+
+2013-08-26 17:06:26,122 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fd432djo - Internal server error, for (GET) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-26 17:06:26,249 - [WARN] - from play in New I/O worker #1 
+No application found at invoker init
+
+2013-08-26 17:07:54,297 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fd437e70 - Internal server error, for (GET) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-26 17:08:55,612 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fd43b0p7 - Internal server error, for (GET) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: missing return statement]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-26 17:09:31,163 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-26 17:10:47,670 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-26 17:14:12,780 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-26 17:14:59,149 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-26 17:22:43,102 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-26 17:22:43,133 - [INFO] - from application in play-akka.actor.default-dispatcher-20 
+UI Event = null
+
+2013-08-26 17:23:32,392 - [INFO] - from application in play-akka.actor.default-dispatcher-17 
+UI Event = null
+
+2013-08-26 17:42:06,380 - [INFO] - from application in play-akka.actor.default-dispatcher-22 
+UI Event = null
+
+2013-08-26 17:42:14,884 - [INFO] - from application in play-akka.actor.default-dispatcher-28 
+UI Event = null
+
+2013-08-26 19:27:30,543 - [INFO] - from application in play-akka.actor.default-dispatcher-28 
+UI Event = null
+
+2013-08-26 19:29:20,738 - [INFO] - from application in play-akka.actor.default-dispatcher-28 
+UI Event = null
+
+2013-08-26 19:31:24,919 - [INFO] - from application in play-akka.actor.default-dispatcher-42 
+UI Event = null
+
+2013-08-26 19:44:36,200 - [INFO] - from application in play-akka.actor.default-dispatcher-48 
+UI Event = null
+
+2013-08-26 19:45:57,612 - [INFO] - from application in play-akka.actor.default-dispatcher-53 
+UI Event = null
+
+2013-08-26 19:51:37,276 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-26 19:51:37,296 - [INFO] - from application in play-akka.actor.default-dispatcher-58 
+UI Event = null
+
+2013-08-26 19:55:47,600 - [INFO] - from application in play-akka.actor.default-dispatcher-53 
+UI Event = null
+
+2013-08-26 20:03:40,796 - [INFO] - from application in play-akka.actor.default-dispatcher-53 
+UI Event = null
+
+2013-08-26 20:09:58,297 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-26 20:09:58,317 - [INFO] - from application in play-akka.actor.default-dispatcher-69 
+UI Event = null
+
+2013-08-26 20:15:24,452 - [INFO] - from application in play-akka.actor.default-dispatcher-73 
+UI Event = null
+
+2013-08-26 20:16:49,388 - [INFO] - from application in play-akka.actor.default-dispatcher-73 
+UI Event = null
+
+2013-08-26 20:19:04,755 - [INFO] - from application in play-akka.actor.default-dispatcher-73 
+UI Event = null
+
+2013-08-26 20:25:28,508 - [INFO] - from application in play-akka.actor.default-dispatcher-81 
+UI Event = null
+
+2013-08-26 20:25:39,893 - [INFO] - from application in play-akka.actor.default-dispatcher-78 
+UI Event = null
+
+2013-08-26 20:35:17,129 - [INFO] - from application in play-akka.actor.default-dispatcher-91 
+UI Event = null
+
+2013-08-26 20:35:20,963 - [INFO] - from application in play-akka.actor.default-dispatcher-91 
+UI Event = null
+
+2013-08-26 20:51:28,592 - [INFO] - from application in play-akka.actor.default-dispatcher-100 
+UI Event = null
+
+2013-08-26 21:01:47,770 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-26 21:02:34,115 - [INFO] - from application in play-akka.actor.default-dispatcher-114 
+UI Event = null
+
+2013-08-26 21:03:15,928 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-26 21:23:11,921 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-26 21:24:27,038 - [INFO] - from application in play-akka.actor.default-dispatcher-129 
+UI Event = null
+
+2013-08-26 21:26:24,076 - [INFO] - from application in play-akka.actor.default-dispatcher-131 
+UI Event = null
+
+2013-08-26 21:37:13,476 - [INFO] - from application in play-akka.actor.default-dispatcher-132 
+UI Event = null
+
+2013-08-26 21:40:31,831 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-26 21:44:45,220 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-26 21:50:20,423 - [INFO] - from application in play-akka.actor.default-dispatcher-142 
+UI Event = DefaultRequestBody(None,None,None,Some({"clientId":"blabla","targetUrl":"blabla"}),None,None,false)
+
+2013-08-26 21:50:20,437 - [INFO] - from application in play-akka.actor.default-dispatcher-142 
+UI Event = {"clientId":"blabla","targetUrl":"blabla"}
+
+2013-08-26 21:52:05,750 - [INFO] - from application in play-akka.actor.default-dispatcher-140 
+UI Event = DefaultRequestBody(None,None,None,Some({"clientId":"blabla","targetUrl":"blabla"}),None,None,false)
+
+2013-08-26 21:52:05,753 - [INFO] - from application in play-akka.actor.default-dispatcher-140 
+UI Event = {"clientId":"blabla","targetUrl":"blabla"}
+
+2013-08-26 21:54:18,660 - [INFO] - from application in play-akka.actor.default-dispatcher-140 
+UI Event = DefaultRequestBody(None,None,None,Some({"clientId":"blabla","targetUrl":"blabla"}),None,None,false)
+
+2013-08-26 21:54:18,661 - [INFO] - from application in play-akka.actor.default-dispatcher-140 
+UI Event = {"clientId":"blabla","targetUrl":"blabla"}
+
+2013-08-26 23:01:42,802 - [INFO] - from application in play-akka.actor.default-dispatcher-140 
+UI Event = DefaultRequestBody(None,None,None,Some({"clientId":"blabla","targetUrl":"blabla"}),None,None,false)
+
+2013-08-26 23:01:42,803 - [INFO] - from application in play-akka.actor.default-dispatcher-140 
+UI Event = {"clientId":"blabla","targetUrl":"blabla"}
+
+2013-08-26 23:31:28,983 - [INFO] - from application in play-akka.actor.default-dispatcher-166 
+UI Event = DefaultRequestBody(None,None,None,Some({"clientId":"blabla","targetUrl":"blabla"}),None,None,false)
+
+2013-08-26 23:31:28,984 - [INFO] - from application in play-akka.actor.default-dispatcher-166 
+UI Event = {"clientId":"blabla","targetUrl":"blabla"}
+
+2013-08-26 23:35:49,926 - [INFO] - from application in play-akka.actor.default-dispatcher-173 
+UI Event = DefaultRequestBody(None,None,None,Some({"clientId":"blabla","targetUrl":"blabla"}),None,None,false)
+
+2013-08-26 23:35:49,927 - [INFO] - from application in play-akka.actor.default-dispatcher-173 
+UI Event = {"clientId":"blabla","targetUrl":"blabla"}
+
+2013-08-27 00:31:08,915 - [INFO] - from application in play-akka.actor.default-dispatcher-194 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:31:08,915 - [INFO] - from application in play-akka.actor.default-dispatcher-194 
+UI Event = null
+
+2013-08-27 00:31:22,595 - [INFO] - from application in play-akka.actor.default-dispatcher-196 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:31:22,596 - [INFO] - from application in play-akka.actor.default-dispatcher-196 
+UI Event = null
+
+2013-08-27 00:31:45,316 - [INFO] - from application in play-akka.actor.default-dispatcher-194 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:31:45,317 - [INFO] - from application in play-akka.actor.default-dispatcher-194 
+UI Event = null
+
+2013-08-27 00:33:25,510 - [INFO] - from application in play-akka.actor.default-dispatcher-194 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:33:25,510 - [INFO] - from application in play-akka.actor.default-dispatcher-194 
+UI Event = null
+
+2013-08-27 00:35:07,527 - [INFO] - from application in play-akka.actor.default-dispatcher-207 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:35:07,528 - [INFO] - from application in play-akka.actor.default-dispatcher-207 
+UI Event = null
+
+2013-08-27 00:36:00,355 - [INFO] - from application in play-akka.actor.default-dispatcher-207 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:36:00,355 - [INFO] - from application in play-akka.actor.default-dispatcher-207 
+UI Event = null
+
+2013-08-27 00:43:18,562 - [INFO] - from application in play-akka.actor.default-dispatcher-220 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:43:18,562 - [INFO] - from application in play-akka.actor.default-dispatcher-220 
+UI Event = null
+
+2013-08-27 00:46:37,887 - [INFO] - from application in play-akka.actor.default-dispatcher-222 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:46:37,887 - [INFO] - from application in play-akka.actor.default-dispatcher-222 
+UI Event = null
+
+2013-08-27 00:46:45,363 - [INFO] - from application in play-akka.actor.default-dispatcher-224 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:46:45,363 - [INFO] - from application in play-akka.actor.default-dispatcher-224 
+UI Event = null
+
+2013-08-27 00:48:11,348 - [INFO] - from application in play-akka.actor.default-dispatcher-228 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:48:11,349 - [INFO] - from application in play-akka.actor.default-dispatcher-228 
+UI Event = null
+
+2013-08-27 00:48:33,480 - [INFO] - from application in play-akka.actor.default-dispatcher-228 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 00:48:33,481 - [INFO] - from application in play-akka.actor.default-dispatcher-228 
+UI Event = null
+
+2013-08-27 01:30:32,672 - [INFO] - from application in play-akka.actor.default-dispatcher-244 
+UI Event = DefaultRequestBody(None,None,None,None,None,None,true)
+
+2013-08-27 01:30:32,672 - [INFO] - from application in play-akka.actor.default-dispatcher-244 
+UI Event = null
+
+2013-08-27 01:40:14,665 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fd6iee4n - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:40:56,085 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6fd6ignbo - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:41:12,617 - [ERROR] - from application in New I/O worker #4 
+
+
+! @6fd6ihlnk - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:43:02,369 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fd6io270 - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:46:18,145 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fd6j95mm - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: incompatible types]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:48:08,819 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6fd6jfdff - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:48:35,461 - [ERROR] - from application in New I/O worker #4 
+
+
+! @6fd6jh106 - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-27 01:49:19,700 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-27 01:49:20,368 - [INFO] - from application in play-akka.actor.default-dispatcher-249 
+null,null,null,null
+
+2013-08-27 01:50:35,705 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,no IP Address,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377535839456
+
+2013-08-27 01:59:46,102 - [INFO] - from application in play-akka.actor.default-dispatcher-253 
+preCall,no IP Address,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536389847
+
+2013-08-27 02:01:31,322 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-27 02:01:31,350 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,B5844CB9-9765-44B7-98BF-4DB154A4B300,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536492208
+
+2013-08-27 02:01:50,729 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,8E704F33-9268-4AA7-9A60-3C305D5AFC91,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536514580
+
+2013-08-27 02:01:51,926 - [INFO] - from application in play-akka.actor.default-dispatcher-257 
+preCall,180.229.124.46,60AFAE4D-F6E9-4C3F-8518-8F6B9CEF665D,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536515779
+
+2013-08-27 02:01:53,117 - [INFO] - from application in play-akka.actor.default-dispatcher-259 
+preCall,180.229.124.46,DA7B7866-C94A-4948-824F-B583E967A830,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536516972
+
+2013-08-27 02:01:59,331 - [INFO] - from application in play-akka.actor.default-dispatcher-259 
+preCall,180.229.124.46,2949CD71-303E-4A0C-A466-D64C99EA5188,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536523179
+
+2013-08-27 02:02:00,787 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,F43654ED-F748-41BE-AD51-3B15F8B124E7,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536524636
+
+2013-08-27 02:02:01,888 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,34768842-0139-4499-8C62-CF7C87368890,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536525725
+
+2013-08-27 02:02:02,725 - [INFO] - from application in play-akka.actor.default-dispatcher-259 
+preCall,180.229.124.46,3D738753-0BCD-4E17-B5F4-7F7B1D329817,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536526580
+
+2013-08-27 02:02:03,604 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,83288FF1-9160-4557-9AEF-4562F376E380,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536527459
+
+2013-08-27 02:02:04,525 - [INFO] - from application in play-akka.actor.default-dispatcher-259 
+preCall,180.229.124.46,F1A88DDF-7F12-4076-81FE-855AC35CB385,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536528379
+
+2013-08-27 02:02:05,417 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,4CACF6D3-F310-4A4A-A100-C067F3F19E9A,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536529276
+
+2013-08-27 02:02:06,499 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,8BC6B398-BA78-4B3F-A31A-63C3FC62CB71,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536530348
+
+2013-08-27 02:02:07,526 - [INFO] - from application in play-akka.actor.default-dispatcher-251 
+preCall,180.229.124.46,7A117E5F-07CA-4035-8D95-A46996BF09C1,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377536531379
+
+2013-08-27 02:23:11,687 - [INFO] - from application in play-akka.actor.default-dispatcher-261 
+preCall,180.229.124.46,6649987C-3482-4A44-9FFA-9103B761F637,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377537795524
+
+2013-08-27 02:23:23,664 - [INFO] - from application in play-akka.actor.default-dispatcher-261 
+preCall,180.229.124.46,55892035-2C66-4246-BA90-44BE9AE34E18,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377537807571
+
+2013-08-27 02:44:47,528 - [INFO] - from application in play-akka.actor.default-dispatcher-266 
+preCall,180.229.124.46,230B54DC-FEDA-46D9-9DEB-30BC2DEB5913,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539091171
+
+2013-08-27 02:46:51,355 - [INFO] - from application in play-akka.actor.default-dispatcher-266 
+preCall,180.229.124.46,A76EBF06-89CD-47A0-A849-2175ADE82E47,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539215266
+
+2013-08-27 02:49:56,916 - [INFO] - from application in play-akka.actor.default-dispatcher-266 
+preCall,180.229.124.46,B10B9382-AD0C-43C9-9518-D43380384130,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539400567
+
+2013-08-27 02:51:47,662 - [INFO] - from application in play-akka.actor.default-dispatcher-275 
+preCall,180.229.124.46,4F14E153-D763-452F-A03F-85514CF53336,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539511304
+
+2013-08-27 02:52:12,227 - [INFO] - from application in play-akka.actor.default-dispatcher-275 
+preCall,180.229.124.46,553F3466-9B2E-406A-A2A7-76812CFC0B7B,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539536153
+
+2013-08-27 02:53:01,429 - [INFO] - from application in play-akka.actor.default-dispatcher-275 
+preCall,180.229.124.46,0944EC1E-5128-4EC0-B1DC-1FE5E23CEBDE,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539585267
+
+2013-08-27 02:55:17,042 - [INFO] - from application in play-akka.actor.default-dispatcher-284 
+preCall,180.229.124.46,0F3A69DD-F8C3-4FDE-B0DA-8DDB11187F2A,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377539720872
+
+2013-08-27 03:05:57,046 - [INFO] - from application in play-akka.actor.default-dispatcher-289 
+preCall,180.229.124.46,E98DB6B4-3C3E-4841-9C45-F8CEFC1B1C70,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377540360905
+
+2013-08-27 03:07:28,974 - [INFO] - from application in play-akka.actor.default-dispatcher-289 
+preCall,180.229.124.46,D64C625A-8E0B-4AC0-816B-4A0ECB21A011,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377540452894
+
+2013-08-27 03:08:12,656 - [INFO] - from application in play-akka.actor.default-dispatcher-289 
+preCall,180.229.124.46,0FB150DE-0BF8-4E3D-A07C-FA15E968405B,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377540496653
+
+2013-08-27 03:08:13,117 - [INFO] - from application in play-akka.actor.default-dispatcher-300 
+afterCall,null,0FB150DE-0BF8-4E3D-A07C-FA15E968405B,null,1377540496970
+
+2013-08-27 03:09:24,898 - [INFO] - from application in play-akka.actor.default-dispatcher-297 
+preCall,180.229.124.46,244A3404-D717-43F2-9F72-19F282B30D62,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377540568884
+
+2013-08-27 03:09:25,202 - [INFO] - from application in play-akka.actor.default-dispatcher-302 
+afterCall,null,244A3404-D717-43F2-9F72-19F282B30D62,null,1377540569233
+
+2013-08-27 03:14:48,278 - [INFO] - from application in play-akka.actor.default-dispatcher-303 
+preCall,180.229.124.46,2338961B-20B6-4FC1-AF58-42AB92AA31E3,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377540892246
+
+2013-08-27 03:14:48,303 - [INFO] - from application in play-akka.actor.default-dispatcher-297 
+afterCall,null,2338961B-20B6-4FC1-AF58-42AB92AA31E3,null,1377540892344
+
+2013-08-27 03:15:29,564 - [INFO] - from application in play-akka.actor.default-dispatcher-297 
+preCall,180.229.124.46,E26FFE32-91AE-4129-AF70-C534555D40F9,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377540933590
+
+2013-08-27 03:15:29,652 - [INFO] - from application in play-akka.actor.default-dispatcher-306 
+afterCall,null,E26FFE32-91AE-4129-AF70-C534555D40F9,null,1377540933705
+
+2013-08-27 03:20:06,892 - [INFO] - from application in play-akka.actor.default-dispatcher-308 
+preCall,180.229.124.46,691FA9D5-7C56-42F5-A8AA-840AD11877E8,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377541210843
+
+2013-08-27 03:20:06,982 - [INFO] - from application in play-akka.actor.default-dispatcher-309 
+afterCall,null,691FA9D5-7C56-42F5-A8AA-840AD11877E8,null,1377541211028
+
+2013-08-27 03:30:17,936 - [INFO] - from application in play-akka.actor.default-dispatcher-309 
+preCall,180.229.124.46,255F026A-8155-4ACD-B425-47BAB9CDDF59,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377541821963
+
+2013-08-27 03:30:18,276 - [INFO] - from application in play-akka.actor.default-dispatcher-310 
+afterCall,null,255F026A-8155-4ACD-B425-47BAB9CDDF59,null,1377541822335
+
+2013-08-27 03:35:18,174 - [INFO] - from application in play-akka.actor.default-dispatcher-311 
+preCall,180.229.124.46,28B08ED9-84C8-4E73-AD0E-EBB761148A8E,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377542122198
+
+2013-08-27 03:35:18,392 - [INFO] - from application in play-akka.actor.default-dispatcher-311 
+afterCall,null,28B08ED9-84C8-4E73-AD0E-EBB761148A8E,null,1377542122482
+
+2013-08-27 03:38:52,305 - [INFO] - from application in play-akka.actor.default-dispatcher-313 
+preCall,180.229.124.46,CF3BA714-5B49-4906-86C7-4A1F228CB7CB,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377542336109
+
+2013-08-27 03:38:52,305 - [INFO] - from application in play-akka.actor.default-dispatcher-314 
+afterCall,null,CF3BA714-5B49-4906-86C7-4A1F228CB7CB,null,1377542336255
+
+2013-08-27 03:44:11,382 - [INFO] - from application in play-akka.actor.default-dispatcher-316 
+preCall,180.229.124.46,0A17F7F5-3529-421E-B0B8-6BA508ACE9D9,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377542655400
+
+2013-08-27 03:44:11,586 - [INFO] - from application in play-akka.actor.default-dispatcher-321 
+afterCall,null,0A17F7F5-3529-421E-B0B8-6BA508ACE9D9,null,1377542655681
+
+2013-08-27 03:44:23,798 - [INFO] - from application in play-akka.actor.default-dispatcher-321 
+preCall,180.229.124.46,942BD993-4C06-4F03-8466-15667091573C,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377542667896
+
+2013-08-27 03:44:23,942 - [INFO] - from application in play-akka.actor.default-dispatcher-323 
+afterCall,null,942BD993-4C06-4F03-8466-15667091573C,null,1377542668037
+
+2013-08-27 03:49:39,198 - [INFO] - from application in play-akka.actor.default-dispatcher-327 
+preCall,180.229.124.46,7918A9BC-B7D5-4933-A7D2-F6C6DCEBEAC3,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377542983237
+
+2013-08-27 03:49:39,503 - [INFO] - from application in play-akka.actor.default-dispatcher-324 
+afterCall,null,7918A9BC-B7D5-4933-A7D2-F6C6DCEBEAC3,null,1377542983634
+
+2013-08-27 03:50:14,564 - [INFO] - from application in play-akka.actor.default-dispatcher-328 
+preCall,no IP Address,8284B91E-0A78-4A6E-9F59-CE7318047A81,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377543018693
+
+2013-08-27 03:50:14,651 - [INFO] - from application in play-akka.actor.default-dispatcher-328 
+afterCall,null,8284B91E-0A78-4A6E-9F59-CE7318047A81,null,1377543018790
+
+2013-08-27 03:53:46,713 - [INFO] - from application in play-akka.actor.default-dispatcher-329 
+preCall,180.229.124.46,FFE0FCD2-3EC6-48B4-83B4-A1AC2819B3D3,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377543230800
+
+2013-08-27 03:53:46,959 - [INFO] - from application in play-akka.actor.default-dispatcher-332 
+afterCall,null,FFE0FCD2-3EC6-48B4-83B4-A1AC2819B3D3,null,1377543231108
+
+2013-08-27 03:56:44,030 - [INFO] - from application in play-akka.actor.default-dispatcher-333 
+preCall,no IP Address,D4AD9999-A76B-4062-B77C-4998F73C7BA5,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377543408119
+
+2013-08-27 03:56:44,251 - [INFO] - from application in play-akka.actor.default-dispatcher-335 
+afterCall,null,D4AD9999-A76B-4062-B77C-4998F73C7BA5,null,1377543408392
+
+2013-08-27 04:01:56,104 - [INFO] - from application in play-akka.actor.default-dispatcher-333 
+preCall,no IP Address,0DDF8ED2-A6EA-4013-BE85-2B335577EF09,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377543720189
+
+2013-08-27 04:01:56,455 - [INFO] - from application in play-akka.actor.default-dispatcher-339 
+afterCall,null,0DDF8ED2-A6EA-4013-BE85-2B335577EF09,null,1377543720612
+
+2013-08-27 04:02:40,271 - [INFO] - from application in play-akka.actor.default-dispatcher-339 
+preCall,180.229.124.46,D149B23C-DF45-44B2-8C9D-6BEB24A462E3,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377543764410
+
+2013-08-27 04:02:40,463 - [INFO] - from application in play-akka.actor.default-dispatcher-339 
+afterCall,null,D149B23C-DF45-44B2-8C9D-6BEB24A462E3,null,1377543764602
+
+2013-08-27 04:14:40,355 - [INFO] - from application in play-akka.actor.default-dispatcher-342 
+preCall,180.229.124.46,8AC893EC-94F4-4EF0-B176-AA666667E170,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377544484466
+
+2013-08-27 04:14:40,591 - [INFO] - from application in play-akka.actor.default-dispatcher-342 
+afterCall,null,8AC893EC-94F4-4EF0-B176-AA666667E170,null,1377544484784
+
+2013-08-27 04:19:26,834 - [INFO] - from application in play-akka.actor.default-dispatcher-344 
+preCall,180.229.124.46,58E36818-2FBA-42CF-827E-6F31C171ECD0,http://beta.owlab.com:8080/jpetstore/shop/signonForm.do,1377544770942
+
+2013-08-27 04:19:27,018 - [INFO] - from application in play-akka.actor.default-dispatcher-344 
+afterCall,null,58E36818-2FBA-42CF-827E-6F31C171ECD0,null,1377544771210
+
+2013-08-27 04:20:39,206 - [INFO] - from application in play-akka.actor.default-dispatcher-346 
+preCall,180.229.124.46,FA9DAA3B-7572-4E7B-86F6-73BAFF38C334,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377544843341
+
+2013-08-27 04:20:39,421 - [INFO] - from application in play-akka.actor.default-dispatcher-349 
+afterCall,null,FA9DAA3B-7572-4E7B-86F6-73BAFF38C334,null,1377544843608
+
+2013-08-27 04:20:48,731 - [INFO] - from application in play-akka.actor.default-dispatcher-351 
+preCall,180.229.124.46,29B8573E-1580-4752-BCCA-D4577CCD8B54,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=FISH,1377544852909
+
+2013-08-27 04:20:49,028 - [INFO] - from application in play-akka.actor.default-dispatcher-346 
+afterCall,null,29B8573E-1580-4752-BCCA-D4577CCD8B54,null,1377544853189
+
+2013-08-27 04:20:56,173 - [INFO] - from application in play-akka.actor.default-dispatcher-349 
+preCall,180.229.124.46,4EFAE9E7-9731-4355-A806-B62E6AACB419,http://beta.owlab.com:8080/jpetstore/shop/viewProduct.do?productId=FI-FW-01,1377544860357
+
+2013-08-27 04:20:56,467 - [INFO] - from application in play-akka.actor.default-dispatcher-355 
+afterCall,null,4EFAE9E7-9731-4355-A806-B62E6AACB419,null,1377544860663
+
+2013-08-27 04:21:06,777 - [INFO] - from application in play-akka.actor.default-dispatcher-349 
+preCall,180.229.124.46,AB1B9222-DD6F-4077-B059-010CA7D30518,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377544870972
+
+2013-08-27 04:21:06,927 - [INFO] - from application in play-akka.actor.default-dispatcher-355 
+afterCall,null,AB1B9222-DD6F-4077-B059-010CA7D30518,null,1377544871086
+
+2013-08-27 04:21:09,178 - [INFO] - from application in play-akka.actor.default-dispatcher-356 
+preCall,180.229.124.46,9C7836A8-D0D9-4010-B960-4228C38702AD,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=BIRDS,1377544873364
+
+2013-08-27 04:21:09,376 - [INFO] - from application in play-akka.actor.default-dispatcher-355 
+afterCall,null,9C7836A8-D0D9-4010-B960-4228C38702AD,null,1377544873551
+
+2013-08-27 04:21:17,156 - [INFO] - from application in play-akka.actor.default-dispatcher-354 
+preCall,180.229.124.46,467DE52F-5F25-42B0-9541-5305F0C2BA3E,http://beta.owlab.com:8080/jpetstore/shop/viewProduct.do?productId=AV-SB-02,1377544881356
+
+2013-08-27 04:21:17,233 - [INFO] - from application in play-akka.actor.default-dispatcher-358 
+afterCall,null,467DE52F-5F25-42B0-9541-5305F0C2BA3E,null,1377544881438
+
+2013-08-27 04:21:22,984 - [INFO] - from application in play-akka.actor.default-dispatcher-355 
+preCall,180.229.124.46,604CEAC0-5581-4057-B35B-089786553745,http://beta.owlab.com:8080/jpetstore/shop/addItemToCart.do?workingItemId=EST-19,1377544887179
+
+2013-08-27 04:21:23,210 - [INFO] - from application in play-akka.actor.default-dispatcher-357 
+afterCall,null,604CEAC0-5581-4057-B35B-089786553745,null,1377544887382
+
+2013-08-27 04:21:27,405 - [INFO] - from application in play-akka.actor.default-dispatcher-355 
+preCall,180.229.124.46,A599CC06-2112-4862-9581-C14CE6D165C5,http://beta.owlab.com:8080/jpetstore/shop/checkout.do,1377544891596
+
+2013-08-27 04:21:27,681 - [INFO] - from application in play-akka.actor.default-dispatcher-359 
+afterCall,null,A599CC06-2112-4862-9581-C14CE6D165C5,null,1377544891867
+
+2013-08-27 04:21:29,928 - [INFO] - from application in play-akka.actor.default-dispatcher-355 
+preCall,180.229.124.46,D36B9CDA-125B-4138-AB46-0C478F4E9F0A,http://beta.owlab.com:8080/jpetstore/shop/newOrder.do,1377544894123
+
+2013-08-27 04:21:30,061 - [INFO] - from application in play-akka.actor.default-dispatcher-349 
+afterCall,null,D36B9CDA-125B-4138-AB46-0C478F4E9F0A,null,1377544894234
+
+2013-08-27 04:21:31,732 - [INFO] - from application in play-akka.actor.default-dispatcher-354 
+preCall,180.229.124.46,C468A2CF-7140-4ACE-91E5-E214BE15B1CE,http://beta.owlab.com:8080/jpetstore/shop/newAccount.do,1377544895931
+
+2013-08-27 04:21:32,085 - [INFO] - from application in play-akka.actor.default-dispatcher-349 
+afterCall,null,C468A2CF-7140-4ACE-91E5-E214BE15B1CE,null,1377544896288
+
+2013-08-27 04:21:43,531 - [INFO] - from application in play-akka.actor.default-dispatcher-359 
+preCall,180.229.124.46,49395525-09E5-46BC-BF38-05FD8E9D0F8B,http://beta.owlab.com:8080/jpetstore/shop/listOrders.do,1377544907620
+
+2013-08-27 04:21:43,688 - [INFO] - from application in play-akka.actor.default-dispatcher-359 
+afterCall,null,49395525-09E5-46BC-BF38-05FD8E9D0F8B,null,1377544907910
+
+2013-08-27 04:21:45,665 - [INFO] - from application in play-akka.actor.default-dispatcher-362 
+preCall,180.229.124.46,A138D3EB-E0F7-4C54-8BE1-57B92C0976E1,http://beta.owlab.com:8080/jpetstore/shop/newAccount.do,1377544909897
+
+2013-08-27 04:21:45,797 - [INFO] - from application in play-akka.actor.default-dispatcher-359 
+afterCall,null,A138D3EB-E0F7-4C54-8BE1-57B92C0976E1,null,1377544910037
+
+2013-08-27 04:26:27,344 - [INFO] - from application in play-akka.actor.default-dispatcher-354 
+preCall,180.229.124.46,46CBBB2A-A769-40DC-9DE6-37532926B897,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545191504
+
+2013-08-27 04:26:27,599 - [INFO] - from application in play-akka.actor.default-dispatcher-363 
+afterCall,null,46CBBB2A-A769-40DC-9DE6-37532926B897,null,1377545191822
+
+2013-08-27 04:26:58,461 - [INFO] - from application in play-akka.actor.default-dispatcher-364 
+preCall,180.229.124.46,64769853-9D4C-421B-8FCB-184A46A9FB3B,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545222687
+
+2013-08-27 04:26:58,574 - [INFO] - from application in play-akka.actor.default-dispatcher-367 
+afterCall,null,64769853-9D4C-421B-8FCB-184A46A9FB3B,null,1377545222778
+
+2013-08-27 04:27:06,335 - [INFO] - from application in play-akka.actor.default-dispatcher-366 
+preCall,180.229.124.46,6A9FBCA1-6483-48B3-B278-BB2EA1062916,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545230554
+
+2013-08-27 04:27:06,414 - [INFO] - from application in play-akka.actor.default-dispatcher-367 
+afterCall,null,6A9FBCA1-6483-48B3-B278-BB2EA1062916,null,1377545230658
+
+2013-08-27 04:27:12,011 - [INFO] - from application in play-akka.actor.default-dispatcher-366 
+preCall,180.229.124.46,FB94BBFE-AE9F-4297-A757-39BAAEABC807,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=REPTILES,1377545236232
+
+2013-08-27 04:27:12,302 - [INFO] - from application in play-akka.actor.default-dispatcher-366 
+afterCall,null,FB94BBFE-AE9F-4297-A757-39BAAEABC807,null,1377545236534
+
+2013-08-27 04:27:14,236 - [INFO] - from application in play-akka.actor.default-dispatcher-371 
+preCall,180.229.124.46,94D2DE9E-CCFD-46EB-BCB2-DD41BC6B8F85,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545238471
+
+2013-08-27 04:27:14,415 - [INFO] - from application in play-akka.actor.default-dispatcher-369 
+afterCall,null,94D2DE9E-CCFD-46EB-BCB2-DD41BC6B8F85,null,1377545238647
+
+2013-08-27 04:30:17,598 - [INFO] - from application in play-akka.actor.default-dispatcher-370 
+preCall,180.229.124.46,2E99E7B6-66BB-4905-8346-0CADA2455CDF,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545421724
+
+2013-08-27 04:30:51,962 - [INFO] - from application in play-akka.actor.default-dispatcher-374 
+preCall,180.229.124.46,C125683C-3A52-438E-BF54-09A24A8AA4C0,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545456190
+
+2013-08-27 04:31:27,966 - [INFO] - from application in play-akka.actor.default-dispatcher-370 
+preCall,180.229.124.46,9570DBB9-9E49-4869-A16D-ED48C5590BF1,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545492114
+
+2013-08-27 04:33:39,405 - [INFO] - from application in play-akka.actor.default-dispatcher-378 
+afterCall,null,F3987AB6-CEE3-4AC7-97A9-8EF53F7D2CDA,null,1377545623640
+
+2013-08-27 04:33:40,316 - [INFO] - from application in play-akka.actor.default-dispatcher-381 
+preCall,180.229.124.46,F3987AB6-CEE3-4AC7-97A9-8EF53F7D2CDA,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545623299
+
+2013-08-27 04:35:00,612 - [INFO] - from application in play-akka.actor.default-dispatcher-382 
+preCall,180.229.124.46,409A544D-8D8D-45C6-A651-BA7D06A31BC7,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545704785
+
+2013-08-27 04:35:00,831 - [INFO] - from application in play-akka.actor.default-dispatcher-384 
+afterCall,null,409A544D-8D8D-45C6-A651-BA7D06A31BC7,null,1377545705056
+
+2013-08-27 04:36:52,802 - [INFO] - from application in play-akka.actor.default-dispatcher-387 
+preCall,180.229.124.46,DD3FF91D-EF11-4814-87F2-D4561DA5E96F,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377545816984
+
+2013-08-27 04:36:52,951 - [INFO] - from application in play-akka.actor.default-dispatcher-387 
+afterCall,null,DD3FF91D-EF11-4814-87F2-D4561DA5E96F,null,1377545817124
+
+2013-08-27 04:36:58,581 - [INFO] - from application in play-akka.actor.default-dispatcher-389 
+preCall,180.229.124.46,416EE0B7-947E-4A45-8FE1-5555CA6FFDB5,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=DOGS,1377545822817
+
+2013-08-27 04:36:58,790 - [INFO] - from application in play-akka.actor.default-dispatcher-387 
+afterCall,null,416EE0B7-947E-4A45-8FE1-5555CA6FFDB5,null,1377545823016
+
+2013-08-27 04:37:01,002 - [INFO] - from application in play-akka.actor.default-dispatcher-385 
+preCall,180.229.124.46,67FCE97F-5D6C-414F-B9E6-B661812C0E59,http://beta.owlab.com:8080/jpetstore/shop/viewProduct.do?productId=K9-DL-01,1377545825240
+
+2013-08-27 04:37:01,242 - [INFO] - from application in play-akka.actor.default-dispatcher-385 
+afterCall,null,67FCE97F-5D6C-414F-B9E6-B661812C0E59,null,1377545825480
+
+2013-08-27 04:41:54,201 - [INFO] - from application in play-akka.actor.default-dispatcher-392 
+preCall,180.229.124.46,7B1874D6-375C-4A7D-9CB0-40B1E7950EA2,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377546118412
+
+2013-08-27 04:41:54,426 - [INFO] - from application in play-akka.actor.default-dispatcher-389 
+afterCall,null,7B1874D6-375C-4A7D-9CB0-40B1E7950EA2,null,1377546118697
+
+2013-08-27 04:42:15,814 - [INFO] - from application in play-akka.actor.default-dispatcher-392 
+preCall,180.229.124.46,BF8E5107-5133-4FD9-850E-ABED84A6D64C,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377546140084
+
+2013-08-27 04:42:15,936 - [INFO] - from application in play-akka.actor.default-dispatcher-392 
+afterCall,null,BF8E5107-5133-4FD9-850E-ABED84A6D64C,null,1377546140201
+
+2013-08-27 04:42:19,164 - [INFO] - from application in play-akka.actor.default-dispatcher-392 
+preCall,180.229.124.46,BB267C22-DBB5-45D0-BBA6-42519434C0B5,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=REPTILES,1377546143435
+
+2013-08-27 04:42:19,262 - [INFO] - from application in play-akka.actor.default-dispatcher-392 
+afterCall,null,BB267C22-DBB5-45D0-BBA6-42519434C0B5,null,1377546143536
+
+2013-08-27 04:42:22,648 - [INFO] - from application in play-akka.actor.default-dispatcher-397 
+preCall,180.229.124.46,C5AC75AE-FA27-449D-97EC-ADC67DD424F2,http://beta.owlab.com:8080/jpetstore/shop/viewProduct.do?productId=RP-SN-01,1377546146923
+
+2013-08-27 04:42:22,921 - [INFO] - from application in play-akka.actor.default-dispatcher-397 
+afterCall,null,C5AC75AE-FA27-449D-97EC-ADC67DD424F2,null,1377546147193
+
+2013-08-27 04:43:35,039 - [INFO] - from application in play-akka.actor.default-dispatcher-395 
+preCall,180.229.124.46,CAC39772-B7A7-4E68-A73B-2C6288890EB8,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377546219251
+
+2013-08-27 04:43:35,287 - [INFO] - from application in play-akka.actor.default-dispatcher-395 
+afterCall,null,CAC39772-B7A7-4E68-A73B-2C6288890EB8,null,1377546219555
+
+2013-08-27 04:43:54,365 - [INFO] - from application in play-akka.actor.default-dispatcher-399 
+preCall,180.229.124.46,BEA5D10B-4067-4C18-A6DB-B5560E9B54D9,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377546238640
+
+2013-08-27 04:43:54,481 - [INFO] - from application in play-akka.actor.default-dispatcher-404 
+afterCall,null,BEA5D10B-4067-4C18-A6DB-B5560E9B54D9,null,1377546238751
+
+2013-08-27 04:44:02,098 - [INFO] - from application in play-akka.actor.default-dispatcher-404 
+preCall,180.229.124.46,1E2D930D-A7F3-446D-A924-DA8ECDA0C6C4,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=BIRDS,1377546246379
+
+2013-08-27 04:44:02,251 - [INFO] - from application in play-akka.actor.default-dispatcher-404 
+afterCall,null,1E2D930D-A7F3-446D-A924-DA8ECDA0C6C4,null,1377546246529
+
+2013-08-27 04:44:28,552 - [INFO] - from application in play-akka.actor.default-dispatcher-399 
+preCall,180.229.124.46,4E62AFE1-5EE0-4FB6-87A5-128915A10D0A,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377546272834
+
+2013-08-27 04:44:28,650 - [INFO] - from application in play-akka.actor.default-dispatcher-408 
+afterCall,null,4E62AFE1-5EE0-4FB6-87A5-128915A10D0A,null,1377546272940
+
+2013-08-27 04:46:05,170 - [INFO] - from application in play-akka.actor.default-dispatcher-409 
+preCall,no IP Address,8BAFC30E-4C23-453E-AAB4-97C092A6EF8E,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377546369345
+
+2013-08-27 04:46:05,258 - [INFO] - from application in play-akka.actor.default-dispatcher-408 
+afterCall,null,8BAFC30E-4C23-453E-AAB4-97C092A6EF8E,null,1377546369525
+
+2013-08-27 04:58:38,674 - [INFO] - from application in play-akka.actor.default-dispatcher-411 
+preCall,no IP Address,B327DD99-9EC8-4C8A-BEEC-0D42993DF814,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377547122950
+
+2013-08-27 04:58:38,882 - [INFO] - from application in play-akka.actor.default-dispatcher-413 
+afterCall,null,B327DD99-9EC8-4C8A-BEEC-0D42993DF814,null,1377547123157
+
+2013-08-27 04:58:45,586 - [INFO] - from application in play-akka.actor.default-dispatcher-413 
+preCall,no IP Address,D14C6A70-6CA3-438D-826A-43771EB2A66C,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=DOGS,1377547129916
+
+2013-08-27 04:58:45,780 - [INFO] - from application in play-akka.actor.default-dispatcher-408 
+afterCall,null,D14C6A70-6CA3-438D-826A-43771EB2A66C,null,1377547130095
+
+2013-08-27 04:58:47,677 - [INFO] - from application in play-akka.actor.default-dispatcher-408 
+preCall,no IP Address,A0CE757A-B769-4670-8469-6FEBCDCB1E6E,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377547131990
+
+2013-08-27 04:58:47,838 - [INFO] - from application in play-akka.actor.default-dispatcher-408 
+afterCall,null,A0CE757A-B769-4670-8469-6FEBCDCB1E6E,null,1377547132137
+
+2013-08-27 04:58:49,784 - [INFO] - from application in play-akka.actor.default-dispatcher-411 
+preCall,no IP Address,ED382A8F-0B02-494C-B992-0229F78BF435,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=REPTILES,1377547134102
+
+2013-08-27 04:58:49,848 - [INFO] - from application in play-akka.actor.default-dispatcher-411 
+afterCall,null,ED382A8F-0B02-494C-B992-0229F78BF435,null,1377547134183
+
+2013-08-27 04:58:51,705 - [INFO] - from application in play-akka.actor.default-dispatcher-412 
+preCall,180.229.124.46,E58C073C-927A-40A8-88EF-1E9FC8C77E12,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377547136032
+
+2013-08-27 04:58:51,789 - [INFO] - from application in play-akka.actor.default-dispatcher-408 
+afterCall,null,E58C073C-927A-40A8-88EF-1E9FC8C77E12,null,1377547136125
+
+2013-08-27 04:59:29,272 - [INFO] - from application in play-akka.actor.default-dispatcher-415 
+preCall,180.229.124.46,FAB7F0C1-DD90-4BD1-8CD9-4A25E37E37D8,http://beta.owlab.com:8080/jpetstore/shop/viewProduct.do?productId=FL-DSH-01,1377547173591
+
+2013-08-27 04:59:29,470 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+afterCall,null,FAB7F0C1-DD90-4BD1-8CD9-4A25E37E37D8,null,1377547173784
+
+2013-08-27 04:59:32,287 - [INFO] - from application in play-akka.actor.default-dispatcher-413 
+preCall,no IP Address,90D3239A-C2ED-44AE-A7FF-A495A4D6C81F,http://beta.owlab.com:8080/jpetstore/shop/addItemToCart.do?workingItemId=EST-15,1377547176566
+
+2013-08-27 04:59:32,596 - [INFO] - from application in play-akka.actor.default-dispatcher-417 
+afterCall,null,90D3239A-C2ED-44AE-A7FF-A495A4D6C81F,null,1377547176888
+
+2013-08-27 04:59:41,340 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+preCall,180.229.124.46,09C5CD06-CCB9-48AD-A40D-93D8DB87CE7B,http://beta.owlab.com:8080/jpetstore/shop/checkout.do,1377547185656
+
+2013-08-27 04:59:41,538 - [INFO] - from application in play-akka.actor.default-dispatcher-415 
+afterCall,null,09C5CD06-CCB9-48AD-A40D-93D8DB87CE7B,null,1377547185858
+
+2013-08-27 04:59:46,685 - [INFO] - from application in play-akka.actor.default-dispatcher-415 
+preCall,no IP Address,02E7BBC8-61B5-4B61-8658-57229653EEB0,http://beta.owlab.com:8080/jpetstore/shop/newOrder.do,1377547190999
+
+2013-08-27 04:59:46,857 - [INFO] - from application in play-akka.actor.default-dispatcher-419 
+afterCall,null,02E7BBC8-61B5-4B61-8658-57229653EEB0,null,1377547191169
+
+2013-08-27 05:01:21,117 - [INFO] - from application in play-akka.actor.default-dispatcher-421 
+preCall,no IP Address,2C720C9B-FA03-4C6C-8DC3-B69DBF4209BF,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377547285380
+
+2013-08-27 05:01:21,339 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+afterCall,null,2C720C9B-FA03-4C6C-8DC3-B69DBF4209BF,null,1377547285673
+
+2013-08-27 05:01:47,412 - [INFO] - from application in play-akka.actor.default-dispatcher-423 
+preCall,180.229.124.46,493351F8-CA59-4E4E-B506-DA9790C11D2C,http://beta.owlab.com:8080/jpetstore/shop/viewProduct.do?productId=RP-LI-02,1377547311732
+
+2013-08-27 05:01:47,625 - [INFO] - from application in play-akka.actor.default-dispatcher-426 
+afterCall,null,493351F8-CA59-4E4E-B506-DA9790C11D2C,null,1377547311949
+
+2013-08-27 05:01:51,692 - [INFO] - from application in play-akka.actor.default-dispatcher-425 
+preCall,no IP Address,A98F516C-1CF3-45AF-AB57-EC7097CFAFFC,http://beta.owlab.com:8080/jpetstore/shop/viewItem.do?itemId=EST-13,1377547316012
+
+2013-08-27 05:01:51,932 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+afterCall,null,A98F516C-1CF3-45AF-AB57-EC7097CFAFFC,null,1377547316241
+
+2013-08-27 05:01:54,928 - [INFO] - from application in play-akka.actor.default-dispatcher-423 
+preCall,180.229.124.46,1796BF8A-0FE4-4B73-9B11-4EFF12962BB6,http://beta.owlab.com:8080/jpetstore/shop/addItemToCart.do?workingItemId=EST-13,1377547319244
+
+2013-08-27 05:01:55,195 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+afterCall,null,1796BF8A-0FE4-4B73-9B11-4EFF12962BB6,null,1377547319511
+
+2013-08-27 05:02:00,518 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+preCall,no IP Address,81586120-8256-4164-A617-5C5F703AEC3A,http://beta.owlab.com:8080/jpetstore/shop/checkout.do,1377547324859
+
+2013-08-27 05:02:00,681 - [INFO] - from application in play-akka.actor.default-dispatcher-424 
+afterCall,null,81586120-8256-4164-A617-5C5F703AEC3A,null,1377547325021
+
+2013-08-27 05:02:02,353 - [INFO] - from application in play-akka.actor.default-dispatcher-424 
+preCall,no IP Address,F29F09F2-841E-476F-83DF-33226DDAA82B,http://beta.owlab.com:8080/jpetstore/shop/newOrder.do,1377547326686
+
+2013-08-27 05:02:02,524 - [INFO] - from application in play-akka.actor.default-dispatcher-416 
+afterCall,null,F29F09F2-841E-476F-83DF-33226DDAA82B,null,1377547326857
+
+2013-08-27 05:06:09,833 - [INFO] - from application in play-akka.actor.default-dispatcher-428 
+preCall,180.229.124.46,48F01008-F103-4978-BEF0-3545FDA4975E,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377547574089
+
+2013-08-27 05:06:09,945 - [INFO] - from application in play-akka.actor.default-dispatcher-430 
+afterCall,null,48F01008-F103-4978-BEF0-3545FDA4975E,null,1377547574262
+
+2013-08-27 05:19:10,350 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-27 05:20:50,687 - [INFO] - from application in play-akka.actor.default-dispatcher-438 
+preCall,no IP Address,FE552A4C-7846-49FF-B20E-B9A2716866E0,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377548455038
+
+2013-08-27 05:20:50,971 - [INFO] - from application in play-akka.actor.default-dispatcher-436 
+afterCall,null,FE552A4C-7846-49FF-B20E-B9A2716866E0,null,1377548455350
+
+2013-08-27 05:28:15,335 - [INFO] - from application in play-akka.actor.default-dispatcher-433 
+preCall,no IP Address,0BC54CDE-4FC6-4FA4-8947-4923EB3DAC1C,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377548899489
+
+2013-08-27 05:28:15,427 - [INFO] - from application in play-akka.actor.default-dispatcher-440 
+afterCall,null,0BC54CDE-4FC6-4FA4-8947-4923EB3DAC1C,null,1377548899800
+
+2013-08-27 05:30:09,458 - [INFO] - from application in play-akka.actor.default-dispatcher-443 
+preCall,no IP Address,90CF8741-E38E-4C4B-9EFB-2EAC2D449087,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549013758
+
+2013-08-27 05:30:09,690 - [INFO] - from application in play-akka.actor.default-dispatcher-439 
+afterCall,null,90CF8741-E38E-4C4B-9EFB-2EAC2D449087,null,1377549014072
+
+2013-08-27 05:31:36,051 - [INFO] - from application in play-akka.actor.default-dispatcher-446 
+preCall,no IP Address,1670B4F0-DCAA-4235-BA1C-F92FB2B220A6,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549100382
+
+2013-08-27 05:31:36,350 - [INFO] - from application in play-akka.actor.default-dispatcher-447 
+afterCall,null,1670B4F0-DCAA-4235-BA1C-F92FB2B220A6,null,1377549100736
+
+2013-08-27 05:34:34,752 - [INFO] - from application in play-akka.actor.default-dispatcher-454 
+preCall,no IP Address,4451C8DA-A9BA-4D83-B6E4-89625AF89487,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549279164
+
+2013-08-27 05:34:35,020 - [INFO] - from application in play-akka.actor.default-dispatcher-461 
+afterCall,null,4451C8DA-A9BA-4D83-B6E4-89625AF89487,null,1377549279436
+
+2013-08-27 05:37:22,624 - [INFO] - from application in play-akka.actor.default-dispatcher-466 
+preCall,no IP Address,E5C3B9EF-946B-445D-9A1A-F1E66ACF69A4,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549447035
+
+2013-08-27 05:37:22,940 - [INFO] - from application in play-akka.actor.default-dispatcher-466 
+afterCall,null,E5C3B9EF-946B-445D-9A1A-F1E66ACF69A4,null,1377549447361
+
+2013-08-27 05:44:16,686 - [INFO] - from application in play-akka.actor.default-dispatcher-460 
+preCall,no IP Address,5DC5B829-2522-4B4A-B60A-73CB754D6849,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549860916
+
+2013-08-27 05:44:16,957 - [INFO] - from application in play-akka.actor.default-dispatcher-470 
+afterCall,null,5DC5B829-2522-4B4A-B60A-73CB754D6849,null,1377549861377
+
+2013-08-27 05:44:41,648 - [INFO] - from application in play-akka.actor.default-dispatcher-474 
+preCall,null,8453CCE4-E619-4E15-AE00-5ED45C39ECB6,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549886075
+
+2013-08-27 05:44:41,802 - [INFO] - from application in play-akka.actor.default-dispatcher-468 
+afterCall,null,8453CCE4-E619-4E15-AE00-5ED45C39ECB6,null,1377549886224
+
+2013-08-27 05:45:09,290 - [INFO] - from application in play-akka.actor.default-dispatcher-478 
+preCall,null,83F1762F-169F-4473-B33F-C4DAEC2253F2,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377549913668
+
+2013-08-27 05:45:09,441 - [INFO] - from application in play-akka.actor.default-dispatcher-475 
+afterCall,null,83F1762F-169F-4473-B33F-C4DAEC2253F2,null,1377549913875
+
+2013-08-27 05:45:15,821 - [INFO] - from application in play-akka.actor.default-dispatcher-475 
+preCall,no IP Address,6204B729-D48D-4616-87FC-E4C53CBC8F93,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=FISH,1377549920243
+
+2013-08-27 05:45:16,101 - [INFO] - from application in play-akka.actor.default-dispatcher-481 
+afterCall,null,6204B729-D48D-4616-87FC-E4C53CBC8F93,null,1377549920520
+
+2013-08-27 05:48:43,724 - [INFO] - from application in play-akka.actor.default-dispatcher-482 
+preCall,180.229.124.46,3BCFE3B1-F385-4E32-A8B6-04AC45C899B1,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377550128097
+
+2013-08-27 05:48:43,915 - [INFO] - from application in play-akka.actor.default-dispatcher-478 
+afterCall,null,3BCFE3B1-F385-4E32-A8B6-04AC45C899B1,null,1377550128355
+
+2013-08-27 05:48:49,930 - [INFO] - from application in play-akka.actor.default-dispatcher-478 
+preCall,180.229.124.46,4ECFE0A4-B96F-419F-A355-BBFA69764A05,http://beta.owlab.com:8080/jpetstore/shop/viewCategory.do?categoryId=CATS,1377550134361
+
+2013-08-27 05:48:50,115 - [INFO] - from application in play-akka.actor.default-dispatcher-483 
+afterCall,null,4ECFE0A4-B96F-419F-A355-BBFA69764A05,null,1377550134547
 

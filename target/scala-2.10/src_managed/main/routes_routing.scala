@@ -1,6 +1,6 @@
 // @SOURCE:/working/devel/fresto-front/conf/routes
-// @HASH:7146bf5ffec26c2f847f18152bb46ae68389afe6
-// @DATE:Tue Aug 20 09:46:48 KST 2013
+// @HASH:7841090ceec49e18d4ff88396a650d5867c94a1e
+// @DATE:Tue Aug 27 05:19:03 KST 2013
 
 
 import play.core._
@@ -32,10 +32,18 @@ lazy val defaultPrefix = { if(Routes.prefix.endsWith("/")) "" else "/" }
 private[this] lazy val controllers_Application_index0 = Route("GET", PathPattern(List(StaticPart(Routes.prefix))))
         
 
-// @LINE:9
-private[this] lazy val controllers_Assets_at1 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+// @LINE:7
+private[this] lazy val controllers_Application_whatIsMyIPAddress1 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("whatIsMyIPAddress"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:9
+private[this] lazy val controllers_Application_feedUIEvent2 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("feedUIEvent"))))
+        
+
+// @LINE:12
+private[this] lazy val controllers_Assets_at3 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """whatIsMyIPAddress""","""controllers.Application.whatIsMyIPAddress()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """feedUIEvent""","""controllers.Application.feedUIEvent()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -51,8 +59,24 @@ case controllers_Application_index0(params) => {
 }
         
 
+// @LINE:7
+case controllers_Application_whatIsMyIPAddress1(params) => {
+   call { 
+        invokeHandler(controllers.Application.whatIsMyIPAddress(), HandlerDef(this, "controllers.Application", "whatIsMyIPAddress", Nil,"GET", """""", Routes.prefix + """whatIsMyIPAddress"""))
+   }
+}
+        
+
 // @LINE:9
-case controllers_Assets_at1(params) => {
+case controllers_Application_feedUIEvent2(params) => {
+   call { 
+        invokeHandler(controllers.Application.feedUIEvent(), HandlerDef(this, "controllers.Application", "feedUIEvent", Nil,"POST", """GET	/feedUIEvent		    controllers.Application.feedUIEvent()""", Routes.prefix + """feedUIEvent"""))
+   }
+}
+        
+
+// @LINE:12
+case controllers_Assets_at3(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """ Map static resources from the /public folder to the /assets URL path""", Routes.prefix + """assets/$file<.+>"""))
    }

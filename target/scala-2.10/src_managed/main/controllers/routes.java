@@ -1,6 +1,6 @@
 // @SOURCE:/working/devel/fresto-front/conf/routes
-// @HASH:7146bf5ffec26c2f847f18152bb46ae68389afe6
-// @DATE:Tue Aug 20 09:46:48 KST 2013
+// @HASH:7841090ceec49e18d4ff88396a650d5867c94a1e
+// @DATE:Tue Aug 27 05:19:03 KST 2013
 
 package controllers;
 
