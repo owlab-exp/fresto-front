@@ -16,7 +16,7 @@ public class Application extends Controller {
 	StringBuffer sb = new StringBuffer();
 	sb.append("Under construction. \n Urls to give or get events");
 	sb.append("\n");
-	sb.append("http://fresto1.owlab.com:9999/feedR0");
+	sb.append("http://fresto1.owlab.com:9999/feedUIEvent");
 	sb.append("\n");
 	sb.append("http://fresto1.owlab.com:9999/getR0");
         return ok(sb.toString());
@@ -32,7 +32,9 @@ public class Application extends Controller {
   
     public static Result whatIsMyIPAddress() {
 	    String remote = request().remoteAddress();
-	    return ok(remote);
+	    String result = "getip({ \"ip\":\""+ remote +"\" });";
+	    Logger.info("result: " + result);
+	    return ok(result);
 
     }
 

@@ -1024,3 +1024,345 @@ preCall,180.229.124.46,4ECFE0A4-B96F-419F-A355-BBFA69764A05,http://beta.owlab.co
 2013-08-27 05:48:50,115 - [INFO] - from application in play-akka.actor.default-dispatcher-483 
 afterCall,null,4ECFE0A4-B96F-419F-A355-BBFA69764A05,null,1377550134547
 
+2013-08-27 17:23:06,370 - [INFO] - from application in play-akka.actor.default-dispatcher-486 
+preCall,223.62.180.95,3A5C985E-C6B7-4572-802A-50C83E22B845,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377591786131
+
+2013-08-27 17:23:06,566 - [INFO] - from application in play-akka.actor.default-dispatcher-486 
+afterCall,null,3A5C985E-C6B7-4572-802A-50C83E22B845,null,1377591786568
+
+2013-08-27 17:23:53,125 - [INFO] - from application in play-akka.actor.default-dispatcher-489 
+preCall,223.62.180.95,723052E4-5353-42F5-A120-E17BB348FF0B,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377591832995
+
+2013-08-27 17:23:53,493 - [INFO] - from application in play-akka.actor.default-dispatcher-489 
+afterCall,null,723052E4-5353-42F5-A120-E17BB348FF0B,null,1377591833423
+
+2013-08-27 17:32:22,514 - [INFO] - from application in play-akka.actor.default-dispatcher-488 
+preCall,223.62.180.95,AB3E930E-1D21-472E-8D84-138D8748EA40,http://beta.owlab.com:8080/jpetstore/shop/index.do,1377592342443
+
+2013-08-27 17:32:22,820 - [INFO] - from application in play-akka.actor.default-dispatcher-488 
+afterCall,null,AB3E930E-1D21-472E-8D84-138D8748EA40,null,1377592342813
+
+2013-08-28 08:43:02,091 - [INFO] - from application in play-akka.actor.default-dispatcher-493 
+afterCall,null,61FD48EC-B56A-45E3-9063-37EA78C05527,null,1377646990810
+
+2013-08-28 08:43:03,353 - [INFO] - from application in play-akka.actor.default-dispatcher-488 
+preCall,no IP Address,61FD48EC-B56A-45E3-9063-37EA78C05527,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377646990585
+
+2013-08-28 08:43:53,294 - [INFO] - from application in play-akka.actor.default-dispatcher-488 
+preCall,no IP Address,72CA66E9-5299-4DA6-BA38-767EF8684B99,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do;jsessionid=F004B16FAA274BF83EFDE54F2687F340?categoryId=DOGS,1377647042001
+
+2013-08-28 08:43:53,688 - [INFO] - from application in play-akka.actor.default-dispatcher-496 
+afterCall,null,72CA66E9-5299-4DA6-BA38-767EF8684B99,null,1377647042372
+
+2013-08-28 08:44:07,432 - [INFO] - from application in play-akka.actor.default-dispatcher-488 
+preCall,no IP Address,880DE431-FA0B-46A7-AEEA-BE22E4721BE0,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=K9-BD-01,1377647056143
+
+2013-08-28 08:44:07,709 - [INFO] - from application in play-akka.actor.default-dispatcher-498 
+afterCall,null,880DE431-FA0B-46A7-AEEA-BE22E4721BE0,null,1377647056349
+
+2013-08-28 09:08:18,197 - [INFO] - from application in play-akka.actor.default-dispatcher-502 
+preCall,no IP Address,26BD7762-B018-4BF2-937C-A266DB93EEAB,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377648506937
+
+2013-08-28 09:08:18,590 - [INFO] - from application in play-akka.actor.default-dispatcher-505 
+afterCall,null,26BD7762-B018-4BF2-937C-A266DB93EEAB,null,1377648507389
+
+2013-08-28 09:08:20,951 - [INFO] - from application in play-akka.actor.default-dispatcher-505 
+preCall,no IP Address,62444482-0BC1-4266-ABB1-229FD8EA2D72,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=CATS,1377648509752
+
+2013-08-28 09:08:21,206 - [INFO] - from application in play-akka.actor.default-dispatcher-502 
+afterCall,null,62444482-0BC1-4266-ABB1-229FD8EA2D72,null,1377648509956
+
+2013-08-28 09:08:23,074 - [INFO] - from application in play-akka.actor.default-dispatcher-503 
+preCall,no IP Address,97019CDA-0946-4BE9-BE7B-027D7FB01A08,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=FL-DSH-01,1377648511865
+
+2013-08-28 09:08:23,331 - [INFO] - from application in play-akka.actor.default-dispatcher-488 
+afterCall,null,97019CDA-0946-4BE9-BE7B-027D7FB01A08,null,1377648512104
+
+2013-08-28 09:28:26,144 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-28 09:28:26,168 - [INFO] - from application in play-akka.actor.default-dispatcher-505 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:28:45,063 - [INFO] - from application in play-akka.actor.default-dispatcher-505 
+preCall,no IP Address,6B590CD8-DE8C-4BAD-A2BF-905A72756D41,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377649733898
+
+2013-08-28 09:28:45,369 - [INFO] - from application in play-akka.actor.default-dispatcher-509 
+afterCall,null,6B590CD8-DE8C-4BAD-A2BF-905A72756D41,null,1377649734167
+
+2013-08-28 09:28:45,657 - [INFO] - from application in play-akka.actor.default-dispatcher-509 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:29:38,438 - [INFO] - from application in play-akka.actor.default-dispatcher-505 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:30:54,809 - [INFO] - from application in play-akka.actor.default-dispatcher-513 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:37,832 - [INFO] - from application in play-akka.actor.default-dispatcher-514 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:40,025 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:40,681 - [INFO] - from application in play-akka.actor.default-dispatcher-514 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:41,404 - [INFO] - from application in play-akka.actor.default-dispatcher-518 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:42,130 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:46,110 - [INFO] - from application in play-akka.actor.default-dispatcher-514 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:31:49,096 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:32:08,950 - [INFO] - from application in play-akka.actor.default-dispatcher-519 
+preCall,no IP Address,1729A9B2-5F70-4261-85C3-C7BFC102626D,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377649937709
+
+2013-08-28 09:32:09,202 - [INFO] - from application in play-akka.actor.default-dispatcher-522 
+afterCall,null,1729A9B2-5F70-4261-85C3-C7BFC102626D,null,1377649938057
+
+2013-08-28 09:32:09,362 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:33:52,809 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:34:15,408 - [INFO] - from application in play-akka.actor.default-dispatcher-527 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:38:58,772 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:39:16,347 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:39:40,234 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:39:41,520 - [INFO] - from application in play-akka.actor.default-dispatcher-538 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:40:07,173 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:41:25,119 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:41:30,177 - [INFO] - from application in play-akka.actor.default-dispatcher-548 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:41:35,600 - [INFO] - from application in play-akka.actor.default-dispatcher-548 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:41:49,871 - [INFO] - from application in play-akka.actor.default-dispatcher-515 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:42:16,109 - [INFO] - from application in play-akka.actor.default-dispatcher-554 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:46:11,226 - [INFO] - from application in play-akka.actor.default-dispatcher-554 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:46:15,423 - [INFO] - from application in play-akka.actor.default-dispatcher-554 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 09:46:31,664 - [INFO] - from application in play-akka.actor.default-dispatcher-556 
+IP Request-Response: 180.229.124.46
+
+2013-08-28 10:22:14,612 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-28 10:22:14,633 - [INFO] - from application in play-akka.actor.default-dispatcher-565 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:24:03,478 - [INFO] - from application in play-akka.actor.default-dispatcher-556 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:24:11,383 - [INFO] - from application in play-akka.actor.default-dispatcher-569 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:24:14,368 - [INFO] - from application in play-akka.actor.default-dispatcher-568 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:15,973 - [INFO] - from application in play-akka.actor.default-dispatcher-569 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:17,944 - [INFO] - from application in play-akka.actor.default-dispatcher-571 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:19,064 - [INFO] - from application in play-akka.actor.default-dispatcher-572 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:20,186 - [INFO] - from application in play-akka.actor.default-dispatcher-571 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:23,657 - [INFO] - from application in play-akka.actor.default-dispatcher-574 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:24,955 - [INFO] - from application in play-akka.actor.default-dispatcher-574 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:25:45,487 - [INFO] - from application in play-akka.actor.default-dispatcher-569 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:26:10,448 - [INFO] - from application in play-akka.actor.default-dispatcher-580 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:26:12,877 - [INFO] - from application in play-akka.actor.default-dispatcher-581 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:26:18,993 - [INFO] - from application in play-akka.actor.default-dispatcher-580 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:26:20,789 - [INFO] - from application in play-akka.actor.default-dispatcher-578 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:26:25,376 - [INFO] - from application in play-akka.actor.default-dispatcher-584 
+preCall,180.229.124.46,5782862A-CFF3-4B1C-8CFE-F396C61B4D6F,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653194366
+
+2013-08-28 10:26:25,656 - [INFO] - from application in play-akka.actor.default-dispatcher-583 
+afterCall,null,5782862A-CFF3-4B1C-8CFE-F396C61B4D6F,null,1377653194646
+
+2013-08-28 10:26:29,806 - [INFO] - from application in play-akka.actor.default-dispatcher-582 
+preCall,Not set,DAC539D2-655F-42D3-9765-3594B6B9635B,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377653198792
+
+2013-08-28 10:26:30,033 - [INFO] - from application in play-akka.actor.default-dispatcher-583 
+afterCall,null,DAC539D2-655F-42D3-9765-3594B6B9635B,null,1377653199013
+
+2013-08-28 10:26:32,061 - [INFO] - from application in play-akka.actor.default-dispatcher-582 
+preCall,Not set,F1EA8EA2-4A06-49D9-8A9A-19E9B6F973DC,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653201054
+
+2013-08-28 10:26:32,164 - [INFO] - from application in play-akka.actor.default-dispatcher-583 
+afterCall,null,F1EA8EA2-4A06-49D9-8A9A-19E9B6F973DC,null,1377653201171
+
+2013-08-28 10:27:52,270 - [INFO] - from application in play-akka.actor.default-dispatcher-578 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:27:56,521 - [INFO] - from application in play-akka.actor.default-dispatcher-589 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:27:57,721 - [INFO] - from application in play-akka.actor.default-dispatcher-585 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:27:58,773 - [INFO] - from application in play-akka.actor.default-dispatcher-589 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:27:59,791 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:00,983 - [INFO] - from application in play-akka.actor.default-dispatcher-587 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:02,043 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:03,045 - [INFO] - from application in play-akka.actor.default-dispatcher-587 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:06,941 - [INFO] - from application in play-akka.actor.default-dispatcher-587 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:10,851 - [INFO] - from application in play-akka.actor.default-dispatcher-589 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:12,467 - [INFO] - from application in play-akka.actor.default-dispatcher-589 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:15,003 - [INFO] - from application in play-akka.actor.default-dispatcher-589 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:16,501 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:18,840 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:20,068 - [INFO] - from application in play-akka.actor.default-dispatcher-585 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:27,851 - [INFO] - from application in play-akka.actor.default-dispatcher-586 
+preCall,180.229.124.46,A53881EA-E840-44BA-80F5-31B4CA40FDA5,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653316858
+
+2013-08-28 10:28:28,210 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+afterCall,null,A53881EA-E840-44BA-80F5-31B4CA40FDA5,null,1377653317162
+
+2013-08-28 10:28:29,037 - [INFO] - from application in play-akka.actor.default-dispatcher-585 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:28:31,870 - [INFO] - from application in play-akka.actor.default-dispatcher-585 
+preCall,180.229.124.46,382A53A9-D213-40CD-8813-3BD6CCDBEB35,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377653320868
+
+2013-08-28 10:28:32,210 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+afterCall,null,382A53A9-D213-40CD-8813-3BD6CCDBEB35,null,1377653321183
+
+2013-08-28 10:28:32,490 - [INFO] - from application in play-akka.actor.default-dispatcher-588 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:37:33,628 - [INFO] - from application in play-akka.actor.default-dispatcher-578 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:37:37,035 - [INFO] - from application in play-akka.actor.default-dispatcher-593 
+preCall,180.229.124.46,663082C9-CA7D-47CF-9035-56316C1E3BB9,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653866037
+
+2013-08-28 10:37:38,144 - [INFO] - from application in play-akka.actor.default-dispatcher-592 
+afterCall,180.229.124.46,663082C9-CA7D-47CF-9035-56316C1E3BB9,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653867153
+
+2013-08-28 10:37:38,350 - [INFO] - from application in play-akka.actor.default-dispatcher-593 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:37:42,181 - [INFO] - from application in play-akka.actor.default-dispatcher-592 
+preCall,180.229.124.46,4AB43A2D-F969-4C28-97B9-891C71E12B54,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377653871158
+
+2013-08-28 10:37:42,578 - [INFO] - from application in play-akka.actor.default-dispatcher-593 
+afterCall,180.229.124.46,4AB43A2D-F969-4C28-97B9-891C71E12B54,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377653871573
+
+2013-08-28 10:37:42,660 - [INFO] - from application in play-akka.actor.default-dispatcher-592 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:38:44,202 - [INFO] - from application in play-akka.actor.default-dispatcher-593 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:38:48,556 - [INFO] - from application in play-akka.actor.default-dispatcher-596 
+beforeCall,180.229.124.46,AF7FCC0D-F430-4F5F-8FC7-FC0A39507957,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653937555
+
+2013-08-28 10:38:49,039 - [INFO] - from application in play-akka.actor.default-dispatcher-593 
+afterCall,180.229.124.46,AF7FCC0D-F430-4F5F-8FC7-FC0A39507957,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653938031
+
+2013-08-28 10:38:49,254 - [INFO] - from application in play-akka.actor.default-dispatcher-596 
+result: getip({ "ip":"180.229.124.46"});
+
+2013-08-28 10:39:33,952 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-28 10:39:33,983 - [INFO] - from application in play-akka.actor.default-dispatcher-595 
+afterCall,180.229.124.46,C8565293-B241-466D-8027-3285EBB6D72C,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377653980673
+
+2013-08-28 10:39:33,986 - [INFO] - from application in play-akka.actor.default-dispatcher-600 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 10:39:33,999 - [INFO] - from application in play-akka.actor.default-dispatcher-601 
+beforeCall,180.229.124.46,C8565293-B241-466D-8027-3285EBB6D72C,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377653980338
+
+2013-08-28 10:39:37,347 - [INFO] - from application in play-akka.actor.default-dispatcher-602 
+beforeCall,180.229.124.46,DE19CD84-B8FC-47FA-A76E-8D4C412A69AA,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653986386
+
+2013-08-28 10:39:37,470 - [INFO] - from application in play-akka.actor.default-dispatcher-601 
+afterCall,180.229.124.46,DE19CD84-B8FC-47FA-A76E-8D4C412A69AA,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377653986506
+
+2013-08-28 10:39:37,525 - [INFO] - from application in play-akka.actor.default-dispatcher-602 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 10:39:54,756 - [INFO] - from application in play-akka.actor.default-dispatcher-600 
+beforeCall,180.229.124.46,E4F619F9-D914-4414-8AC5-A10071BCDA45,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377654003786
+
+2013-08-28 10:39:54,874 - [INFO] - from application in play-akka.actor.default-dispatcher-600 
+afterCall,180.229.124.46,E4F619F9-D914-4414-8AC5-A10071BCDA45,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377654003919
+
+2013-08-28 10:39:54,935 - [INFO] - from application in play-akka.actor.default-dispatcher-595 
+result: getip({ "ip":"180.229.124.46" });
+
