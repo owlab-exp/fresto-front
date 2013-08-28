@@ -9,8 +9,16 @@ import views.html.*;
 
 import java.util.*;
 
+import org.apache.thrift.TSerializer;
+import org.apache.thrift.TException;
+import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TBinaryProtocol.Factory;
+
+import fresto.format.UIEvent;
+
 public class Application extends Controller {
   
+
     public static Result index() {
         //return ok(index.render("Your new application is ready."));
 	StringBuffer sb = new StringBuffer();
@@ -43,11 +51,21 @@ public class Application extends Controller {
 	    DynamicForm data = Form.form().bindFromRequest();
 	    String stage = data.get("stage");
 	    String clientId = data.get("clientId");
+	    String currentPage = data.get("currentPage");
 	    String uuid = data.get("uuid");
 	    String targetUrl = data.get("targetUrl");
 	    String timestamp = data.get("timestamp");
 
-	    Logger.info(stage + "," + clientId + "," + uuid + "," + targetUrl + "," + timestamp);
+	    Logger.info(stage + "," + clientId + "," + currentPage + "," + uuid + "," + targetUrl + "," + timestamp); 
+	    
+	    TSerializer serializer = new TSerializer(new TBinaryProtocol.Factory());
+	    UIEvent event = new UIEvent(stage, clientId, currentPage, uuid, targetUrl, Long.parseLong(timestamp));
+	    try {
+	    	byte[] serializedEvent = serializer.serialize(event);
+	    } catch (TException te) {
+		    te.printStackTrace();
+	    }
+
 
 	    return ok("RECV_OK");
     }

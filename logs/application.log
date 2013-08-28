@@ -1366,3 +1366,1206 @@ afterCall,180.229.124.46,E4F619F9-D914-4414-8AC5-A10071BCDA45,http://beta.owlab.
 2013-08-28 10:39:54,935 - [INFO] - from application in play-akka.actor.default-dispatcher-595 
 result: getip({ "ip":"180.229.124.46" });
 
+2013-08-28 19:37:32,932 - [INFO] - from application in play-akka.actor.default-dispatcher-603 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 19:37:38,791 - [INFO] - from application in play-akka.actor.default-dispatcher-608 
+beforeCall,180.229.124.46,878FD2E6-3788-47D7-8F10-3749185A2B6E,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377686269187
+
+2013-08-28 19:37:39,100 - [INFO] - from application in play-akka.actor.default-dispatcher-609 
+afterCall,180.229.124.46,878FD2E6-3788-47D7-8F10-3749185A2B6E,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377686269472
+
+2013-08-28 19:37:39,162 - [INFO] - from application in play-akka.actor.default-dispatcher-606 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:07:21,031 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fdjepii0 - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package fresto.format.ui does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:07:24,311 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6fdjepndo - Internal server error, for (GET) [/whatIsMyIPAddress?_=1377686269748] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package fresto.format.ui does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:07:27,425 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fdjf023p - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package fresto.format.ui does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:08:27,052 - [ERROR] - from application in New I/O worker #4 
+
+
+! @6fdjf3c95 - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package org.apache.thrift.scheme does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:08:29,998 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fdjf3gid - Internal server error, for (GET) [/whatIsMyIPAddress?_=1377688048978] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package org.apache.thrift.scheme does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:08:33,515 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fdjf3lni - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package org.apache.thrift.scheme does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:08:37,022 - [ERROR] - from application in New I/O worker #4 
+
+
+! @6fdjf412h - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package org.apache.thrift.scheme does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:08:39,984 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6fdjf45cb - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package org.apache.thrift.scheme does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:08:43,163 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fdjf4a4p - Internal server error, for (GET) [/whatIsMyIPAddress?_=1377688114881] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: package org.apache.thrift.scheme does not exist]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:10:19,516 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-28 20:10:19,546 - [INFO] - from application in play-akka.actor.default-dispatcher-610 
+afterCall,Not set,F9223A08-3571-4BFA-AC67-97976E5BA9FF,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377688226043
+
+2013-08-28 20:10:19,551 - [INFO] - from application in play-akka.actor.default-dispatcher-603 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:10:19,551 - [INFO] - from application in play-akka.actor.default-dispatcher-612 
+beforeCall,Not set,F9223A08-3571-4BFA-AC67-97976E5BA9FF,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377688225675
+
+2013-08-28 20:10:21,201 - [INFO] - from application in play-akka.actor.default-dispatcher-603 
+beforeCall,180.229.124.46,19528876-9FA2-4643-B117-AA8AD1C7C062,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377688231691
+
+2013-08-28 20:10:21,283 - [INFO] - from application in play-akka.actor.default-dispatcher-610 
+afterCall,180.229.124.46,19528876-9FA2-4643-B117-AA8AD1C7C062,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377688231777
+
+2013-08-28 20:10:21,335 - [INFO] - from application in play-akka.actor.default-dispatcher-614 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:21:26,913 - [ERROR] - from application in New I/O worker #4 
+
+
+! @6fdjgllpo - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: no suitable constructor found for UIEvent(String,String,String,String,String)]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:21:29,174 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fdjglp8n - Internal server error, for (GET) [/whatIsMyIPAddress?_=1377688232020] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: no suitable constructor found for UIEvent(String,String,String,String,String)]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:21:31,307 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fdjgm2cp - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: no suitable constructor found for UIEvent(String,String,String,String,String)]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:22:36,495 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-28 20:22:36,550 - [INFO] - from application in play-akka.actor.default-dispatcher-616 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:22:36,557 - [INFO] - from application in play-akka.actor.default-dispatcher-617 
+beforeCall,Not set,5B0DE9FF-7BFD-407F-8F6A-3ED40C54B609,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377688964264
+
+2013-08-28 20:22:36,558 - [INFO] - from application in play-akka.actor.default-dispatcher-618 
+afterCall,Not set,5B0DE9FF-7BFD-407F-8F6A-3ED40C54B609,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377688964606
+
+2013-08-28 20:28:43,647 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fdjhki18 - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: non-static variable serializer cannot be referenced from a static context]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:28:45,771 - [ERROR] - from application in New I/O worker #4 
+
+
+! @6fdjhkl53 - Internal server error, for (GET) [/whatIsMyIPAddress?_=1377688964911] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: non-static variable serializer cannot be referenced from a static context]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:28:48,000 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6fdjhkocm - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: non-static variable serializer cannot be referenced from a static context]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:30:00,432 - [ERROR] - from application in New I/O worker #1 
+
+
+! @6fdjhp1gh - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: unreported exception TException; must be caught or declared to be thrown]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:30:02,574 - [ERROR] - from application in New I/O worker #3 
+
+
+! @6fdjhp4l0 - Internal server error, for (GET) [/whatIsMyIPAddress?_=1377689332728] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: unreported exception TException; must be caught or declared to be thrown]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:30:04,775 - [ERROR] - from application in New I/O worker #2 
+
+
+! @6fdjhp81i - Internal server error, for (POST) [/feedUIEvent] ->
+
+sbt.PlayExceptions$CompilationException: Compilation error[error: unreported exception TException; must be caught or declared to be thrown]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15$$anonfun$apply$16.apply(PlayReloader.scala:349) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:349) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2$$anonfun$apply$15.apply(PlayReloader.scala:346) ~[na:na]
+	at scala.Option.map(Option.scala:133) ~[scala-library.jar:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:346) ~[na:na]
+	at sbt.PlayReloader$$anon$2$$anonfun$reload$2.apply(PlayReloader.scala:344) ~[na:na]
+	at scala.Either$LeftProjection.map(Either.scala:374) ~[na:na]
+	at sbt.PlayReloader$$anon$2.reload(PlayReloader.scala:344) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:106) ~[play_2.10.jar:2.1.3]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.1.3]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) ~[na:1.7.0_25]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) ~[na:1.7.0_25]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+
+2013-08-28 20:31:33,062 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-28 20:31:33,114 - [INFO] - from application in play-akka.actor.default-dispatcher-625 
+beforeCall,Not set,884401A8-4556-4BB1-BA34-0BB593C9743B,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377689500683
+
+2013-08-28 20:31:33,131 - [INFO] - from application in play-akka.actor.default-dispatcher-624 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:31:33,122 - [INFO] - from application in play-akka.actor.default-dispatcher-627 
+afterCall,Not set,884401A8-4556-4BB1-BA34-0BB593C9743B,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377689500888
+
+2013-08-28 20:31:38,451 - [INFO] - from application in play-akka.actor.default-dispatcher-624 
+beforeCall,180.229.124.46,27493ACC-F6E4-4B6A-BC85-1D0CDD5A68D3,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377689508988
+
+2013-08-28 20:31:38,562 - [INFO] - from application in play-akka.actor.default-dispatcher-620 
+afterCall,180.229.124.46,27493ACC-F6E4-4B6A-BC85-1D0CDD5A68D3,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377689509109
+
+2013-08-28 20:31:38,596 - [INFO] - from application in play-akka.actor.default-dispatcher-629 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:32:16,077 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-28 20:32:16,107 - [INFO] - from application in play-akka.actor.default-dispatcher-632 
+beforeCall,180.229.124.46,71AFD8A9-AE72-4CF5-AA3D-99E176A64EE8,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377689546186
+
+2013-08-28 20:32:16,106 - [INFO] - from application in play-akka.actor.default-dispatcher-628 
+afterCall,180.229.124.46,71AFD8A9-AE72-4CF5-AA3D-99E176A64EE8,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377689546353
+
+2013-08-28 20:32:16,117 - [INFO] - from application in play-akka.actor.default-dispatcher-631 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:32:17,461 - [INFO] - from application in play-akka.actor.default-dispatcher-635 
+beforeCall,180.229.124.46,12CDC13E-FE23-4BE6-98EE-CDBDE1316FB0,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377689547995
+
+2013-08-28 20:32:17,560 - [INFO] - from application in play-akka.actor.default-dispatcher-628 
+afterCall,180.229.124.46,12CDC13E-FE23-4BE6-98EE-CDBDE1316FB0,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377689548096
+
+2013-08-28 20:32:17,577 - [INFO] - from application in play-akka.actor.default-dispatcher-635 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:32:19,842 - [INFO] - from application in play-akka.actor.default-dispatcher-632 
+beforeCall,180.229.124.46,A05E7463-383A-4AF2-879C-590FE02B91AA,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=FI-FW-01,1377689550378
+
+2013-08-28 20:32:19,959 - [INFO] - from application in play-akka.actor.default-dispatcher-628 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 20:32:22,921 - [INFO] - from application in play-akka.actor.default-dispatcher-634 
+afterCall,180.229.124.46,A05E7463-383A-4AF2-879C-590FE02B91AA,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=FI-FW-01,1377689550453
+
+2013-08-28 20:32:28,270 - [INFO] - from application in play-akka.actor.default-dispatcher-634 
+beforeCall,180.229.124.46,A7D15135-06CE-4DD9-A613-386ED4AFE218,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-5,1377689558802
+
+2013-08-28 20:32:28,590 - [INFO] - from application in play-akka.actor.default-dispatcher-628 
+afterCall,180.229.124.46,A7D15135-06CE-4DD9-A613-386ED4AFE218,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-5,1377689559132
+
+2013-08-28 20:32:28,620 - [INFO] - from application in play-akka.actor.default-dispatcher-634 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 21:59:46,259 - [INFO] - from application in play-akka.actor.default-dispatcher-630 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:00:21,380 - [INFO] - from application in play-akka.actor.default-dispatcher-639 
+beforeCall,180.229.124.46,474A5F61-5334-47FD-8426-9B0B279F26A6,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377694832155
+
+2013-08-28 22:00:21,566 - [INFO] - from application in play-akka.actor.default-dispatcher-641 
+afterCall,180.229.124.46,474A5F61-5334-47FD-8426-9B0B279F26A6,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377694832339
+
+2013-08-28 22:00:21,640 - [INFO] - from application in play-akka.actor.default-dispatcher-642 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:01:13,358 - [INFO] - from application in play-akka.actor.default-dispatcher-644 
+beforeCall,180.229.124.46,F2858B86-D2BA-41F0-ABBE-319099D4BBB6,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377694883881
+
+2013-08-28 22:01:13,695 - [INFO] - from application in play-akka.actor.default-dispatcher-641 
+afterCall,180.229.124.46,F2858B86-D2BA-41F0-ABBE-319099D4BBB6,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377694884466
+
+2013-08-28 22:01:13,728 - [INFO] - from application in play-akka.actor.default-dispatcher-644 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:01:16,110 - [INFO] - from application in play-akka.actor.default-dispatcher-645 
+beforeCall,180.229.124.46,8AB55726-FE01-4589-A032-744AD016E819,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=RP-LI-02,1377694886889
+
+2013-08-28 22:01:16,241 - [INFO] - from application in play-akka.actor.default-dispatcher-644 
+afterCall,180.229.124.46,8AB55726-FE01-4589-A032-744AD016E819,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=RP-LI-02,1377694887022
+
+2013-08-28 22:01:16,267 - [INFO] - from application in play-akka.actor.default-dispatcher-644 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:01:17,748 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+beforeCall,180.229.124.46,B432E6CC-24D0-4543-B6A7-B90E1C61BEAB,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-13,1377694888520
+
+2013-08-28 22:01:18,029 - [INFO] - from application in play-akka.actor.default-dispatcher-641 
+afterCall,180.229.124.46,B432E6CC-24D0-4543-B6A7-B90E1C61BEAB,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-13,1377694888802
+
+2013-08-28 22:01:18,076 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:01:20,251 - [INFO] - from application in play-akka.actor.default-dispatcher-647 
+beforeCall,180.229.124.46,59A5E70A-4A45-40BC-A1C8-3305DE638BA1,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-13,1377694891024
+
+2013-08-28 22:01:20,344 - [INFO] - from application in play-akka.actor.default-dispatcher-647 
+afterCall,180.229.124.46,59A5E70A-4A45-40BC-A1C8-3305DE638BA1,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-13,1377694891118
+
+2013-08-28 22:01:20,369 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:01:22,249 - [INFO] - from application in play-akka.actor.default-dispatcher-645 
+beforeCall,180.229.124.46,26041F2D-3D1B-46F0-ACB9-FEC5BCF854A5,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-13,1377694893024
+
+2013-08-28 22:01:22,398 - [INFO] - from application in play-akka.actor.default-dispatcher-645 
+afterCall,180.229.124.46,26041F2D-3D1B-46F0-ACB9-FEC5BCF854A5,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-13,1377694893165
+
+2013-08-28 22:01:22,427 - [INFO] - from application in play-akka.actor.default-dispatcher-641 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:41,486 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-28 22:09:41,523 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+beforeCall,180.229.124.46,A5A68810-3BE4-46D9-9400-7F1485B98554,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695391735
+
+2013-08-28 22:09:41,517 - [INFO] - from application in play-akka.actor.default-dispatcher-650 
+afterCall,180.229.124.46,A5A68810-3BE4-46D9-9400-7F1485B98554,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695392177
+
+2013-08-28 22:09:41,524 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:42,664 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+beforeCall,180.229.124.46,F71B3A92-5683-41A2-B057-DEC6F622F986,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=DOGS,1377695393446
+
+2013-08-28 22:09:42,836 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+afterCall,180.229.124.46,F71B3A92-5683-41A2-B057-DEC6F622F986,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=DOGS,1377695393610
+
+2013-08-28 22:09:42,870 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:45,245 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+beforeCall,180.229.124.46,4B4C84E8-3E9E-4A4B-A4DC-ABD14E8F2E24,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695396022
+
+2013-08-28 22:09:45,381 - [INFO] - from application in play-akka.actor.default-dispatcher-654 
+afterCall,180.229.124.46,4B4C84E8-3E9E-4A4B-A4DC-ABD14E8F2E24,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695396168
+
+2013-08-28 22:09:45,420 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:46,079 - [INFO] - from application in play-akka.actor.default-dispatcher-654 
+beforeCall,180.229.124.46,BFCB49D3-B125-4A39-AE17-9E77671689B1,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695396877
+
+2013-08-28 22:09:46,206 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,BFCB49D3-B125-4A39-AE17-9E77671689B1,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695396988
+
+2013-08-28 22:09:46,245 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:46,621 - [INFO] - from application in play-akka.actor.default-dispatcher-654 
+beforeCall,180.229.124.46,6FCCD4F3-DA5A-49F7-9509-9E5FDC690276,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695397422
+
+2013-08-28 22:09:46,701 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+afterCall,180.229.124.46,6FCCD4F3-DA5A-49F7-9509-9E5FDC690276,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695397498
+
+2013-08-28 22:09:46,729 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:53,189 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+beforeCall,180.229.124.46,701E61C0-1ABF-405E-BF04-D49D3BCAFC2C,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377695403974
+
+2013-08-28 22:09:53,253 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+afterCall,180.229.124.46,701E61C0-1ABF-405E-BF04-D49D3BCAFC2C,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377695404054
+
+2013-08-28 22:09:53,280 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:56,234 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+beforeCall,180.229.124.46,BD70BF77-E40B-43B6-892A-DB6304AE08D6,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695407014
+
+2013-08-28 22:09:56,335 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+afterCall,180.229.124.46,BD70BF77-E40B-43B6-892A-DB6304AE08D6,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695407124
+
+2013-08-28 22:09:56,364 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:56,987 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+beforeCall,180.229.124.46,0DCF0BEB-D55F-42B4-A7F9-7FB7BC3E7ECC,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695407774
+
+2013-08-28 22:09:57,055 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,0DCF0BEB-D55F-42B4-A7F9-7FB7BC3E7ECC,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695407838
+
+2013-08-28 22:09:57,076 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:57,446 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+beforeCall,180.229.124.46,2230212B-327F-4DA8-A9AE-93A14BEE9016,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695408230
+
+2013-08-28 22:09:57,579 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,2230212B-327F-4DA8-A9AE-93A14BEE9016,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695408352
+
+2013-08-28 22:09:57,589 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:58,239 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+beforeCall,180.229.124.46,FDE2EE29-DD6B-4AE4-8AE0-05D7DD4F0E1A,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695409021
+
+2013-08-28 22:09:58,270 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,FDE2EE29-DD6B-4AE4-8AE0-05D7DD4F0E1A,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695409067
+
+2013-08-28 22:09:58,299 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:09:58,721 - [INFO] - from application in play-akka.actor.default-dispatcher-648 
+beforeCall,180.229.124.46,183F1804-DE36-4521-B4B1-C1D113C6FED5,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695409494
+
+2013-08-28 22:09:58,793 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,183F1804-DE36-4521-B4B1-C1D113C6FED5,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695409581
+
+2013-08-28 22:09:58,821 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:10:00,341 - [INFO] - from application in play-akka.actor.default-dispatcher-651 
+beforeCall,180.229.124.46,3CF5AE67-FF69-4737-A573-DA7E1EC486CF,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695411149
+
+2013-08-28 22:10:00,421 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,3CF5AE67-FF69-4737-A573-DA7E1EC486CF,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695411219
+
+2013-08-28 22:10:00,465 - [INFO] - from application in play-akka.actor.default-dispatcher-648 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:10:00,967 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+beforeCall,180.229.124.46,98F89B81-DC65-4D72-9787-278427828FE8,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695411758
+
+2013-08-28 22:10:01,034 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,98F89B81-DC65-4D72-9787-278427828FE8,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695411832
+
+2013-08-28 22:10:01,085 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:10:01,551 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+beforeCall,180.229.124.46,DCD11C33-EA03-4AA1-A572-999E455AE3F0,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695412334
+
+2013-08-28 22:10:01,655 - [INFO] - from application in play-akka.actor.default-dispatcher-648 
+afterCall,180.229.124.46,DCD11C33-EA03-4AA1-A572-999E455AE3F0,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695412448
+
+2013-08-28 22:10:01,677 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:10:02,315 - [INFO] - from application in play-akka.actor.default-dispatcher-648 
+beforeCall,180.229.124.46,CA42CB6B-0ADD-4D7D-9A9B-B000032F3A95,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695413117
+
+2013-08-28 22:10:02,372 - [INFO] - from application in play-akka.actor.default-dispatcher-649 
+afterCall,180.229.124.46,CA42CB6B-0ADD-4D7D-9A9B-B000032F3A95,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377695413165
+
+2013-08-28 22:10:02,390 - [INFO] - from application in play-akka.actor.default-dispatcher-648 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:10:14,054 - [INFO] - from application in play-akka.actor.default-dispatcher-646 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-28 22:10:21,002 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:07:42,026 - [INFO] - from application in play-akka.actor.default-dispatcher-652 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:07:44,309 - [INFO] - from application in play-akka.actor.default-dispatcher-655 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:07:46,241 - [INFO] - from application in play-akka.actor.default-dispatcher-655 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:07:51,980 - [INFO] - from application in play-akka.actor.default-dispatcher-657 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:07:54,540 - [INFO] - from application in play-akka.actor.default-dispatcher-657 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:17,304 - [INFO] - from application in play-akka.actor.default-dispatcher-659 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:20,777 - [INFO] - from application in play-akka.actor.default-dispatcher-659 
+beforeCall,180.229.124.46,6BED5BE7-CD10-46D4-AAF3-8E9B2736AA0F,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702511739
+
+2013-08-29 00:08:20,779 - [INFO] - from application in play-akka.actor.default-dispatcher-660 
+afterCall,180.229.124.46,6BED5BE7-CD10-46D4-AAF3-8E9B2736AA0F,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702511848
+
+2013-08-29 00:08:20,814 - [INFO] - from application in play-akka.actor.default-dispatcher-665 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:24,034 - [INFO] - from application in play-akka.actor.default-dispatcher-659 
+beforeCall,180.229.124.46,2CDC1375-A570-4677-B7E0-494B1BC2F8CE,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=BIRDS,1377702515132
+
+2013-08-29 00:08:24,116 - [INFO] - from application in play-akka.actor.default-dispatcher-664 
+afterCall,180.229.124.46,2CDC1375-A570-4677-B7E0-494B1BC2F8CE,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=BIRDS,1377702515228
+
+2013-08-29 00:08:24,140 - [INFO] - from application in play-akka.actor.default-dispatcher-659 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:32,399 - [INFO] - from application in play-akka.actor.default-dispatcher-659 
+beforeCall,180.229.124.46,3C181788-52FC-4955-91C1-08892C125E99,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702523499
+
+2013-08-29 00:08:32,513 - [INFO] - from application in play-akka.actor.default-dispatcher-659 
+afterCall,180.229.124.46,3C181788-52FC-4955-91C1-08892C125E99,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702523625
+
+2013-08-29 00:08:32,541 - [INFO] - from application in play-akka.actor.default-dispatcher-665 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:39,283 - [INFO] - from application in play-akka.actor.default-dispatcher-665 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:43,388 - [INFO] - from application in play-akka.actor.default-dispatcher-655 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:08:48,973 - [INFO] - from application in play-akka.actor.default-dispatcher-655 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:09:28,622 - [INFO] - from application in play-akka.actor.default-dispatcher-668 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:09:32,135 - [INFO] - from application in play-akka.actor.default-dispatcher-671 
+beforeCall,180.229.124.46,AB152F95-E24A-484D-B1C7-F6C89587E1D7,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702583233
+
+2013-08-29 00:09:32,221 - [INFO] - from application in play-akka.actor.default-dispatcher-671 
+afterCall,180.229.124.46,AB152F95-E24A-484D-B1C7-F6C89587E1D7,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702583324
+
+2013-08-29 00:09:32,255 - [INFO] - from application in play-akka.actor.default-dispatcher-670 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:09:35,140 - [INFO] - from application in play-akka.actor.default-dispatcher-668 
+beforeCall,180.229.124.46,E463C9F4-9F4F-4989-8D6F-640E976811DF,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377702586241
+
+2013-08-29 00:09:35,304 - [INFO] - from application in play-akka.actor.default-dispatcher-668 
+afterCall,180.229.124.46,E463C9F4-9F4F-4989-8D6F-640E976811DF,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377702586399
+
+2013-08-29 00:09:35,340 - [INFO] - from application in play-akka.actor.default-dispatcher-671 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:09:37,394 - [INFO] - from application in play-akka.actor.default-dispatcher-670 
+beforeCall,180.229.124.46,0B65181E-58F3-44AD-B58D-731DF5E822B0,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702588504
+
+2013-08-29 00:09:37,555 - [INFO] - from application in play-akka.actor.default-dispatcher-668 
+afterCall,180.229.124.46,0B65181E-58F3-44AD-B58D-731DF5E822B0,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377702588649
+
+2013-08-29 00:09:37,592 - [INFO] - from application in play-akka.actor.default-dispatcher-671 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:09:46,891 - [INFO] - from application in play-akka.actor.default-dispatcher-668 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:09:50,982 - [INFO] - from application in play-akka.actor.default-dispatcher-660 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:10:36,272 - [INFO] - from application in play-akka.actor.default-dispatcher-674 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:10:39,092 - [INFO] - from application in play-akka.actor.default-dispatcher-672 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:11:32,670 - [INFO] - from application in play-akka.actor.default-dispatcher-672 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:53:21,564 - [INFO] - from application in play-akka.actor.default-dispatcher-681 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:53:24,248 - [INFO] - from application in play-akka.actor.default-dispatcher-686 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:53:26,921 - [INFO] - from application in play-akka.actor.default-dispatcher-683 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:53:28,754 - [INFO] - from application in play-akka.actor.default-dispatcher-686 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:00,667 - [INFO] - from application in play-akka.actor.default-dispatcher-685 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:10,129 - [INFO] - from application in play-akka.actor.default-dispatcher-687 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:12,506 - [INFO] - from application in play-akka.actor.default-dispatcher-689 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:19,893 - [INFO] - from application in play-akka.actor.default-dispatcher-689 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:22,814 - [INFO] - from application in play-akka.actor.default-dispatcher-689 
+beforeCall,180.229.124.46,2CB9EDE4-2BC3-4F22-89BE-3D7ADBD05035,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377705274031
+
+2013-08-29 00:54:22,965 - [INFO] - from application in play-akka.actor.default-dispatcher-687 
+afterCall,180.229.124.46,2CB9EDE4-2BC3-4F22-89BE-3D7ADBD05035,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377705274173
+
+2013-08-29 00:54:23,114 - [INFO] - from application in play-akka.actor.default-dispatcher-685 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:25,891 - [INFO] - from application in play-akka.actor.default-dispatcher-689 
+beforeCall,180.229.124.46,02FB2665-6A0D-4492-878D-A197C10D895C,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377705277111
+
+2013-08-29 00:54:26,019 - [INFO] - from application in play-akka.actor.default-dispatcher-685 
+afterCall,180.229.124.46,02FB2665-6A0D-4492-878D-A197C10D895C,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377705277238
+
+2013-08-29 00:54:26,090 - [INFO] - from application in play-akka.actor.default-dispatcher-689 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:44,179 - [INFO] - from application in play-akka.actor.default-dispatcher-693 
+beforeCall,180.229.124.46,DEF28FFE-89ED-4B51-869C-A911572375AD,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377705295136
+
+2013-08-29 00:54:44,376 - [INFO] - from application in play-akka.actor.default-dispatcher-696 
+afterCall,180.229.124.46,DEF28FFE-89ED-4B51-869C-A911572375AD,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377705295573
+
+2013-08-29 00:54:44,539 - [INFO] - from application in play-akka.actor.default-dispatcher-695 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:46,187 - [INFO] - from application in play-akka.actor.default-dispatcher-694 
+beforeCall,180.229.124.46,BC7C9597-4009-4849-86F2-54BBF1CBD7FD,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=DOGS,1377705297415
+
+2013-08-29 00:54:46,289 - [INFO] - from application in play-akka.actor.default-dispatcher-696 
+afterCall,180.229.124.46,BC7C9597-4009-4849-86F2-54BBF1CBD7FD,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=DOGS,1377705297519
+
+2013-08-29 00:54:46,370 - [INFO] - from application in play-akka.actor.default-dispatcher-692 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:50,131 - [INFO] - from application in play-akka.actor.default-dispatcher-696 
+beforeCall,180.229.124.46,B7D53141-9443-480E-9EA7-EBC30ED3F4EA,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=K9-BD-01,1377705301359
+
+2013-08-29 00:54:50,317 - [INFO] - from application in play-akka.actor.default-dispatcher-695 
+afterCall,180.229.124.46,B7D53141-9443-480E-9EA7-EBC30ED3F4EA,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=K9-BD-01,1377705301512
+
+2013-08-29 00:54:50,415 - [INFO] - from application in play-akka.actor.default-dispatcher-692 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:52,469 - [INFO] - from application in play-akka.actor.default-dispatcher-696 
+beforeCall,180.229.124.46,DAE0BD9C-02E5-4114-A469-968D3F1F64A0,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-6,1377705303693
+
+2013-08-29 00:54:52,653 - [INFO] - from application in play-akka.actor.default-dispatcher-697 
+afterCall,180.229.124.46,DAE0BD9C-02E5-4114-A469-968D3F1F64A0,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-6,1377705303863
+
+2013-08-29 00:54:52,733 - [INFO] - from application in play-akka.actor.default-dispatcher-696 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:55,032 - [INFO] - from application in play-akka.actor.default-dispatcher-697 
+beforeCall,180.229.124.46,5A604970-ACC5-42A3-9783-19757EE5983F,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-6,1377705306255
+
+2013-08-29 00:54:55,239 - [INFO] - from application in play-akka.actor.default-dispatcher-695 
+afterCall,180.229.124.46,5A604970-ACC5-42A3-9783-19757EE5983F,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-6,1377705306427
+
+2013-08-29 00:54:55,352 - [INFO] - from application in play-akka.actor.default-dispatcher-697 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:54:58,969 - [INFO] - from application in play-akka.actor.default-dispatcher-695 
+beforeCall,180.229.124.46,31B6C415-CFCA-40C2-A587-35301655EF8E,http://beta.owlab.com:8080/jpetstoreL/shop/checkout.do,1377705310183
+
+2013-08-29 00:54:59,218 - [INFO] - from application in play-akka.actor.default-dispatcher-697 
+afterCall,180.229.124.46,31B6C415-CFCA-40C2-A587-35301655EF8E,http://beta.owlab.com:8080/jpetstoreL/shop/checkout.do,1377705310423
+
+2013-08-29 00:54:59,303 - [INFO] - from application in play-akka.actor.default-dispatcher-695 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:55:02,315 - [INFO] - from application in play-akka.actor.default-dispatcher-693 
+beforeCall,180.229.124.46,65A39A06-068B-4214-8371-A9053D0E5EE8,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377705313543
+
+2013-08-29 00:55:02,486 - [INFO] - from application in play-akka.actor.default-dispatcher-692 
+afterCall,180.229.124.46,65A39A06-068B-4214-8371-A9053D0E5EE8,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377705313695
+
+2013-08-29 00:55:02,583 - [INFO] - from application in play-akka.actor.default-dispatcher-693 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 00:55:04,840 - [INFO] - from application in play-akka.actor.default-dispatcher-693 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:08:55,960 - [INFO] - from application in play-akka.actor.default-dispatcher-698 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:00,412 - [INFO] - from application in play-akka.actor.default-dispatcher-698 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:03,130 - [INFO] - from application in play-akka.actor.default-dispatcher-694 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:12,694 - [INFO] - from application in play-akka.actor.default-dispatcher-699 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:44,307 - [INFO] - from application in play-akka.actor.default-dispatcher-705 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:46,235 - [INFO] - from application in play-akka.actor.default-dispatcher-705 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:47,148 - [INFO] - from application in play-akka.actor.default-dispatcher-705 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:47,967 - [INFO] - from application in play-akka.actor.default-dispatcher-702 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:52,086 - [INFO] - from application in play-akka.actor.default-dispatcher-707 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:09:54,244 - [INFO] - from application in play-akka.actor.default-dispatcher-702 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:07,192 - [INFO] - from application in play-akka.actor.default-dispatcher-706 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:08,897 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+beforeCall,180.229.124.46,10B47FE2-6368-49D4-BDAA-A800D66F239E,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706220127
+
+2013-08-29 01:10:09,231 - [INFO] - from application in play-akka.actor.default-dispatcher-710 
+afterCall,180.229.124.46,10B47FE2-6368-49D4-BDAA-A800D66F239E,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706220452
+
+2013-08-29 01:10:09,429 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:14,813 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+beforeCall,180.229.124.46,8C572C1D-38CC-47FD-AA4D-E0933FC073AF,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=BIRDS,1377706225911
+
+2013-08-29 01:10:15,116 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+afterCall,180.229.124.46,8C572C1D-38CC-47FD-AA4D-E0933FC073AF,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=BIRDS,1377706226331
+
+2013-08-29 01:10:15,229 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:18,120 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+beforeCall,180.229.124.46,75156D80-651C-49C4-91B9-9E06379A3017,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=AV-SB-02,1377706229349
+
+2013-08-29 01:10:18,325 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+afterCall,180.229.124.46,75156D80-651C-49C4-91B9-9E06379A3017,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=AV-SB-02,1377706229570
+
+2013-08-29 01:10:18,427 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:20,334 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+beforeCall,180.229.124.46,7C9C4BC6-C863-4059-882D-1B08F1C228A3,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-19,1377706231565
+
+2013-08-29 01:10:20,614 - [INFO] - from application in play-akka.actor.default-dispatcher-711 
+afterCall,180.229.124.46,7C9C4BC6-C863-4059-882D-1B08F1C228A3,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-19,1377706231816
+
+2013-08-29 01:10:20,674 - [INFO] - from application in play-akka.actor.default-dispatcher-711 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:23,740 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+beforeCall,180.229.124.46,703378BC-D2CE-41DA-99A8-FA7DC0054C30,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=AV-SB-02,1377706234982
+
+2013-08-29 01:10:23,870 - [INFO] - from application in play-akka.actor.default-dispatcher-706 
+afterCall,180.229.124.46,703378BC-D2CE-41DA-99A8-FA7DC0054C30,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=AV-SB-02,1377706235109
+
+2013-08-29 01:10:23,945 - [INFO] - from application in play-akka.actor.default-dispatcher-713 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:26,040 - [INFO] - from application in play-akka.actor.default-dispatcher-706 
+beforeCall,180.229.124.46,C67F106F-EDC0-44D6-84B5-E5DF90F87194,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-19,1377706237277
+
+2013-08-29 01:10:26,254 - [INFO] - from application in play-akka.actor.default-dispatcher-706 
+afterCall,180.229.124.46,C67F106F-EDC0-44D6-84B5-E5DF90F87194,http://beta.owlab.com:8080/jpetstoreL/shop/addItemToCart.do?workingItemId=EST-19,1377706237475
+
+2013-08-29 01:10:26,314 - [INFO] - from application in play-akka.actor.default-dispatcher-713 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:10:28,058 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+beforeCall,180.229.124.46,EF07215E-A47A-4865-9290-ABF9DB3B92C7,http://beta.owlab.com:8080/jpetstoreL/shop/removeItemFromCart.do?workingItemId=EST-19,1377706239286
+
+2013-08-29 01:10:28,181 - [INFO] - from application in play-akka.actor.default-dispatcher-712 
+afterCall,180.229.124.46,EF07215E-A47A-4865-9290-ABF9DB3B92C7,http://beta.owlab.com:8080/jpetstoreL/shop/removeItemFromCart.do?workingItemId=EST-19,1377706239434
+
+2013-08-29 01:10:28,346 - [INFO] - from application in play-akka.actor.default-dispatcher-713 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:15:27,332 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2013-08-29 01:15:27,353 - [INFO] - from application in play-akka.actor.default-dispatcher-714 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:15:32,134 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,663E24F2-8D4D-49D5-84C4-3A783DF05EDB,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706543390
+
+2013-08-29 01:15:32,319 - [INFO] - from application in play-akka.actor.default-dispatcher-714 
+afterCall,180.229.124.46,null,663E24F2-8D4D-49D5-84C4-3A783DF05EDB,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706543584
+
+2013-08-29 01:15:32,536 - [INFO] - from application in play-akka.actor.default-dispatcher-717 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:15:39,417 - [INFO] - from application in play-akka.actor.default-dispatcher-709 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,16AB28CB-724A-4B30-B3F8-6E1FE46AA5CF,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377706550678
+
+2013-08-29 01:15:39,640 - [INFO] - from application in play-akka.actor.default-dispatcher-717 
+afterCall,180.229.124.46,null,16AB28CB-724A-4B30-B3F8-6E1FE46AA5CF,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377706550858
+
+2013-08-29 01:15:39,780 - [INFO] - from application in play-akka.actor.default-dispatcher-719 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:16:41,379 - [INFO] - from application in play-akka.actor.default-dispatcher-720 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,6424F0D3-E55F-4D47-8F98-BA841B35FC8D,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=RP-SN-01,1377706612532
+
+2013-08-29 01:16:41,801 - [INFO] - from application in play-akka.actor.default-dispatcher-717 
+afterCall,180.229.124.46,null,6424F0D3-E55F-4D47-8F98-BA841B35FC8D,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=RP-SN-01,1377706613041
+
+2013-08-29 01:16:41,864 - [INFO] - from application in play-akka.actor.default-dispatcher-723 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:16:52,035 - [INFO] - from application in play-akka.actor.default-dispatcher-722 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,48A27962-669C-4B91-8B1B-E57471F3F8DC,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-11,1377706623308
+
+2013-08-29 01:16:52,223 - [INFO] - from application in play-akka.actor.default-dispatcher-721 
+afterCall,180.229.124.46,null,48A27962-669C-4B91-8B1B-E57471F3F8DC,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-11,1377706623497
+
+2013-08-29 01:16:52,283 - [INFO] - from application in play-akka.actor.default-dispatcher-722 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:21:50,848 - [INFO] - from application in play-akka.actor.default-dispatcher-717 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,C5946696-00F6-49BA-8DF5-C507DDBA82C6,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=RP-SN-01,1377706921884
+
+2013-08-29 01:21:50,914 - [INFO] - from application in play-akka.actor.default-dispatcher-726 
+afterCall,180.229.124.46,null,C5946696-00F6-49BA-8DF5-C507DDBA82C6,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=RP-SN-01,1377706922176
+
+2013-08-29 01:21:51,011 - [INFO] - from application in play-akka.actor.default-dispatcher-717 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:21:54,248 - [INFO] - from application in play-akka.actor.default-dispatcher-725 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,E0D03DD4-4948-4344-B7D3-4F32A9528BD2,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706925518
+
+2013-08-29 01:21:54,388 - [INFO] - from application in play-akka.actor.default-dispatcher-725 
+afterCall,180.229.124.46,null,E0D03DD4-4948-4344-B7D3-4F32A9528BD2,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706925645
+
+2013-08-29 01:21:54,692 - [INFO] - from application in play-akka.actor.default-dispatcher-726 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:22:16,274 - [INFO] - from application in play-akka.actor.default-dispatcher-717 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,7C4A2612-8FBF-4B3E-A1A9-3122A09D6850,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377706947521
+
+2013-08-29 01:22:16,418 - [INFO] - from application in play-akka.actor.default-dispatcher-729 
+afterCall,180.229.124.46,null,7C4A2612-8FBF-4B3E-A1A9-3122A09D6850,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=REPTILES,1377706947689
+
+2013-08-29 01:22:16,581 - [INFO] - from application in play-akka.actor.default-dispatcher-730 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:22:37,585 - [INFO] - from application in play-akka.actor.default-dispatcher-729 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,B5D5ABBC-20AA-4A26-9366-ECB9A921F016,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706968860
+
+2013-08-29 01:22:37,693 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+afterCall,180.229.124.46,null,B5D5ABBC-20AA-4A26-9366-ECB9A921F016,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706968958
+
+2013-08-29 01:22:38,011 - [INFO] - from application in play-akka.actor.default-dispatcher-729 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:22:47,848 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,328872E7-184F-4B98-B15A-2E478E7967EB,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706979132
+
+2013-08-29 01:22:48,026 - [INFO] - from application in play-akka.actor.default-dispatcher-735 
+afterCall,180.229.124.46,null,328872E7-184F-4B98-B15A-2E478E7967EB,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706979306
+
+2013-08-29 01:22:48,084 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:22:54,120 - [INFO] - from application in play-akka.actor.default-dispatcher-732 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,101AC485-7EFB-45F5-AF8A-CC9E11C4F708,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=BIRDS,1377706985404
+
+2013-08-29 01:22:54,354 - [INFO] - from application in play-akka.actor.default-dispatcher-732 
+afterCall,180.229.124.46,null,101AC485-7EFB-45F5-AF8A-CC9E11C4F708,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=BIRDS,1377706985566
+
+2013-08-29 01:22:54,568 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:22:57,809 - [INFO] - from application in play-akka.actor.default-dispatcher-737 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,49DDAC24-8157-4428-9DD4-258BBDD3B32D,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=AV-SB-02,1377706989085
+
+2013-08-29 01:22:57,974 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+afterCall,180.229.124.46,null,49DDAC24-8157-4428-9DD4-258BBDD3B32D,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=AV-SB-02,1377706989242
+
+2013-08-29 01:22:58,060 - [INFO] - from application in play-akka.actor.default-dispatcher-737 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:23:04,736 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,C58D4E52-743C-4FC3-A546-773DC96491B5,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706996019
+
+2013-08-29 01:23:04,807 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+afterCall,180.229.124.46,null,C58D4E52-743C-4FC3-A546-773DC96491B5,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377706996095
+
+2013-08-29 01:23:04,902 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:23:10,673 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,4DC59CF7-CD37-4798-A17D-C7AF8DE80AF7,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377707001898
+
+2013-08-29 01:23:10,758 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+afterCall,180.229.124.46,null,4DC59CF7-CD37-4798-A17D-C7AF8DE80AF7,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377707002038
+
+2013-08-29 01:23:10,835 - [INFO] - from application in play-akka.actor.default-dispatcher-731 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:26:09,169 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2013-08-29 01:26:09,199 - [INFO] - from application in play-akka.actor.default-dispatcher-737 
+afterCall,180.229.124.46,null,EAE591D1-DEDD-49AC-B013-F405C8E1579B,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377707180131
+
+2013-08-29 01:26:09,200 - [INFO] - from application in play-akka.actor.default-dispatcher-741 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,EAE591D1-DEDD-49AC-B013-F405C8E1579B,http://beta.owlab.com:8080/jpetstoreL/shop/index.do,1377707179919
+
+2013-08-29 01:26:09,365 - [INFO] - from application in play-akka.actor.default-dispatcher-740 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:26:23,752 - [INFO] - from application in play-akka.actor.default-dispatcher-743 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,EBD2A09D-44ED-40A9-9192-A063D024CAD3,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377707195035
+
+2013-08-29 01:26:23,888 - [INFO] - from application in play-akka.actor.default-dispatcher-743 
+afterCall,180.229.124.46,null,EBD2A09D-44ED-40A9-9192-A063D024CAD3,http://beta.owlab.com:8080/jpetstoreL/shop/viewCategory.do?categoryId=FISH,1377707195174
+
+2013-08-29 01:26:23,946 - [INFO] - from application in play-akka.actor.default-dispatcher-742 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:27:04,884 - [INFO] - from application in play-akka.actor.default-dispatcher-742 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,51222235-4A7A-427E-BDEC-E917457C464F,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=FI-FW-01,1377707236149
+
+2013-08-29 01:27:05,038 - [INFO] - from application in play-akka.actor.default-dispatcher-744 
+afterCall,180.229.124.46,null,51222235-4A7A-427E-BDEC-E917457C464F,http://beta.owlab.com:8080/jpetstoreL/shop/viewProduct.do?productId=FI-FW-01,1377707236335
+
+2013-08-29 01:27:05,136 - [INFO] - from application in play-akka.actor.default-dispatcher-744 
+result: getip({ "ip":"180.229.124.46" });
+
+2013-08-29 01:27:22,274 - [INFO] - from application in play-akka.actor.default-dispatcher-742 
+beforeCall,180.229.124.46,http://beta.owlab.com:8080/jpetstoreL/,B99EEDB5-F9E6-4480-B022-3CF269C3A223,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-5,1377707253555
+
+2013-08-29 01:27:22,365 - [INFO] - from application in play-akka.actor.default-dispatcher-742 
+afterCall,180.229.124.46,null,B99EEDB5-F9E6-4480-B022-3CF269C3A223,http://beta.owlab.com:8080/jpetstoreL/shop/viewItem.do?itemId=EST-5,1377707253647
+
+2013-08-29 01:27:22,833 - [INFO] - from application in play-akka.actor.default-dispatcher-746 
+result: getip({ "ip":"180.229.124.46" });
+
