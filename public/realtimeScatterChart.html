@@ -417,7 +417,7 @@
 		alert("EventSource is not supported on your browser!");
 		return false; 
 	} else {
-		var source = new EventSource("http://fresto1.owlab.com:8080/r0Stream");
+		var source = new EventSource("http://fresto1.owlab.com:9999/r0Stream");
 		source.addEventListener("message", function(e) {
 			console.log(e.data);
 			var uiEvent = JSON.parse(e.data);
