@@ -13,7 +13,7 @@
     
     <script type="text/javascript" charset="utf-8">
 
-         var source = new EventSource("http://fresto1.owlab.com:8080/clock");
+         var source = new EventSource("http://fresto1.owlab.com:9999/clock");
          source.addEventListener('message', function(e) {
             $('#clock').html(e.data.replace(/(\d)/g, '<span>$1</span>'))
          });
