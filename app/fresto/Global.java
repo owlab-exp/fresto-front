@@ -34,6 +34,7 @@ public class Global extends GlobalSettings {
 		}
 
 	public static ZMQ.Socket getPublisher(){
+		// If sending is atomic action, then this method can be used
 		return publisher;
 	}
 

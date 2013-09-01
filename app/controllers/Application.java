@@ -57,19 +57,22 @@ public class Application extends Controller {
 	    DynamicForm data = Form.form().bindFromRequest();
 	    String stage = data.get("stage");
 	    String clientId = data.get("clientId");
-	    String currentPage = data.get("currentPage");
+	    String currentPlace = data.get("currentPlace");
 	    String uuid = data.get("uuid");
 	    String targetUrl = data.get("targetUrl");
 	    String timestamp = data.get("timestamp");
+	    String elapsedTime = data.get("elapsedTime");
 
-	    Logger.info(stage + "," + clientId + "," + currentPage + "," + uuid + "," + targetUrl + "," + timestamp); 
+	    Logger.info(stage + "," + clientId + "," + currentPlace + "," + uuid + "," + targetUrl + "," + timestamp + "," + elapsedTime); 
 	    
 
 
 	    TSerializer serializer = new TSerializer(new TBinaryProtocol.Factory());
 	    UIEvent event = new UIEvent(stage, clientId, uuid, targetUrl, Long.parseLong(timestamp));
-	    if(currentPage != null)
-	    	event.setCurrentPage(currentPage);
+	    if(currentPlace != null)
+	    	event.setCurrentPlace(currentPlace);
+	    if(elapsedTime != null) 
+	    	event.setElapsedTime(Long.parseLong(elapsedTime));
 
 	    try {
 	    	byte[] serializedEvent = serializer.serialize(event);
