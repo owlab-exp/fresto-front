@@ -93,7 +93,9 @@
                            
         // Data Max
         var xMax = 1000, // X축이 시간인 경우 필요 없음
-            yMax = 10;
+        //    yMax = 10;
+	// TODO How to adjust Y axis scale by actual elapsed time (or response time)
+            yMax = 1000;
             
         // Data Array
         //   차트 영역 내에 있는 데이타를 저장하는 배열
@@ -141,13 +143,14 @@
                           .attr("class", "axis")
                           .call(yAxis);
                           
+	// TODO The below drawing is too thick when yMax is larger than 10
         // y축선상 보조선(수평선)
-        var numOfLine = yMax/0.5; // 좌측 계산값이 보조선의 수
-        rootG.append("g").selectAll(".h")
-                        .data(d3.range(yScale(yMax), yScale(0), yScale((numOfLine-1)/numOfLine*yMax)))
-                        .enter().append("line").classed("h",1)
-                                .attr("x1",0).attr("y1", function(d) { return d;})
-                                .attr("x2",width-axisMargin.yWidth).attr("y2", function(d) { return d;})
+        //var numOfLine = yMax/0.5; // 좌측 계산값이 보조선의 수
+        //rootG.append("g").selectAll(".h")
+        //                .data(d3.range(yScale(yMax), yScale(0), yScale((numOfLine-1)/numOfLine*yMax)))
+        //                .enter().append("line").classed("h",1)
+        //                        .attr("x1",0).attr("y1", function(d) { return d;})
+        //                        .attr("x2",width-axisMargin.yWidth).attr("y2", function(d) { return d;})
                           
         // circle이 데이타 영역을 벗어나면 보이지 않게 하는 clipper 정의
         var dataClipper = rootG.append("defs")
@@ -423,8 +426,8 @@
 			var uiEvent = JSON.parse(e.data);
 			if(uiEvent.stage == 'afterCall') {
 				//console.log('afterCall event');
-				//addCircleToChart(makeNewData(e.clientId, e.url, e.httpStatus, e.timestamp, e.elapsedTime));
-				addCircleToChart(makeNewData(e.clientId, e.url, 200, e.timestamp, 5));
+				addCircleToChart(makeNewData(uiEvent.clientId, uiEvent.url, uiEvent.httpStatus, uiEvent.timestamp, uiEvent.elapsedTime));
+				//addCircleToChart(makeNewData(uiEvent.clientId, uiEvent.url, uiEvent.httpStatus, uiEvent.timestamp, 5));
 			}
 		}, false);
 		source.addEventListener("open", function(e) {
