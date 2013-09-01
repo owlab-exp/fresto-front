@@ -62,8 +62,9 @@ public class Application extends Controller {
 	    String targetUrl = data.get("targetUrl");
 	    String timestamp = data.get("timestamp");
 	    String elapsedTime = data.get("elapsedTime");
+	    String httpStatus = data.get("httpStatus");
 
-	    Logger.info(stage + "," + clientId + "," + currentPlace + "," + uuid + "," + targetUrl + "," + timestamp + "," + elapsedTime); 
+	    Logger.info(stage + "," + clientId + "," + currentPlace + "," + uuid + "," + targetUrl + "," + timestamp + "," + elapsedTime + "," + httpStatus); 
 	    
 
 
@@ -73,6 +74,8 @@ public class Application extends Controller {
 	    	event.setCurrentPlace(currentPlace);
 	    if(elapsedTime != null) 
 	    	event.setElapsedTime(Long.parseLong(elapsedTime));
+	    if(elapsedTime != null) 
+	    	event.setHttpStatus(httpStatus);
 
 	    try {
 	    	byte[] serializedEvent = serializer.serialize(event);
