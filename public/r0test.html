@@ -11,7 +11,8 @@
 
 					console.log(e.data);
 					var uiEvent = JSON.parse(e.data);
-					console.log(uiEvent.stage);
+					//console.log(uiEvent.stage);
+					document.getElementById('paper').innerHTML(e.data);
 					
 				}, false);
 
