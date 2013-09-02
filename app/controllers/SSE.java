@@ -73,6 +73,7 @@ public class SSE extends Controller {
 									jsonObject.put("currentPlace", event.getCurrentPlace());
 									jsonObject.put("uuid", event.getUuid());
 									jsonObject.put("url", event.getUrl());
+									jsonObject.put("httpStatus", event.getHttpStatus());
 									jsonObject.put("timestamp", event.getTimestamp());
 									jsonObject.put("elapsedTime", event.getElapsedTime());
 
