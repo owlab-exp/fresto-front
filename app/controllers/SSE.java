@@ -17,6 +17,8 @@ import org.codehaus.jackson.node.ObjectNode;
 import views.html.*;
 
 import java.util.*;
+import static java.util.concurrent.TimeUnit.*;
+
 
 import org.apache.thrift.TDeserializer;
 import org.apache.thrift.TException;
@@ -95,6 +97,13 @@ public class SSE extends Controller {
 					Akka.system().dispatcher());
 		}
 
+		 static { 
+			 Akka.system().scheduler().schedule( 
+					 Duration.Zero(), 
+					 Duration.create(100, MILLISECONDS), 
+					 instance, "PING",  Akka.system().dispatcher());
+		 }
+
 		List<EventSource> sockets = new ArrayList<EventSource>();
 		
 		public void onReceive(Object message) {
@@ -131,53 +140,17 @@ public class SSE extends Controller {
 					es.sendJsonData(Json.stringify(Json.toJson(message)));
 				}
 			}
+
+			// To detect clients disconnected
+			if("PING".equals(message)) {
+				List<EventSource> shallowCopy = new ArrayList<EventSource>(sockets); // prevent concurrent modification exception
+				//List<EventSource> shallowCopy = Collections.synchronizedList(sockets); // prevent concurrent modification exception
+				for(EventSource es: shallowCopy) {
+					es.sendDataByName("ping", "");
+				}
+				
+			}
 		}
 	}
 
-			
-	// This block has some flaw
-	//public static Result r0StreamOld() {
-	//	return ok(new EventSource() {
-	//		public void onConnected() {
-	//			System.out.println("r0stream Connected");
-	//			
-	//			// Connect and susbsribe on ZMQ
-	//			ZMQ.Context context = ZMQ.context(1);
-	//			ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
-	//			subscriber.connect("tcp://fresto1.owlab.com:7001");
-	//			subscriber.subscribe("U".getBytes());
-
-	//			TDeserializer deserializer = new TDeserializer(new TBinaryProtocol.Factory());
-	//			UIEvent event = new UIEvent();
-	//			while(true) {
-	//				String envelope = new String(subscriber.recv(0));
-	//				byte[] messageBytes = subscriber.recv(0);
-	//				
-	//				try {
-	//					event.clear();
-	//					deserializer.deserialize(event, messageBytes);
-
-	//					ObjectNode jsonObject = Json.newObject();
-	//					jsonObject.put("stage", event.getStage());
-	//					jsonObject.put("clientId", event.getClientId());
-	//					jsonObject.put("currentPlace", event.getCurrentPlace());
-	//					jsonObject.put("uuid", event.getUuid());
-	//					jsonObject.put("url", event.getUrl());
-	//					jsonObject.put("timestamp", event.getTimestamp());
-	//					jsonObject.put("elapsedTime", event.getElapsedTime());
-
-	//					//sendData(event.getStage() + "," + event.getElapsedTime());
-	//					sendJsonData(Json.stringify(Json.toJson(jsonObject)));
-	//				} catch (TException te) {
-	//					te.printStackTrace();
-	//				} finally {
-	//					//close();
-	//				}
-	//			}
-	//			//
-	//			// Unreachable block
-	//			//close();
-	//		}
-	//	});
-	//}
 }

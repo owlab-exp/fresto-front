@@ -18,6 +18,7 @@
 					if(total.length > 24)
 						total = total.slice(total.length - 24);
 					logArea.value = total.join("\n");
+					logArea.scrollTop = logArea.scrollHeight;
 					
 				}, false);
 
@@ -30,12 +31,16 @@
 						// Connection was closed.
 					}
 				}, false);
+
+				source.addEventListener('ping', function(e) {
+					// Just ping
+				}, false);
 			}
 
 		</script>
 	</HEAD>
 	<BODY>
 		<H1 id="Section">Event Stream Viewer</H1>
-		<textarea id="logArea" cols=300 rows=24></textarea>
+		<textarea id="logArea" cols=200 rows=24></textarea>
 	</BODY>
 </HTML>

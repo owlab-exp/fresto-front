@@ -94,6 +94,7 @@
         // Data Max
         var xMax = 1000, // X축이 시간인 경우 필요 없음
         //    yMax = 10;
+	// TODO How to adjust Y axis scale by actual elapsed time (or response time)
             yMax = 1000;
             
         // Data Array
@@ -142,6 +143,7 @@
                           .attr("class", "axis")
                           .call(yAxis);
                           
+	// TODO The below drawing is too thick when yMax is larger than 10
         // y축선상 보조선(수평선)
         //var numOfLine = yMax/0.5; // 좌측 계산값이 보조선의 수
         //rootG.append("g").selectAll(".h")
