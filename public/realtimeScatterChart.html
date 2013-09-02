@@ -434,6 +434,9 @@
 		}, false);
 		source.addEventListener("error", function(e) {
 		}, false);
+		source.addEventListener("ping", function(e) {
+			// To detect client disconnected
+		}, false);
 	}
 
     });
