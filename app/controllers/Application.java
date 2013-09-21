@@ -74,7 +74,7 @@ public class Application extends Controller {
 	    	event.setCurrentPlace(currentPlace);
 	    if(elapsedTime != null) 
 	    	event.setElapsedTime(Long.parseLong(elapsedTime));
-	    if(elapsedTime != null) 
+	    if(httpStatus != null) 
 	    	event.setHttpStatus(httpStatus);
 
 	    try {
