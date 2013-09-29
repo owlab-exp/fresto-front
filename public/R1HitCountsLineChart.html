@@ -236,11 +236,9 @@
             var i = dataSeries.length;
 			while (i--) {
                 var dataGap = Math.max(0, dataLength - dataSeries[i].dataArray.length);
-console.log("before - i : " + i + ", l : " + dataSeries[i].dataArray.length + ", dataGap : " + dataGap);
                 while (dataGap--) {
                     dataSeries[i].dataArray.push({ x: time - dataGap*durationTime, y: 0});                                    
                 }
-console.log("after  - i : " + i + ", l : " + dataSeries[i].dataArray.length + ", dataGap : " + dataGap);
 			}            
         } 
 		
