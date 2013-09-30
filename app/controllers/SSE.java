@@ -30,7 +30,7 @@ import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
 
-import fresto.format.UIEvent;
+import fresto.data.FrestoData;
 import fresto.Global;
 import fresto.libs.EventSource;
 
@@ -57,34 +57,29 @@ public class SSE extends Controller {
 							ZMQ.Context context = ZMQ.context(1);
 							ZMQ.Socket subscriber = context.socket(ZMQ.SUB);
 							subscriber.connect("tcp://fresto1.owlab.com:7001");
-							subscriber.subscribe("U".getBytes());
+							subscriber.subscribe("CF".getBytes());
 
 							TDeserializer deserializer = new TDeserializer(new TBinaryProtocol.Factory());
-							UIEvent event = new UIEvent();
+							FrestoData frestoData = new FrestoData();
 							while(true) {
-								String envelope = new String(subscriber.recv(0));
+								String topic = new String(subscriber.recv(0));
 								byte[] messageBytes = subscriber.recv(0);
 								
 								try {
-									event.clear();
-									deserializer.deserialize(event, messageBytes);
+									frestoData.clear();
+									deserializer.deserialize(frestoData, messageBytes);
 
 									ObjectNode jsonObject = Json.newObject();
-									jsonObject.put("stage", event.getStage());
-									jsonObject.put("clientId", event.getClientId());
-									jsonObject.put("currentPlace", event.getCurrentPlace());
-									jsonObject.put("uuid", event.getUuid());
-									jsonObject.put("url", event.getUrl());
-									jsonObject.put("httpStatus", event.getHttpStatus());
-									jsonObject.put("timestamp", event.getTimestamp());
-									jsonObject.put("elapsedTime", event.getElapsedTime());
+									//jsonObject.put("stage", event.getStage());
+									//jsonObject.put("clientId", event.getClientId());
+									//jsonObject.put("currentPlace", event.getCurrentPlace());
+									//jsonObject.put("uuid", event.getUuid());
+									//jsonObject.put("url", event.getUrl());
+									//jsonObject.put("httpStatus", event.getHttpStatus());
+									//jsonObject.put("timestamp", event.getTimestamp());
+									//jsonObject.put("elapsedTime", event.getElapsedTime());
 
-									//sendData(event.getStage() + "," + event.getElapsedTime());
-									// To send with JSON string
-									//sendJsonData(Json.stringify(Json.toJson(jsonObject)));
-									//
-									//instance.tell(Json.stringify(Json.toJson(jsonObject)));
-									instance.tell(jsonObject);
+									//instance.tell(jsonObject);
 
 								} catch (TException te) {
 									te.printStackTrace();

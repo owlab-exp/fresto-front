@@ -38,9 +38,9 @@ public class Global extends GlobalSettings {
 		return publisher;
 	}
 
-	public static synchronized void publishToMonitor(String envelope, byte[] message){
+	public static synchronized void publishToMonitor(String topic, byte[] message){
 
-		publisher.send(envelope.getBytes(), ZMQ.SNDMORE);
+		publisher.send(topic.getBytes(), ZMQ.SNDMORE);
 		publisher.send(message, 0);
 
 	}
