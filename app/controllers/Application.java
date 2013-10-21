@@ -31,9 +31,11 @@ public class Application extends Controller {
     public static Result index() {
         //return ok(index.render("Your new application is ready."));
 	StringBuffer sb = new StringBuffer();
-	sb.append("Under construction. \n Urls to give or get events");
+	sb.append("Under construction. \n Available urls:");
 	sb.append("\n");
+	sb.append("http://fresto1.owlab.com:9999/whatIsMyIPAddress");
 	sb.append("http://fresto1.owlab.com:9999/feedUIEvent");
+	sb.append("http://fresto1.owlab.com:9999/statistics");
 	//sb.append("\n");
 	//sb.append("http://fresto1.owlab.com:9999/getR0");
         return ok(sb.toString());

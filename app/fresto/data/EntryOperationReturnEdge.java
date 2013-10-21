@@ -35,13 +35,14 @@ import org.slf4j.LoggerFactory;
 public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOperationReturnEdge, EntryOperationReturnEdge._Fields>, java.io.Serializable, Cloneable, Comparable<EntryOperationReturnEdge> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("EntryOperationReturnEdge");
 
-  private static final org.apache.thrift.protocol.TField OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("OperationId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField OPERATION_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("operationId", org.apache.thrift.protocol.TType.STRUCT, (short)1);
   private static final org.apache.thrift.protocol.TField RESOURCE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("resourceId", org.apache.thrift.protocol.TType.STRUCT, (short)2);
-  private static final org.apache.thrift.protocol.TField HTTP_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("httpStatus", org.apache.thrift.protocol.TType.I32, (short)3);
-  private static final org.apache.thrift.protocol.TField ELAPSED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("elapsedTime", org.apache.thrift.protocol.TType.I32, (short)4);
-  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)5);
-  private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)6);
-  private static final org.apache.thrift.protocol.TField SEQUENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("sequence", org.apache.thrift.protocol.TType.I32, (short)7);
+  private static final org.apache.thrift.protocol.TField SERVLET_PATH_FIELD_DESC = new org.apache.thrift.protocol.TField("servletPath", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField HTTP_STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("httpStatus", org.apache.thrift.protocol.TType.I32, (short)4);
+  private static final org.apache.thrift.protocol.TField ELAPSED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("elapsedTime", org.apache.thrift.protocol.TType.I32, (short)5);
+  private static final org.apache.thrift.protocol.TField TIMESTAMP_FIELD_DESC = new org.apache.thrift.protocol.TField("timestamp", org.apache.thrift.protocol.TType.I64, (short)6);
+  private static final org.apache.thrift.protocol.TField UUID_FIELD_DESC = new org.apache.thrift.protocol.TField("uuid", org.apache.thrift.protocol.TType.STRING, (short)7);
+  private static final org.apache.thrift.protocol.TField SEQUENCE_FIELD_DESC = new org.apache.thrift.protocol.TField("sequence", org.apache.thrift.protocol.TType.I32, (short)8);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -49,8 +50,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     schemes.put(TupleScheme.class, new EntryOperationReturnEdgeTupleSchemeFactory());
   }
 
-  public OperationID OperationId; // required
+  public OperationID operationId; // required
   public ResourceID resourceId; // required
+  public String servletPath; // required
   public int httpStatus; // required
   public int elapsedTime; // required
   public long timestamp; // required
@@ -59,13 +61,14 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    OPERATION_ID((short)1, "OperationId"),
+    OPERATION_ID((short)1, "operationId"),
     RESOURCE_ID((short)2, "resourceId"),
-    HTTP_STATUS((short)3, "httpStatus"),
-    ELAPSED_TIME((short)4, "elapsedTime"),
-    TIMESTAMP((short)5, "timestamp"),
-    UUID((short)6, "uuid"),
-    SEQUENCE((short)7, "sequence");
+    SERVLET_PATH((short)3, "servletPath"),
+    HTTP_STATUS((short)4, "httpStatus"),
+    ELAPSED_TIME((short)5, "elapsedTime"),
+    TIMESTAMP((short)6, "timestamp"),
+    UUID((short)7, "uuid"),
+    SEQUENCE((short)8, "sequence");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -84,15 +87,17 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
           return OPERATION_ID;
         case 2: // RESOURCE_ID
           return RESOURCE_ID;
-        case 3: // HTTP_STATUS
+        case 3: // SERVLET_PATH
+          return SERVLET_PATH;
+        case 4: // HTTP_STATUS
           return HTTP_STATUS;
-        case 4: // ELAPSED_TIME
+        case 5: // ELAPSED_TIME
           return ELAPSED_TIME;
-        case 5: // TIMESTAMP
+        case 6: // TIMESTAMP
           return TIMESTAMP;
-        case 6: // UUID
+        case 7: // UUID
           return UUID;
-        case 7: // SEQUENCE
+        case 8: // SEQUENCE
           return SEQUENCE;
         default:
           return null;
@@ -142,10 +147,12 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("OperationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.OPERATION_ID, new org.apache.thrift.meta_data.FieldMetaData("operationId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, OperationID.class)));
     tmpMap.put(_Fields.RESOURCE_ID, new org.apache.thrift.meta_data.FieldMetaData("resourceId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ResourceID.class)));
+    tmpMap.put(_Fields.SERVLET_PATH, new org.apache.thrift.meta_data.FieldMetaData("servletPath", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.HTTP_STATUS, new org.apache.thrift.meta_data.FieldMetaData("httpStatus", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.ELAPSED_TIME, new org.apache.thrift.meta_data.FieldMetaData("elapsedTime", org.apache.thrift.TFieldRequirementType.REQUIRED, 
@@ -164,8 +171,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   }
 
   public EntryOperationReturnEdge(
-    OperationID OperationId,
+    OperationID operationId,
     ResourceID resourceId,
+    String servletPath,
     int httpStatus,
     int elapsedTime,
     long timestamp,
@@ -173,8 +181,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     int sequence)
   {
     this();
-    this.OperationId = OperationId;
+    this.operationId = operationId;
     this.resourceId = resourceId;
+    this.servletPath = servletPath;
     this.httpStatus = httpStatus;
     setHttpStatusIsSet(true);
     this.elapsedTime = elapsedTime;
@@ -192,10 +201,13 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   public EntryOperationReturnEdge(EntryOperationReturnEdge other) {
     __isset_bitfield = other.__isset_bitfield;
     if (other.isSetOperationId()) {
-      this.OperationId = new OperationID(other.OperationId);
+      this.operationId = new OperationID(other.operationId);
     }
     if (other.isSetResourceId()) {
       this.resourceId = new ResourceID(other.resourceId);
+    }
+    if (other.isSetServletPath()) {
+      this.servletPath = other.servletPath;
     }
     this.httpStatus = other.httpStatus;
     this.elapsedTime = other.elapsedTime;
@@ -212,8 +224,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
 
   @Override
   public void clear() {
-    this.OperationId = null;
+    this.operationId = null;
     this.resourceId = null;
+    this.servletPath = null;
     setHttpStatusIsSet(false);
     this.httpStatus = 0;
     setElapsedTimeIsSet(false);
@@ -226,26 +239,26 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   }
 
   public OperationID getOperationId() {
-    return this.OperationId;
+    return this.operationId;
   }
 
-  public EntryOperationReturnEdge setOperationId(OperationID OperationId) {
-    this.OperationId = OperationId;
+  public EntryOperationReturnEdge setOperationId(OperationID operationId) {
+    this.operationId = operationId;
     return this;
   }
 
   public void unsetOperationId() {
-    this.OperationId = null;
+    this.operationId = null;
   }
 
-  /** Returns true if field OperationId is set (has been assigned a value) and false otherwise */
+  /** Returns true if field operationId is set (has been assigned a value) and false otherwise */
   public boolean isSetOperationId() {
-    return this.OperationId != null;
+    return this.operationId != null;
   }
 
   public void setOperationIdIsSet(boolean value) {
     if (!value) {
-      this.OperationId = null;
+      this.operationId = null;
     }
   }
 
@@ -270,6 +283,30 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
   public void setResourceIdIsSet(boolean value) {
     if (!value) {
       this.resourceId = null;
+    }
+  }
+
+  public String getServletPath() {
+    return this.servletPath;
+  }
+
+  public EntryOperationReturnEdge setServletPath(String servletPath) {
+    this.servletPath = servletPath;
+    return this;
+  }
+
+  public void unsetServletPath() {
+    this.servletPath = null;
+  }
+
+  /** Returns true if field servletPath is set (has been assigned a value) and false otherwise */
+  public boolean isSetServletPath() {
+    return this.servletPath != null;
+  }
+
+  public void setServletPathIsSet(boolean value) {
+    if (!value) {
+      this.servletPath = null;
     }
   }
 
@@ -407,6 +444,14 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       }
       break;
 
+    case SERVLET_PATH:
+      if (value == null) {
+        unsetServletPath();
+      } else {
+        setServletPath((String)value);
+      }
+      break;
+
     case HTTP_STATUS:
       if (value == null) {
         unsetHttpStatus();
@@ -458,6 +503,9 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     case RESOURCE_ID:
       return getResourceId();
 
+    case SERVLET_PATH:
+      return getServletPath();
+
     case HTTP_STATUS:
       return Integer.valueOf(getHttpStatus());
 
@@ -488,6 +536,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       return isSetOperationId();
     case RESOURCE_ID:
       return isSetResourceId();
+    case SERVLET_PATH:
+      return isSetServletPath();
     case HTTP_STATUS:
       return isSetHttpStatus();
     case ELAPSED_TIME:
@@ -515,12 +565,12 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     if (that == null)
       return false;
 
-    boolean this_present_OperationId = true && this.isSetOperationId();
-    boolean that_present_OperationId = true && that.isSetOperationId();
-    if (this_present_OperationId || that_present_OperationId) {
-      if (!(this_present_OperationId && that_present_OperationId))
+    boolean this_present_operationId = true && this.isSetOperationId();
+    boolean that_present_operationId = true && that.isSetOperationId();
+    if (this_present_operationId || that_present_operationId) {
+      if (!(this_present_operationId && that_present_operationId))
         return false;
-      if (!this.OperationId.equals(that.OperationId))
+      if (!this.operationId.equals(that.operationId))
         return false;
     }
 
@@ -530,6 +580,15 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       if (!(this_present_resourceId && that_present_resourceId))
         return false;
       if (!this.resourceId.equals(that.resourceId))
+        return false;
+    }
+
+    boolean this_present_servletPath = true && this.isSetServletPath();
+    boolean that_present_servletPath = true && that.isSetServletPath();
+    if (this_present_servletPath || that_present_servletPath) {
+      if (!(this_present_servletPath && that_present_servletPath))
+        return false;
+      if (!this.servletPath.equals(that.servletPath))
         return false;
     }
 
@@ -599,7 +658,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       return lastComparison;
     }
     if (isSetOperationId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.OperationId, other.OperationId);
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.operationId, other.operationId);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -610,6 +669,16 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     }
     if (isSetResourceId()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.resourceId, other.resourceId);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetServletPath()).compareTo(other.isSetServletPath());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetServletPath()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.servletPath, other.servletPath);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -684,11 +753,11 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     StringBuilder sb = new StringBuilder("EntryOperationReturnEdge(");
     boolean first = true;
 
-    sb.append("OperationId:");
-    if (this.OperationId == null) {
+    sb.append("operationId:");
+    if (this.operationId == null) {
       sb.append("null");
     } else {
-      sb.append(this.OperationId);
+      sb.append(this.operationId);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -697,6 +766,14 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       sb.append("null");
     } else {
       sb.append(this.resourceId);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("servletPath:");
+    if (this.servletPath == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.servletPath);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -729,8 +806,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
-    if (OperationId == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'OperationId' was not present! Struct: " + toString());
+    if (operationId == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'operationId' was not present! Struct: " + toString());
     }
     if (resourceId == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'resourceId' was not present! Struct: " + toString());
@@ -741,8 +818,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'uuid' was not present! Struct: " + toString());
     }
     // check for sub-struct validity
-    if (OperationId != null) {
-      OperationId.validate();
+    if (operationId != null) {
+      operationId.validate();
     }
   }
 
@@ -784,8 +861,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
         switch (schemeField.id) {
           case 1: // OPERATION_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.OperationId = new OperationID();
-              struct.OperationId.read(iprot);
+              struct.operationId = new OperationID();
+              struct.operationId.read(iprot);
               struct.setOperationIdIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
@@ -800,7 +877,15 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // HTTP_STATUS
+          case 3: // SERVLET_PATH
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.servletPath = iprot.readString();
+              struct.setServletPathIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 4: // HTTP_STATUS
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.httpStatus = iprot.readI32();
               struct.setHttpStatusIsSet(true);
@@ -808,7 +893,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // ELAPSED_TIME
+          case 5: // ELAPSED_TIME
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.elapsedTime = iprot.readI32();
               struct.setElapsedTimeIsSet(true);
@@ -816,7 +901,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // TIMESTAMP
+          case 6: // TIMESTAMP
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.timestamp = iprot.readI64();
               struct.setTimestampIsSet(true);
@@ -824,7 +909,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // UUID
+          case 7: // UUID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.uuid = iprot.readString();
               struct.setUuidIsSet(true);
@@ -832,7 +917,7 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 7: // SEQUENCE
+          case 8: // SEQUENCE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.sequence = iprot.readI32();
               struct.setSequenceIsSet(true);
@@ -861,14 +946,19 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.OperationId != null) {
+      if (struct.operationId != null) {
         oprot.writeFieldBegin(OPERATION_ID_FIELD_DESC);
-        struct.OperationId.write(oprot);
+        struct.operationId.write(oprot);
         oprot.writeFieldEnd();
       }
       if (struct.resourceId != null) {
         oprot.writeFieldBegin(RESOURCE_ID_FIELD_DESC);
         struct.resourceId.write(oprot);
+        oprot.writeFieldEnd();
+      }
+      if (struct.servletPath != null) {
+        oprot.writeFieldBegin(SERVLET_PATH_FIELD_DESC);
+        oprot.writeString(struct.servletPath);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldBegin(HTTP_STATUS_FIELD_DESC);
@@ -905,19 +995,25 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, EntryOperationReturnEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      struct.OperationId.write(oprot);
+      struct.operationId.write(oprot);
       struct.resourceId.write(oprot);
       oprot.writeI32(struct.elapsedTime);
       oprot.writeI64(struct.timestamp);
       oprot.writeString(struct.uuid);
       BitSet optionals = new BitSet();
-      if (struct.isSetHttpStatus()) {
+      if (struct.isSetServletPath()) {
         optionals.set(0);
       }
-      if (struct.isSetSequence()) {
+      if (struct.isSetHttpStatus()) {
         optionals.set(1);
       }
-      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetSequence()) {
+        optionals.set(2);
+      }
+      oprot.writeBitSet(optionals, 3);
+      if (struct.isSetServletPath()) {
+        oprot.writeString(struct.servletPath);
+      }
       if (struct.isSetHttpStatus()) {
         oprot.writeI32(struct.httpStatus);
       }
@@ -929,8 +1025,8 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, EntryOperationReturnEdge struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      struct.OperationId = new OperationID();
-      struct.OperationId.read(iprot);
+      struct.operationId = new OperationID();
+      struct.operationId.read(iprot);
       struct.setOperationIdIsSet(true);
       struct.resourceId = new ResourceID();
       struct.resourceId.read(iprot);
@@ -941,12 +1037,16 @@ public class EntryOperationReturnEdge implements org.apache.thrift.TBase<EntryOp
       struct.setTimestampIsSet(true);
       struct.uuid = iprot.readString();
       struct.setUuidIsSet(true);
-      BitSet incoming = iprot.readBitSet(2);
+      BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
+        struct.servletPath = iprot.readString();
+        struct.setServletPathIsSet(true);
+      }
+      if (incoming.get(1)) {
         struct.httpStatus = iprot.readI32();
         struct.setHttpStatusIsSet(true);
       }
-      if (incoming.get(1)) {
+      if (incoming.get(2)) {
         struct.sequence = iprot.readI32();
         struct.setSequenceIsSet(true);
       }
