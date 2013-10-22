@@ -14,11 +14,14 @@ import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TBinaryProtocol.Factory;
 
+import fresto.data.ClientID;
+import fresto.data.ResourceID;
+import fresto.data.RequestEdge;
+import fresto.data.ResponseEdge;
+import fresto.data.DataUnit;
+import fresto.data.Pedigree;
+import fresto.data.FrestoData;
 
-import org.zeromq.ZMQ;
-import org.zeromq.ZMQ.Context;
-import org.zeromq.ZMQ.Socket;
-import fresto.format.UIEvent;
 import fresto.Global;
 
 public class Application extends Controller {
@@ -28,11 +31,13 @@ public class Application extends Controller {
     public static Result index() {
         //return ok(index.render("Your new application is ready."));
 	StringBuffer sb = new StringBuffer();
-	sb.append("Under construction. \n Urls to give or get events");
+	sb.append("Under construction. \n Available urls:");
 	sb.append("\n");
+	sb.append("http://fresto1.owlab.com:9999/whatIsMyIPAddress");
 	sb.append("http://fresto1.owlab.com:9999/feedUIEvent");
-	sb.append("\n");
-	sb.append("http://fresto1.owlab.com:9999/getR0");
+	sb.append("http://fresto1.owlab.com:9999/statistics");
+	//sb.append("\n");
+	//sb.append("http://fresto1.owlab.com:9999/getR0");
         return ok(sb.toString());
     }
 
@@ -56,39 +61,87 @@ public class Application extends Controller {
     public static Result feedUIEvent() {
 	    DynamicForm data = Form.form().bindFromRequest();
 	    String stage = data.get("stage");
-	    String clientId = data.get("clientId");
-	    String currentPlace = data.get("currentPlace");
 	    String uuid = data.get("uuid");
+	    String clientIp = data.get("clientId");
+	    String referrer = data.get("referrer");
 	    String targetUrl = data.get("targetUrl");
+	    String method = data.get("method");
 	    String timestamp = data.get("timestamp");
 	    String elapsedTime = data.get("elapsedTime");
 	    String httpStatus = data.get("httpStatus");
 
-	    Logger.info(stage + "," + clientId + "," + currentPlace + "," + uuid + "," + targetUrl + "," + timestamp + "," + elapsedTime + "," + httpStatus); 
-	    
+	    Logger.info(stage + "," + clientIp + "," + referrer + "," + uuid + "," + targetUrl + "," + method + ", " + timestamp + "," + elapsedTime + "," + httpStatus); 
+	    long receivedTime = System.currentTimeMillis(); 
 
 
 	    TSerializer serializer = new TSerializer(new TBinaryProtocol.Factory());
-	    UIEvent event = new UIEvent(stage, clientId, uuid, targetUrl, Long.parseLong(timestamp));
-	    if(currentPlace != null)
-	    	event.setCurrentPlace(currentPlace);
-	    if(elapsedTime != null) 
-	    	event.setElapsedTime(Long.parseLong(elapsedTime));
-	    if(elapsedTime != null) 
-	    	event.setHttpStatus(httpStatus);
+	    
+	    Pedigree pedigree = new Pedigree();
+	    pedigree.setReceivedTime(receivedTime);
+	    
+	    if("HTTP_REQUEST".equals(stage)) {
+	            /**
+	             * clientId
+	             * resourceId
+	             * referrer
+	             * method
+	             * timestamp
+	             * uuid
+	             */
+	            ClientID clientId = ClientID.clientIp(clientIp);
+	            String urlStr = targetUrl.split("\\?")[0];
+	            ResourceID resourceId = ResourceID.url(urlStr);
+	            RequestEdge requestEdge = new RequestEdge();
+	            requestEdge.setClientId(clientId);
+	            requestEdge.setResourceId(resourceId);
+	            requestEdge.setReferrer(referrer);
+	            requestEdge.setMethod(method);
+	            requestEdge.setTimestamp(Long.parseLong(timestamp));
+	            requestEdge.setUuid(uuid);
 
-	    try {
-	    	byte[] serializedEvent = serializer.serialize(event);
-		//ZMQ.Socket publisher = Global.getPublisher();
-		//publisher.send("U".getBytes(), ZMQ.SNDMORE);
-		//publisher.send(serializedEvent, 0);
-		Global.publishToMonitor("U", serializedEvent);
-	    } catch (TException te) {
-		    te.printStackTrace();
-	    } finally {
-		    //publisher.close();
-		    //context.term();
-	    }
+	            DataUnit dataUnit = DataUnit.requestEdge(requestEdge);
+
+	            FrestoData frestoData = new FrestoData();
+	            frestoData.setPedigree(pedigree);
+	            frestoData.setDataUnit(dataUnit);
+
+	    	    try {
+	    	    	byte[] serializedEvent = serializer.serialize(frestoData);
+	    	        Global.publishToMonitor("CB", serializedEvent);
+	    	    } catch (TException te) {
+	    	            te.printStackTrace();
+	    	    } finally {
+	    	    }
+
+	    } else if("HTTP_RESPONSE".equals(stage)) {
+	           ClientID clientId = ClientID.clientIp(clientIp);
+	           String urlStr = targetUrl.split("\\?")[0];
+	           ResourceID resourceId = ResourceID.url(urlStr);
+	           ResponseEdge responseEdge = new ResponseEdge();
+	           responseEdge.setClientId(clientId);
+	           responseEdge.setResourceId(resourceId);
+	           responseEdge.setHttpStatus(Integer.parseInt(httpStatus));
+	           responseEdge.setElapsedTime(Integer.parseInt(elapsedTime));
+	           responseEdge.setTimestamp(Long.parseLong(timestamp));
+	           responseEdge.setUuid(uuid);
+
+	            DataUnit dataUnit = DataUnit.responseEdge(responseEdge);
+
+	            FrestoData frestoData = new FrestoData();
+	            frestoData.setPedigree(pedigree);
+	            frestoData.setDataUnit(dataUnit);
+
+	    	    try {
+	    	    	byte[] serializedEvent = serializer.serialize(frestoData);
+	    	        Global.publishToMonitor("CF", serializedEvent);
+	    	    } catch (TException te) {
+	    	            te.printStackTrace();
+	    	    } finally {
+	    	    }
+
+	    } else {
+	           Logger.info("The client event's stage does not match with required: " + stage);
+	    } 
 
 	    return ok("RECV_OK");
     }
