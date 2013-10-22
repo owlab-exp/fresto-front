@@ -64,6 +64,37 @@ public class Statistics extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result clientThroughput() {
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		JsonNode secondNode = json.findPath("second");
+
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = secondNode.getLongValue();
+			Logger.info("secondInUnix=" + secondInUnix);
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			//dataObject.put("h0", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCount(secondInUnix, "response");
+			dataObject.put("t0", hitCount);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpHitCount() {
 		ObjectNode result = Json.newObject();
 		
@@ -89,6 +120,37 @@ public class Statistics extends Controller {
 
 			int hitCount = getCount(secondInUnix, "entryCall");
 			dataObject.put("h1", hitCount);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result httpThroughput() {
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		JsonNode secondNode = json.findPath("second");
+
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = secondNode.getLongValue();
+			Logger.info("secondInUnix=" + secondInUnix);
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCount(secondInUnix, "entryReturn");
+			dataObject.put("t1", hitCount);
 
 			return ok(result);
 		}
