@@ -5,13 +5,17 @@
 	    <script type="text/javascript" src="javascripts/d3.v3.min.js"></script>
 		<script type="text/javascript" src="javascripts/APMJsUtil.js"></script>
 		<style>
+        body {
+            overflow: hidden;
+        }
+        
         svg {
             font: 10px sans-serif;
         }
         
         .axis path {
             fill: none;
-            stroke: violet;         
+            stroke: #335577;         
         }
         
         .axis line {
@@ -36,14 +40,25 @@
     
     <script>
     jQuery(document).ready( function () {
+    
+document.addEventListener("webkitvisibilitychange", handleVisibilityState, false);
+
+function handleVisibilityState() {
+    if (document.webkitHidden) {
+        console.log("hidden");
+    } else {
+        console.log("activated");
+    }
+}
+    
         // svg 사이즈 및 위치
-        var width = 600, // 실제 데이타 영역의 폭
-            height = 400, // 실제 데이타 영역이 높이
+        var width = 350, // 실제 데이타 영역의 폭
+            height = 50, // 실제 데이타 영역이 높이
             margin = { // 제목, X축, Y축 emd 비 데이타 영역을 위한 공간
                 top : 30,
-                bottom : 30,
-                left : 50,
-                right : 50
+                bottom : 20,
+                left : 20,
+                right : 20
             };              
         
         // svg DOM 생성
@@ -80,6 +95,15 @@
         //   targetURL을 Key로 하는 Array
         //   { url : "", colorString : "" }을 element로 한다
         var colorStringArray = [];
+		
+		// 갱신 주기
+		//   animation 사용하지 않고 그냥 redraw 시 갱신 주기
+		var updateInterval = 5000;
+		
+		// Animation 사용 여부
+		//   true, false에 따라 redraw()가 부드러운 animation을 사용할 것인지, 
+		//   끊어지는 갱신을 사용할 것인지 결정
+		var useAnimation = false;
         
         // 축 사이즈
         //   xHeight > margin.top+알파 이어야 x축이 안 사라진다
@@ -88,7 +112,7 @@
                            
         // scale 생성을 위한 변수
         var now = new Date(),
-            timeRange = 1 * 60 * 1000, // 차트의 시간 범위, # mils초 전
+            timeRange = 5 * 60 * 1000, // 차트의 시간 범위, # mils초 전
             durationTime = timeRange/dataLength; // 축 이동의 단위시간, 늘 timeRange/dataLength로 한다
 
         // scale 생성
@@ -155,7 +179,7 @@
         function redraw() {
             
             // 차트에서 표시되지 않는 데이타 제거
-            var currentDomainLeft = xScale.domain()[0].getTime();            
+            var currentDomainLeft = xScale.domain()[0].getTime();
             removePastData(currentDomainLeft);            
             			
             // 축 정의역 업데이트
@@ -174,29 +198,45 @@
 				dataSeries[i].dataArray.push({ x: now, y: 0 });
 				dataSeries[i].dataArray.shift();
 			}
-            
-            // 각 데이타 계열 라인 갱신
+			
+			// 각 데이타 계열 라인 갱신을 위한 변수
 			var j = hitCountPathArray.length,
-			    hitCountPath;
-			while(j--) {
-				hitCountPath = hitCountPathArray[j];
-				hitCountPath.attr("d", hitCountLine)
-							.attr("transform", null)
-							.transition()
-							.duration(durationTime)
-							.ease("linear")
-							.attr("transform", "translate("+(-xScale(now-timeRange+durationTime))+")");
+				hitCountPath;
+			
+			if ( useAnimation ) {
+				// 각 데이타 계열 라인 갱신
+				while(j--) {
+					hitCountPath = hitCountPathArray[j];
+					hitCountPath.attr("d", hitCountLine)
+								.attr("transform", null)
+								.transition()
+								.duration(durationTime)
+								.ease("linear")
+								.attr("transform", "translate("+(-xScale(now-timeRange+durationTime))+")");
+				}
+				
+				// 축 이동
+				gXAxis.transition()
+					  .duration(durationTime)
+					  .ease("linear")
+					  // 아래의 transform이 없어도 domain의 변경만으로도 축은 이동한다
+					  //.attr("tranform", "translate(" + (-xScale(now-timeRange+durationTime)) + ")")                  
+					  // transition.call(aFunction)은 aFunction(transition)와 같다
+					  .call(xAxis)
+					  .each("end", redraw); // 축 업데이트 후 주기적 redraw
+			} else {
+				// 각 데이타 계열 라인 갱신
+				while(j--) {
+					hitCountPath = hitCountPathArray[j];
+					hitCountPath.attr("d", hitCountLine)
+								.attr("transform", "translate("+(-xScale(now-timeRange+durationTime))+")");
+				}
+				
+				// 축 다시 그리기
+				xAxis(gXAxis);				
+				
+				setTimeout(redraw, updateInterval);
 			}
-            
-            // 축 이동
-            gXAxis.transition()
-                  .duration(durationTime)
-                  .ease("linear")
-				  // 아래의 transform이 없어도 domain의 변경만으로도 축은 이동한다
-                  //.attr("tranform", "translate(" + (-xScale(now-timeRange+durationTime)) + ")")                  
-                  // transition.call(aFunction)은 aFunction(transition)와 같다
-                  .call(xAxis)
-				  .each("end", redraw); // 축 업데이트 후 주기적 redraw
         }
         
         // 초기 라인을 그리기 위한 Data 설정
@@ -312,7 +352,41 @@
 /////////////////     lineName : Servlet/JSP Name - String
 /////////////////     timeStamp  : End Time - Unix Time Milliseconds
 /////////////////     counts   : Hit Counts - Number
+
         
+
+		
+
+        // ajax로 데이타 가져와서 renderWithNewData 호출
+        //   로컬에서 html을 실행하면 SOP에 걸려 에러 발생
+        var getDataFromServer = function () {
+            var dataSourceURL = 'http://fresto1.owlab.com:9999/httpHitCount',
+                timeStamp000 = Math.floor((new Date().getTime())/1000)*1000;
+console.log(timeStamp000);
+            var renderWithNewData = function (data) {
+console.log("data from FrestoSvr : " + data);
+                // data를 이용하여 handleData의 파라미터를 구성하고 handleData호출
+                $(data).each( function ( index, item ) {
+                    if ( item.status === "OK" ) {
+                        handleNewData("HttpHitCount", item.data.second, item.data.hi);
+                    } else if ( item.status === "KO") {
+                        // 일단 0으로 차트 그려지게 처리
+                        handleNewData("HttpHitCount", timeStamp000, 0);
+                    }
+                });
+            };        
+            
+            $.ajax({
+                url : dataSourceURL,
+                contentType : "application/json",
+                data : JSON.stringify({ "second": timeStamp000 }),
+                success : renderWithNewData,
+            });
+            
+            setTimeout(getDataFromServer, updateInterval);
+        };
+//        getDataFromServer();
+		
 /*
         // To receive data from server
         if(typeof(EventSource) == "undefined") {
@@ -337,6 +411,9 @@
             }, false);
         }
 //*/
+        svgLine.on("click", function() {
+            console.log("x : " + drag.origin().x);
+        });
     });
 	</script>
 	<div id='actionArea'>

@@ -3,17 +3,31 @@
 	    <meta charset="UTF-8">
 		<script type="text/javascript" src="javascripts/jquery-2.0.3.min.js"></script>
 	    <script type="text/javascript" src="javascripts/d3.v3.min.js"></script>
-		<script type="text/javascript" src="javascripts/jquery.tipsy.js"></script>
 		<script type="text/javascript" src="javascripts/APMJsUtil.js"></script>
-		<link   type="text/css" href="stylesheets/tipsy.css" rel="stylesheet"  />
-        <style>      
+		<style>
+        body {
+            overflow: hidden;
+        }
+        
         svg {
             font: 10px sans-serif;
         }
         
+        .point.selected {
+            fill: red;
+            fill-opacity: 1;
+            stroke: brown;
+        }
+
+        .brush .extent {
+            stroke: #fff;
+            fill-opacity: .125;
+            shape-rendering: crispEdges;
+        }
+        
         .axis path {
             fill: none;
-            stroke: violet;         
+            stroke: #335577;         
         }
         
         .axis line {
@@ -75,7 +89,7 @@
                 bottom : 30,
                 left : 50,
                 right : 50
-            };              
+            };                      
         
         // svg DOM 생성
         var svgScatter = d3.select("body")
@@ -93,14 +107,17 @@
                            
         // Data Max
         var xMax = 1000, // X축이 시간인 경우 필요 없음
-        //    yMax = 10;
+            yMax = 10;
 	// TODO How to adjust Y axis scale by actual elapsed time (or response time)
-            yMax = 1000;
+        //    yMax = 1000;
             
         // Data Array
         //   차트 영역 내에 있는 데이타를 저장하는 배열
         //   JSON 객체를 element로 한다
         var circleArray = [];
+        
+        // 모든 circle을 나타내는 d3 객체
+        var circleJoin;
 
         // ColorString Array
         //   targetURL을 Key로 하는 Array
@@ -169,54 +186,99 @@
                                
         // circle들의 Group인 G
         //   clipper에 append 해야 clipping이 적용된다.
-        var circleG = clippingG.append("g");
+        var circleG = clippingG.append("g");               
         
+        // drag&drop 으로 영역을 그릭고 그 영역 내의 데이타 처리하는 기능을
+        // d3에서는 brush를 통해 수행한다
+        var d3Brush = d3.svg.brush()
+                            .x(xScale)
+                            .y(yScale)
+                            .on("brushend", brushend);
         
+        // drag&drop으로 표시되는 영역
+        var brushG = rootG.append("g")
+                          .attr("class", "brush")
+                          .call(d3Brush);
+                          //.call(d3Brush.event);
+                          
+        // brush 내 포함 여부 검색 최적화를 위한 quadtree
+        var quadtree = d3.geom.quadtree()
+            .extent([[-1, -1], [width + 1, height + 1]])
+            (circleArray);
+
+		// brush 처리
+		//   mouseUp 시 brush 영역을 완성하고, 해당되는 request를 채색처리
+        function brushend() {
+console.log("brushend invoked");
+            var extent = d3Brush.extent();
+            circleJoin.each(function(d) { d.selected = false; });
+            search(quadtree, extent[0][0], extent[0][1], extent[1][0], extent[1][1]);
+            circleJoin.classed("selected", function(d) { return d.selected; });
+        }
         
-        // 차트 구동 시작
-        
-        // Shifting 여부
-        var isShiftOn = true;
+        // quadtree내에 있는 모든 quadtree node를 visit 하여
+        // extent내에 있는 point의 selected를 true로 세팅
+        // visit의 callback이 quadtree내의 node가 extent 와 교차되지 않으면
+        // 해당 node의 children이 visit되지 않도록 true를 반환
+        function search(quadtree, x0, y0, x3, y3) {
+            quadtree.visit(function(node, x1, y1, x2, y2) {
+                var p = node.point;
+//console.log("x1 : " + x1 + ", y1 : " + y1 + ", x2 : " + x2 + ", y2 : " + y2);
+console.dir(p);
+                if (p) p.selected = (p[0] >= x0) && (p[0] < x3) && (p[1] >= y0) && (p[1] < y3);
+                return x1 >= x3 || y1 >= y3 || x2 < x0 || y2 < y0;
+            });
+        }
+               
+		// animation 여부
+		var useAnimation = true;
+		
+		// 갱신 주기
+		var updateInterval = 5000;
         
         // X축 shifting 시작
-        shiftXAxis();
+        //shiftXAxis();
         
-        // 차트 실시간 redraw 시작
-        
+        /*
+        // 차트 실시간 redraw 시작        
         var intervalRedraw = setInterval(function () {
             // random데이타로 circle 자동 생성
             //generateData(5)
             redraw();
         }, 1000);
-                
+        */
+        // 차트 그리기 및 갱신
+        redraw();
+        /*        
         // X축을 shift하는 함수
         //   축의 shifting은 실제로는
         //   domain을 다시 설정하면 domain을 가지고 있는 d3의 axis가 변경되고
         //   axis 정보를 가지고 있는 svg의 'g'에 변경된 axis를 적용하는 것으로 작동한다.
         //   마지막으로 .each("end",recursiveCall)로 재귀호출을 하면 Shifting이 계속 발생한다.
         function shiftXAxis() {
-            if ( isShiftOn ) {
-                var shiftSize = durationTime,
+			var shiftSize = durationTime,
 //                  currentDomainLeft = xScale.domain()[0].getTime(),
 //                  currentDomainRight = xScale.domain()[1].getTime();
-                    now = new Date().getTime();
+				now = new Date().getTime();
 
-                // domain 수정
+			// domain 수정
 //              xScale.domain([currentDomainLeft + shiftSize, currentDomainRight + shiftSize]);
-                xScale.domain([now - timeRange, now]);
-                
-                // 해당 g에 바뀐 axis 적용
-                //   transition.call(aFunction) 는 aFunction(transition)와 같다.
-                gXAxis.transition().duration(durationTime).ease("linear").call(xAxis).each("end", shiftXAxis);
-                //   위 구문은 아래와 같다.
-                // var t = gXAxis.transition().ease("linear");
-                // xAxis(t);
-                // t.each("end", shiftXAxis);
-                
-
-            }
+			xScale.domain([now - timeRange, now]);
+			
+			if ( useAnimation ) {			
+				// 해당 g에 바뀐 axis 적용
+				//   transition.call(aFunction) 는 aFunction(transition)와 같다.
+				gXAxis.transition().duration(durationTime).ease("linear").call(xAxis).each("end", shiftXAxis);
+				//   위 구문은 아래와 같다.
+				// var t = gXAxis.transition().ease("linear");
+				// xAxis(t);
+				// t.each("end", shiftXAxis);
+			} else {
+				xAxis(gXAxis);
+				setTimeout(shiftAxis, updateInterval);
+			}
         }
-        
+        */
         
         
         // numOfData 만큼의 chartData 생성
@@ -259,6 +321,7 @@
         }
 
 	// Added to pass parameters from server
+    /*
 	function makeNewData(clientId, url, httpStatus, timestamp, elapsedTime) {
 		var result = {
 			clientID: clientId,
@@ -270,42 +333,82 @@
 		};
 		return result;
 	}
+    //*/
 
-        // 현재 데이타를 기준으로 circle을 다시 그리는 함수
+        // 현재 데이타를 기준으로 축과 circle을 다시 그리는 함수        
+        //   축의 shifting은 실제로는
+        //   domain을 다시 설정하면 domain을 가지고 있는 d3의 axis가 변경되고
+        //   axis 정보를 가지고 있는 svg의 'g'에 변경된 axis를 적용하는 것으로 작동한다.
+        //   마지막으로 .each("end",recursiveCall)로 재귀호출을 하면 Shifting이 계속 발생한다.
         function redraw() {
-
+		
+			// 축 정의역 업데이트
+			var shiftSize = durationTime,
+				now = new Date().getTime();
+			xScale.domain([now - timeRange, now]);
+			
+			///////////////////////////////
             var r = radius,
                 correctionTime = 10; // circle 그려진 후 redraw 되기 전 까지 축의 이동에 대한 보정
             
-            var currentDomainLeft = xScale.domain()[0].getTime()
+            var currentDomainLeft = xScale.domain()[0].getTime();
             
             // 데이타 영역을 벗어난 과거의 데이타를 Array에서 삭제
             removePastData(currentDomainLeft);
 
 //console.log($('circle').length);
             
-            var circleJoin = circleG.selectAll("circle")
-                                    .data(circleArray, function(d, i) { return i });
+            circleJoin = circleG.selectAll("circle")
+                                    .data(circleArray, function(d, i) { return i })
+                                    .attr("class", "point");
             
-            // 이미 join된 데이타 처리
-            circleJoin.transition().duration(1000)
-                                   .ease("linear")
-                                   .attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } )
-                                   .attr("cy", function(d) { return yScale(d.responseTime); } );
-            
-            // 새로 join된 데이타 처리
-            circleJoin.enter()
-                      .append("circle").attr("id", function(d) { return "circle_"+d.clientID; } )
-                                       .attr("cx", function(d) { return xScale(d.endTime); } )
-                                       .attr("cy", function(d) { return yScale(d.responseTime); } )
-                                       .attr("r", r)
-                                       .style("fill", function (d) { return getColorString(d.targetURL); })
-                                       .transition().duration(1000)
-                                                    .ease("linear")
-                                                    .attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } );
+			if ( useAnimation ) {
+			
+				// 이미 join된 데이타 처리
+				circleJoin.transition().duration(1000)
+									   .ease("linear")
+									   .attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } )
+									   .attr("cy", function(d) { return yScale(d.responseTime); } );
+				
+				// 새로 join된 데이타 처리
+				circleJoin.enter()
+						  .append("circle").attr("id", function(d) { return "circle_"+d.clientID; } )
+										   .attr("cx", function(d) { return xScale(d.endTime); } )
+										   .attr("cy", function(d) { return yScale(d.responseTime); } )
+										   .attr("r", r)
+										   .style("fill", function (d) { return getColorString(d.targetURL); })
+										   .transition().duration(1000)
+														.ease("linear")
+														.attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } );
 
-            // 좌측으로 사라져야 할 데이타 처리
-            circleJoin.exit().remove();
+				// 좌측으로 사라져야 할 데이타 처리
+				circleJoin.exit().remove();
+				
+				// 축 이동
+                // 해당 g에 바뀐 axis 적용
+				//   transition.call(aFunction) 는 aFunction(transition)와 같다.
+				gXAxis.transition().duration(durationTime).ease("linear").call(xAxis).each("end", redraw);
+			} else { // useAnimation == false 인 경우 transition 제거
+				// 이미 join된 데이타 처리
+				circleJoin.attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } )
+						  .attr("cy", function(d) { return yScale(d.responseTime); } );
+				
+				// 새로 join된 데이타 처리
+				circleJoin.enter()
+						  .append("circle").attr("id", function(d) { return "circle_"+d.clientID; } )
+										   .attr("cx", function(d) { return xScale(d.endTime); } )
+										   .attr("cy", function(d) { return yScale(d.responseTime); } )
+										   .attr("r", r)
+										   .style("fill", function (d) { return getColorString(d.targetURL); });
+
+				// 좌측으로 사라져야 할 데이타 처리
+				circleJoin.exit().remove();
+				
+				// 축 이동
+                xAxis(gXAxis);
+                
+                setTimeout(redraw, updateInterval);
+			}
         }
         
         // domainLeft 를 지나 데이타 영역을 벗어난 과거 데이타를 Array에서 삭제
@@ -370,40 +473,8 @@
                                 
             circleArray.push(chartData);
     
-            // tipsy를 이 위치가 아닌 jquery 전역이나 다른 함수 아래에 두면 작동하지 않는다. 이유 모름.
-            $('.classCircle').tipsy({ 
-                gravity: 'sw', 
-                html: true, 
-                title: function() {             
-                    var d = this.__data__;  
-                    return renderTipsyData(d);
-                }
-            });
-        }   
-
-        function renderTipsyData(d) {
-            return '<table class="infoTable">'+
-                     '<tr>'+
-                       '<td class="oddKey">clientID</td>'+'<td class="oddValue">' + d.clientID + '</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                       '<td class="evenKey">targetURL</td>'+'<td class="evenValue">' + d.targetURL + '</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                       '<td class="oddKey">xhrReadyState</td>'+'<td class="oddValue">' + d.xhrReadyState + '</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                       '<td class="evenKey">xhrStatus</td>'+'<td class="evenValue">' + d.xhrStatus + '</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                       '<td class="oddKey">endTime</td>'+'<td class="oddValue">' + getDateString(d.endTime) + '</td>'+
-                     '</tr>'+
-                     '<tr>'+
-                       '<td class="evenKey">responseTime</td>'+'<td class="evenValue">' + d.responseTime + '</td>'+
-                     '</tr>'+
-                   '</table>';
         }
-        
+
         $("#btnAdd1Point").click( function () {
             addCircleToChart(makeNewData());
         });
@@ -413,34 +484,8 @@
             while( i-- ) {
                 addCircleToChart(makeNewData());
             }           
-        });     
-        
-    	// To receive data from server
-	if(typeof(EventSource) == "undefined") {
-		alert("EventSource is not supported on your browser!");
-		return false; 
-	} else {
-		var source = new EventSource("http://fresto1.owlab.com:9999/r0Stream");
-		source.addEventListener("message", function(e) {
-			console.log(e.data);
-			var uiEvent = JSON.parse(e.data);
-			if(uiEvent.stage == 'afterCall') {
-				//console.log('afterCall event');
-				addCircleToChart(makeNewData(uiEvent.clientId, uiEvent.url, uiEvent.httpStatus, uiEvent.timestamp, uiEvent.elapsedTime));
-				//addCircleToChart(makeNewData(uiEvent.clientId, uiEvent.url, uiEvent.httpStatus, uiEvent.timestamp, 5));
-			}
-		}, false);
-		source.addEventListener("open", function(e) {
-		}, false);
-		source.addEventListener("error", function(e) {
-		}, false);
-		source.addEventListener("ping", function(e) {
-			// To detect client disconnected
-		}, false);
-	}
-
+        });
     });
-	
-    </script>
+	</script>
 	</body>
 </html>
