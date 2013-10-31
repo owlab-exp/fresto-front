@@ -5,6 +5,7 @@ import play.*;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
+import com.orientechnologies.orient.core.db.graph.OGraphDatabase;
 
 public class Global extends GlobalSettings {
 
@@ -12,6 +13,7 @@ public class Global extends GlobalSettings {
 	private int pubPort = 7000;
 	private static ZMQ.Context context;
 	private static ZMQ.Socket publisher;
+	private static OGraphDatabase oGraph;
 
 	@Override
 		public void onStart(Application app) {
@@ -22,6 +24,11 @@ public class Global extends GlobalSettings {
 			publisher.connect("tcp://" + pubHost + ":" + pubPort);
 
 			Logger.info("JeroMQ publisher uses " + pubPort + " port.");
+
+			oGraph = new OGraphDatabase("remote:fresto4.owlab.com/frestodb");
+			oGraph.setProperty("minPool", 3);
+			oGraph.setProperty("maxPool", 10);
+
 			Logger.info("Application has started");
 		}
 
@@ -31,6 +38,8 @@ public class Global extends GlobalSettings {
 			Logger.info("Closing JeroMQ sockets");
 			publisher.close();
 			context.term();
+
+			oGraph.close();
 		}
 
 	public static ZMQ.Socket getPublisher(){
@@ -43,5 +52,9 @@ public class Global extends GlobalSettings {
 		publisher.send(topic.getBytes(), ZMQ.SNDMORE);
 		publisher.send(message, 0);
 
+	}
+
+	public static OGraphDatabase openDatabase() {
+		return oGraph.open("admin", "admin");
 	}
 }

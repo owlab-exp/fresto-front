@@ -7,15 +7,24 @@ GET     /			controllers.Application.index()
 GET     /whatIsMyIPAddress	controllers.Application.whatIsMyIPAddress()
 #GET	/feedUIEvent		    controllers.Application.feedUIEvent()
 POST	/feedUIEvent		controllers.Application.feedUIEvent()
+# Exploration of server push 
 GET	/r0Stream		controllers.SSE.r0Stream()
-GET	/clientHitCount		controllers.Statistics.clientHitCount()
-GET	/clientThroughput	controllers.Statistics.clientThroughput()
-GET	/httpHitCount		controllers.Statistics.httpHitCount()
-GET	/httpThroughput		controllers.Statistics.httpThroughput()
-GET	/clientResponseTimes	controllers.Statistics.clientResponseTimes()
-GET	/httpResponseTimes	controllers.Statistics.httpResponseTimes()
+# Web Browser side : Hit Count = Arrival Rate, Throughput = Departure Rate
+POST	/clientHitCount		controllers.Statistics.clientHitCount()
+POST	/clientThroughput	controllers.Statistics.clientThroughput()
+# Application Server side
+POST	/httpHitCount		controllers.Statistics.httpHitCount()
+POST	/httpThroughput		controllers.Statistics.httpThroughput()
+# Database side (Application Perspectives)
+POST	/sqlHitCount		controllers.Statistics.sqlHitCount()
+POST	/sqlThroughput		controllers.Statistics.sqlThroughput()
+# Elapsed Time (or Response Time) Average/Min/Max of each tier
+POST	/elapsedTimeStats controllers.Statistics.getElapsedTimeStatistics()
+# Response Time (or Elapsed Time) distributions - individual responses/returns
+POST	/clientResponseTimes	controllers.Statistics.clientResponseTimes()
+POST	/httpResponseTimes	controllers.Statistics.httpResponseTimes()
+POST	/sqlResponseTimes	controllers.Statistics.sqlResponseTimes()
 
-GET	/elapsedTimeStats controllers.Statistics.getElapsedTimeStatistics()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file		controllers.Assets.at(path="/public", file)
 
