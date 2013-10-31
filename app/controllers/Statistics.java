@@ -27,6 +27,8 @@ import com.orientechnologies.orient.core.db.graph.OGraphDatabasePool;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 
+import fresto.Global;
+
 public class Statistics extends Controller {
 	private static OGraphDatabasePool oGraphPool = OGraphDatabasePool.global();
 
@@ -44,8 +46,7 @@ public class Statistics extends Controller {
 			result.put("message", "Missing parameter [second]");
 			return badRequest(result);
 		} else {
-			long secondInUnix = secondNode.getLongValue();
-			Logger.info("secondInUnix=" + secondInUnix);
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
 			result.put("status", "OK");
 			//Random random = new Random();
@@ -75,8 +76,7 @@ public class Statistics extends Controller {
 			result.put("message", "Missing parameter [second]");
 			return badRequest(result);
 		} else {
-			long secondInUnix = secondNode.getLongValue();
-			Logger.info("secondInUnix=" + secondInUnix);
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
 			result.put("status", "OK");
 			//Random random = new Random();
@@ -99,15 +99,19 @@ public class Statistics extends Controller {
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
-		JsonNode secondNode = json.findPath("second");
+		if(json == null) {
+			result.put("status", "KO");
+			result.put("message", "Body is not json");
+			return badRequest(result);
+		}
 
+		JsonNode secondNode = json.findPath("second");
 		if(secondNode.isMissingNode()) {
 			result.put("status", "KO");
 			result.put("message", "Missing parameter [second]");
 			return badRequest(result);
 		} else {
-			long secondInUnix = secondNode.getLongValue();
-			Logger.info("secondInUnix=" + secondInUnix);
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
 			result.put("status", "OK");
 			//Random random = new Random();
@@ -137,8 +141,7 @@ public class Statistics extends Controller {
 			result.put("message", "Missing parameter [second]");
 			return badRequest(result);
 		} else {
-			long secondInUnix = secondNode.getLongValue();
-			Logger.info("secondInUnix=" + secondInUnix);
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
 			result.put("status", "OK");
 			//Random random = new Random();
@@ -157,6 +160,71 @@ public class Statistics extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result sqlHitCount() {
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			result.put("status", "KO");
+			result.put("message", "Body is not json");
+			return badRequest(result);
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCount(secondInUnix, "sqlCall");
+			dataObject.put("h9", hitCount);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result sqlThroughput() {
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		JsonNode secondNode = json.findPath("second");
+
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCount(secondInUnix, "sqlReturn");
+			dataObject.put("t9", hitCount);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientResponseTimes() {
 		ObjectNode result = Json.newObject();
 		
@@ -168,7 +236,7 @@ public class Statistics extends Controller {
 			result.put("message", "Missing parameter [second]");
 			return badRequest(result);
 		} else {
-			long secondInUnix = secondNode.getLongValue();
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
 			result.put("status", "OK");
 
@@ -202,7 +270,7 @@ public class Statistics extends Controller {
 			result.put("message", "Missing parameter [second]");
 			return badRequest(result);
 		} else {
-			long secondInUnix = secondNode.getLongValue();
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
 			result.put("status", "OK");
 
@@ -225,6 +293,40 @@ public class Statistics extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result sqlResponseTimes() {
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		JsonNode secondNode = json.findPath("second");
+
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+
+			result.put("status", "OK");
+
+			//Random clientCountRandom = new Random();
+			//Random responseTimeRandom = new Random();
+
+			//int clientCount = clientCountRandom.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			ArrayNode responseTimeArray = dataObject.putArray("responseTimes");
+			//for(int i = 0; i < clientCount; i++) {
+			//	ObjectNode responseTimeObject = responseTimeArray.addObject();
+			//	responseTimeObject.put("rid", i);
+			//	responseTimeObject.put("r1", responseTimeRandom.nextInt(3000));
+			//}
+			getResponseTimes(secondInUnix, "sqlReturn", "r9", responseTimeArray);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getElapsedTimeStatistics() {
 		ObjectNode result = Json.newObject();
 		
@@ -236,14 +338,16 @@ public class Statistics extends Controller {
 			result.put("status", "KO");
 			result.put("message", "Missing parameter [second] or [target]");
 			return badRequest(result);
-		} else if(!targetNode.getTextValue().equals("response") && 
-				!targetNode.getTextValue().equals("entryReturn")) {
+		} else if(!targetNode.getTextValue().equals("response")  
+				&& !targetNode.getTextValue().equals("entryReturn")
+				&& !targetNode.getTextValue().equals("operationReturn") 
+				&& !targetNode.getTextValue().equals("sqlReturn")) {
 			result.put("status", "KO");
-			result.put("message", "Possible targets : response, entryReturn");
+			result.put("message", "Possible targets : response, entryReturn, operationReturn, sqlReturn");
 			return badRequest(result);
 
 		} else {
-			long secondInUnix = secondNode.getLongValue();
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 			String target = targetNode.getTextValue();
 
 			result.put("status", "OK");
@@ -269,8 +373,9 @@ public class Statistics extends Controller {
 
 	private static int getCount(long secondInMillis, String target) {
 
-		OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
+		//OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
 		//OGraphDatabase oGraph = OGraphDatabasePool.global().acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
+		OGraphDatabase oGraph = Global.openDatabase();
 		oGraph.setLockMode(OGraphDatabase.LOCK_MODE.NO_LOCKING);
 
 		int count = 0;
@@ -289,7 +394,8 @@ public class Statistics extends Controller {
 	}
 
 	private static void getResponseTimes(long secondInMillis, String target, String responseTimeTag, ArrayNode responseTimeArray) {
-		OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
+		//OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
+		OGraphDatabase oGraph = Global.openDatabase();
 		oGraph.setLockMode(OGraphDatabase.LOCK_MODE.NO_LOCKING);
 
 		try {
@@ -311,7 +417,8 @@ public class Statistics extends Controller {
 	}
 
 	private static void getElapsedTimeStatistics(long secondInMillis, String target, ObjectNode objectNode) {
-		OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3/frestodb", "admin", "admin");
+		//OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3/frestodb", "admin", "admin");
+		OGraphDatabase oGraph = Global.openDatabase();
 		oGraph.setLockMode(OGraphDatabase.LOCK_MODE.NO_LOCKING);
 		
 		try {
