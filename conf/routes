@@ -4,12 +4,12 @@
 
 # Home page
 GET     /			controllers.Application.index()
-GET     /whatIsMyIPAddress	controllers.Application.whatIsMyIPAddress()
-#GET	/feedUIEvent		    controllers.Application.feedUIEvent()
-POST	/feedUIEvent		controllers.Application.feedUIEvent()
+#GET     /whatIsMyIPAddress	controllers.Application.whatIsMyIPAddress()
+#POST	/feedUIEvent		controllers.Application.feedUIEvent()
 # Exploration of server push 
 GET	/r0Stream		controllers.SSE.r0Stream()
 # Web Browser side : Hit Count = Arrival Rate, Throughput = Departure Rate
+POST	/uniqueClientCount	controllers.Statistics.getUniqueClientCount()
 POST	/clientHitCount		controllers.Statistics.clientHitCount()
 POST	/clientThroughput	controllers.Statistics.clientThroughput()
 # Application Server side

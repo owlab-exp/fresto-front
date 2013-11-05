@@ -46,6 +46,33 @@ public class Statistics extends Controller {
 	//final static ActorRef r0Actor = R0Actor.instance;
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result getUniqueClientCount() {
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		JsonNode secondNode = json.findPath("second");
+
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+
+			int count = getUniqueCount(secondInUnix, "request", "clientIp");
+			dataObject.put("u0", count);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientHitCount() {
 		ObjectNode result = Json.newObject();
 		
@@ -395,6 +422,28 @@ public class Statistics extends Controller {
 	
 			OSQLSynchQuery<ODocument> oQuery = new OSQLSynchQuery<ODocument>();
 			oQuery.setText("SELECT expand(second[" + secondInMillis + "]." + target + ") FROM TSRoot where minute = " + minute);
+			List<ODocument> result = oGraph.query(oQuery);
+			count = result.size();
+		} finally {
+			oGraph.close();
+		}
+
+		return count;
+	}
+
+	private static int getUniqueCount(long secondInMillis, String target, String fieldOfTarget) {
+
+		//OGraphDatabase oGraph = oGraphPool.acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
+		//OGraphDatabase oGraph = OGraphDatabasePool.global().acquire("remote:fresto3.owlab.com/frestodb", "admin", "admin");
+		OGraphDatabase oGraph = Global.openDatabase();
+		oGraph.setLockMode(OGraphDatabase.LOCK_MODE.NO_LOCKING);
+
+		int count = 0;
+		try {
+			long minute = (secondInMillis/60000) * 60000;
+	
+			OSQLSynchQuery<ODocument> oQuery = new OSQLSynchQuery<ODocument>();
+			oQuery.setText("SELECT distinct("+ fieldOfTarget + ") FROM (SELECT expand(second[" + secondInMillis + "]." + target + ") FROM TSRoot where minute = " + minute + ")");
 			List<ODocument> result = oGraph.query(oQuery);
 			count = result.size();
 		} finally {
