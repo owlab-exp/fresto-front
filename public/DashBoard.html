@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="javascripts/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="javascripts/d3.v3.min.js"></script>
+        <script type="text/javascript" src="javascripts/APMJsUtil.js"></script>
+        <style>
+        <!-- 전체 레이아웃 테이블 -->
+        table {
+            
+        }
+        .layoutTable {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+        
+        td, th {
+            border: 1px solid #e0e0e0;            
+        }
+        
+        <!-- iframe Container-->
+        .chartContainer1 {
+            position: relative;
+        }
+        .chartContainer1 iframe {
+            position: relative;
+            border: 5px;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+        .chartContainer2 iframe {
+            position: relative;
+            border: 5px;
+            top: 0;
+            left: 0;
+        }
+        .chartContainer3 iframe {
+            position: relative;
+            border: 5px;
+            top: 0;
+            left: 0;
+        }
+        </style>        
+        <title> Fresto DashBoard </title>
+    <head>
+    <body>
+        <table class='layoutTable'>
+            <tr>
+                <th width=10%> </th>
+                <th width=30%>Browser</th>
+                <th width=30%>Server</th>
+                <th width=30%>SQL</th>
+            </tr>
+            <tr>
+                <th>Hit<br>Counts</th>
+                <td><div id="hcBrowser" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?clientHitCount" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="hcServer" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?httpHitCount" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="hcSQL" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?sqlHitCount" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+            </tr>
+            <tr>
+                <th>Throughput</th>
+                <td><div id="tpBrowser" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?clientThroughput" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="tpServer" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?httpThroughput" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="tpSQL" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?sqlThroughput" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+            </tr>
+            <tr>
+                <th>Response<br>Time</th>
+                <td><div id="rtBrowser" class="chartContainer1"><iframe src="./MultiLineChart-embedded.html?response" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="rtServer" class="chartContainer1"><iframe src="./MultiLineChart-embedded.html?entryReturn" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="rtSQL" class="chartContainer1"><iframe src="./MultiLineChart-embedded.html?sqlReturn" width=400><p>Your browser does not support iframes.</p></iframe></div></td>
+            </tr>
+            <tr>
+                <th>UniqueIP</th>
+                <td colspan="3"><div id="ipUnique" class="chartContainer2"><iframe src="./UniqueIP-Count-embedded.html" width=1500><p>Your browser does not support iframes.</p></iframe></div></td>
+            </tr>
+            <tr>
+                <th>All Requests</th>
+                <td colspan="3" height="100%"><div id="allRequests" class="chartContainer3"><iframe src="./PointChart-ClientResponsesTimes-embedded.html" width=1500 height=300><p>Your browser does not support iframes.</p></iframe></div></td>
+            </tr>
+        </table>
+    </body>    
+</html>
