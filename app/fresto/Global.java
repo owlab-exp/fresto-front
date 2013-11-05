@@ -9,7 +9,7 @@ import com.orientechnologies.orient.core.db.graph.OGraphDatabase;
 
 public class Global extends GlobalSettings {
 
-	private String pubHost = "localhost";
+	private String pubHost = "fresto1";
 	private int pubPort = 7000;
 	private static ZMQ.Context context;
 	private static ZMQ.Socket publisher;
@@ -25,7 +25,7 @@ public class Global extends GlobalSettings {
 
 			Logger.info("JeroMQ publisher uses " + pubPort + " port.");
 
-			oGraph = new OGraphDatabase("remote:fresto4.owlab.com/frestodb");
+			oGraph = new OGraphDatabase("remote:fresto3.owlab.com/frestodb");
 			oGraph.setProperty("minPool", 3);
 			oGraph.setProperty("maxPool", 10);
 
