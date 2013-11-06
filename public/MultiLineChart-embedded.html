@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang='ko'>
     <head>
 	    <meta charset="UTF-8">
 		<script type="text/javascript" src="javascripts/jquery-2.0.3.min.js"></script>
@@ -8,7 +9,6 @@
         body {
             overflow: hidden;
         }
-        
         svg {
             font: 10px sans-serif;
         }
@@ -40,17 +40,27 @@
     
     <script>
     jQuery(document).ready( function () {
+            
+        /* ToDo */
+        // multi Series - done
+		// Tooltip
+		// y축 보조선
+		// 동적 yRange -done
     
-document.addEventListener("webkitvisibilitychange", handleVisibilityState, false);
+        // useAnimation === true인 경우, 화면이 hidden(다른 탭 활성화 등) 되었다가 복귀 시
+        // 이동되지 못하고 쌓여있던 축의 이동을 보정하는 로직 추가 필요
+        /*
+        document.addEventListener("webkitvisibilitychange", handleVisibilityState, false);
 
-function handleVisibilityState() {
-    if (document.webkitHidden) {
-        console.log("hidden");
-    } else {
-        console.log("activated");
-    }
-}
-    
+        function handleVisibilityState() {
+            if (document.webkitHidden) {
+                console.log("hidden");
+            } else {
+                console.log("activated");
+            }
+        }
+        */
+        
         // svg 사이즈 및 위치
         var width = 350, // 실제 데이타 영역의 폭
             height = 50, // 실제 데이타 영역이 높이
@@ -76,15 +86,8 @@ function handleVisibilityState() {
                            .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
                            
         // Data 관련
-        var yMax = 10;
+        var yMax = 10; // 초기값이며 추후 데이타값에 따라 동적으로 변경됨
         var dataLength = 60; // 차트는 분단위로 작성하므로 60이면 1시간동안의 데이타 표시
-	// TODO How to adjust Y axis scale by actual elapsed time (or response time)
-        //    yMax = 1000;
-            
-        // Data Array
-        //   차트 영역 내에 있는 데이타를 저장하는 배열
-		//   { timeStamp, counts }를 element로 한다
-        var dataArray = [];
 		
         // Data Series
         //   데이타 계열
@@ -138,7 +141,7 @@ function handleVisibilityState() {
                           .attr("class", "axis")
                           .call(yAxis);
                           
-	// TODO The below drawing is too thick when yMax is larger than 10
+        // TODO The below drawing is too thick when yMax is larger than 10
         // y축선상 보조선(수평선)
         //var numOfLine = yMax/0.5; // 좌측 계산값이 보조선의 수
         //rootG.append("g").selectAll(".h")
@@ -174,7 +177,71 @@ function handleVisibilityState() {
         // 주기적 차트 업데이트
         redraw();
         
+		
+		
+///////////////// 이하는 APM Server에서 데이타를 받아오는 부분
+/////////////////   받아온 데이타로 handleNewData(lineName, timeStamp, counts)만 호출하면 차트 생성 됨
+/////////////////     lineName : Servlet/JSP Name - String
+/////////////////     timeStamp  : End Time - Unix Time Milliseconds
+/////////////////     counts   : Hit Counts - Number
 
+        // ajax로 데이타 가져와서 renderWithNewData 호출
+        //   multiLine의 경우 apiURL은 고정이므로
+        //   queryString을 ajax 요청 시 target 값으로 전달
+        //   Request JSON : {"second": 1382415328000, "target":"<선택>"}, 
+        //                    target은 "response" (to get client side response time statistics)
+        //                             "entryReturn" (to get server side response time statistics), 
+        //                             "opeationReturn" (for all operations), 
+        //                             "sqlReturn" (for all SQL executions)
+        //   Response JSON : {"status":"OK",
+        //                    "data":{"second":1382415328000,
+        //                            "target":"entryReturn",
+        //                            "statistics":{"cnt":0,"avg":0,"min":0,"max":0}
+        //                           }
+        //                   } OR {"status":"KO", "message":"<reason>"}
+        var getDataFromServer = function () {
+            var target = window.location.search.substring(1),
+                dataSourceURL = "/elapsedTimeStats",
+                timeStamp000 = Math.floor((new Date().getTime())/1000)*1000;
+                timeStamp000 = timeStamp000 - 1000;
+            var renderWithNewData = function (data) {
+
+                // data를 이용하여 handleData의 파라미터를 구성하고 handleData호출
+                $(data).each( function ( index, item ) {
+                    
+                    if ( item.status === "OK" ) {
+                        
+                        var statsSet = item.data.statistics;
+                        for ( var stats in statsSet ) {
+                            if ( stats !== "cnt" ) {
+                                handleNewData(stats, item.data.second, statsSet[stats]);
+                            }
+                        }
+                        
+                    } else if ( item.status === "KO") {
+                        // 일단 0으로 차트 그려지게 처리
+                        handleNewData(target, timeStamp000, 0);
+                    }
+                });
+            };
+
+            var handleError =  function (data) {
+                alert("Data Receiving Error : " + target);
+            };
+            
+            $.ajax({
+                type: "POST",
+                url: dataSourceURL,
+                contentType: "application/json",
+                data: JSON.stringify({"second": timeStamp000, "target": target }),
+                success: renderWithNewData,
+                error: handleError
+            });
+            
+            setTimeout(getDataFromServer, updateInterval);
+        };
+        getDataFromServer();        
+        
 		// 주기적으로 차트 렌더링 반복
         function redraw() {
             
@@ -186,17 +253,22 @@ function handleVisibilityState() {
             var now = new Date().getTime();
             xScale.domain([now - timeRange, now]);
             // y 축 정의역 동적 변경
-            // yScale.domain([0, dataArray[n].y의 최대값]);
+            //   데이타 계열이 하나인 경우이며, 멀티계열의 경우 수정 필요
+            if ( dataSeries.length ) {
+                yMax = dataSeries[0].dataArray[dataSeries[0].dataArray.length-1]+10;
+            }
+            yScale.domain([0, yMax]);
             
             
             // tab blur 로 redraw()가 호출되지 않다가 tab focus로 redraw()가 호출되어 데이타 개수가 바뀌는 문제 보정
             restoreDataLength(now);
 
-            // 각 데이타 계열의 마지막에 y=0을 입력하여 라인을 y=0으로 초기화            
 			var i = dataSeries.length;
-			while (i--) {                
-				dataSeries[i].dataArray.push({ x: now, y: 0 });
-				dataSeries[i].dataArray.shift();
+			while (i--) {
+//console.log(dataSeries[i].dataArray.length);
+				//dataSeries[i].dataArray.shift();
+                // 데이타 수신 후 차트 y 값을 0으로 해야할 경우에만 사용
+                //dataSeries[i].dataArray.push({ x: now, y: 0 });
 			}
 			
 			// 각 데이타 계열 라인 갱신을 위한 변수
@@ -307,7 +379,7 @@ function handleVisibilityState() {
                     dataArray: makeInitialDataArray(dataLength, counts)
                 };
                 dataSeries.push(newDataSeries);
-                
+
                 newPath = clipperG.append("path")
                                   .datum(newDataSeries.dataArray) // .data([dataArray])로 해도 됨
                                   .attr("class", "lineX")
@@ -342,53 +414,9 @@ function handleVisibilityState() {
 			handleNewData(lineName, new Date().getTime(), Math.random()*yMax);
         }
         
-		// multi Series - done
-		// Tooltip
-		// y축 보조선
-		// 동적 yRange
-		
-///////////////// 이하는 APM Server에서 데이타를 받아오는 부분
-/////////////////   받아온 데이타로 handleNewData(lineName, timeStamp, counts)만 호출하면 차트 생성 됨
-/////////////////     lineName : Servlet/JSP Name - String
-/////////////////     timeStamp  : End Time - Unix Time Milliseconds
-/////////////////     counts   : Hit Counts - Number
-
-        
-
-		
-
-        // ajax로 데이타 가져와서 renderWithNewData 호출
-        //   로컬에서 html을 실행하면 SOP에 걸려 에러 발생
-        var getDataFromServer = function () {
-            var dataSourceURL = 'http://fresto1.owlab.com:9999/httpHitCount',
-                timeStamp000 = Math.floor((new Date().getTime())/1000)*1000;
-console.log(timeStamp000);
-            var renderWithNewData = function (data) {
-console.log("data from FrestoSvr : " + data);
-                // data를 이용하여 handleData의 파라미터를 구성하고 handleData호출
-                $(data).each( function ( index, item ) {
-                    if ( item.status === "OK" ) {
-                        handleNewData("HttpHitCount", item.data.second, item.data.hi);
-                    } else if ( item.status === "KO") {
-                        // 일단 0으로 차트 그려지게 처리
-                        handleNewData("HttpHitCount", timeStamp000, 0);
-                    }
-                });
-            };        
-            
-            $.ajax({
-                url : dataSourceURL,
-                contentType : "application/json",
-                data : JSON.stringify({ "second": timeStamp000 }),
-                success : renderWithNewData,
-            });
-            
-            setTimeout(getDataFromServer, updateInterval);
-        };
-//        getDataFromServer();
 		
 /*
-        // To receive data from server
+        // 서버의 Server Sent Events를 통해 데이타를 수동적으로 받아오는 방식
         if(typeof(EventSource) == "undefined") {
             alert("EventSource is not supported on your browser!");
             return false; 
@@ -411,15 +439,19 @@ console.log("data from FrestoSvr : " + data);
             }, false);
         }
 //*/
+        // ToDo ToolTip
+        /*
         svgLine.on("click", function() {
             console.log("x : " + drag.origin().x);
         });
+        */
     });
 	</script>
+    <!-- Test Invokers
 	<div id='actionArea'>
-        <!--<button id='btnAdd1Vertex' type='button'>Add a Vertex</button>-->
 		<button id='btnAdd1DataSeries' type='button'>Add a Data Series</button>
         <br />
-    </div>  
+    </div>
+    -->
 	</body>
 </html>
