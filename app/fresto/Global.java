@@ -5,7 +5,11 @@ import play.*;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMQ.Context;
 import org.zeromq.ZMQ.Socket;
-import com.orientechnologies.orient.core.db.graph.OGraphDatabase;
+
+import org.apache.commons.configuration.BaseConfiguration;
+import org.apache.commons.configuration.Configuration;
+import com.thinkaurelius.titan.core.TitanFactory;
+import com.thinkaurelius.titan.core.TitanGraph;
 
 public class Global extends GlobalSettings {
 
@@ -13,7 +17,7 @@ public class Global extends GlobalSettings {
 	private int pubPort = 7000;
 	private static ZMQ.Context context;
 	private static ZMQ.Socket publisher;
-	private static OGraphDatabase oGraph;
+	private static TitanGraph g;
 
 	@Override
 		public void onStart(Application app) {
@@ -25,11 +29,6 @@ public class Global extends GlobalSettings {
 
 			Logger.info("JeroMQ publisher uses " + pubPort + " port.");
 
-			oGraph = new OGraphDatabase("remote:fresto3.owlab.com/frestodb");
-			oGraph.setProperty("minPool", 3);
-			oGraph.setProperty("maxPool", 10);
-
-			Logger.info("Application has started");
 		}
 
 	@Override
@@ -39,7 +38,9 @@ public class Global extends GlobalSettings {
 			publisher.close();
 			context.term();
 
-			oGraph.close();
+			if(g.isOpen()) {
+				g.shutdown();
+			}
 		}
 
 	public static ZMQ.Socket getPublisher(){
@@ -54,7 +55,19 @@ public class Global extends GlobalSettings {
 
 	}
 
-	public static OGraphDatabase openDatabase() {
-		return oGraph.open("admin", "admin");
+	public static TitanGraph openGraph() { 
+		Configuration conf = new BaseConfiguration(); 
+		conf.setProperty("storage.backend", "cassandra"); 
+		conf.setProperty("storage.hostname", "fresto2.owlab.com"); 
+		conf.setProperty("storage.connection-pool-size", 64); 
+		g = TitanFactory.open(conf); 
+		return g;
+	}
+
+	public static TitanGraph getGraph() {
+		if(g == null || !g.isOpen()) {
+			openGraph();
+		}
+		return g;
 	}
 }

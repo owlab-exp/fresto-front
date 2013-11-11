@@ -14,8 +14,10 @@ object ApplicationBuild extends Build {
     javaEbean
   )
 
+
   val main = play.Project(appName, appVersion, appDependencies).settings(
     // Add your own project settings here      
+    //javaOptions += Seq("-Xms512M", "-Xmx2048M", "-XX:MaxPermSize=512M")
   )
 
 }
