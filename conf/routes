@@ -10,23 +10,53 @@ GET     /			controllers.Application.index()
 GET	/r0Stream		controllers.SSE.r0Stream()
 # Web Browser side : Hit Count = Arrival Rate, Throughput = Departure Rate
 POST	/uniqueClientCount	controllers.Statistics.getUniqueClientCount()
+POST	/uniqueClientCountForSeconds 	controllers.Statistics.getUniqueClientCountForSeconds()
 POST	/clientHitCount		controllers.Statistics.clientHitCount()
+POST	/clientHitCountForSeconds		controllers.Statistics.clientHitCountForSeconds()
 POST	/clientThroughput	controllers.Statistics.clientThroughput()
+POST	/clientThroughputForSeconds	controllers.Statistics.clientThroughputForSeconds()
 # Application Server side
 POST	/httpHitCount		controllers.Statistics.httpHitCount()
+POST	/httpHitCountForSeconds		controllers.Statistics.httpHitCountForSeconds()
 POST	/httpThroughput		controllers.Statistics.httpThroughput()
+POST	/httpThroughputForSeconds		controllers.Statistics.httpThroughputForSeconds()
 # Database side (Application Perspectives)
 POST	/sqlHitCount		controllers.Statistics.sqlHitCount()
+POST	/sqlHitCountForSeconds		controllers.Statistics.sqlHitCountForSeconds()
 POST	/sqlThroughput		controllers.Statistics.sqlThroughput()
+POST	/sqlThroughputForSeconds		controllers.Statistics.sqlThroughputForSeconds()
 # Elapsed Time (or Response Time) Average/Min/Max of each tier
 POST	/elapsedTimeStats controllers.Statistics.getElapsedTimeStatistics()
+POST	/elapsedTimeStatsForSeconds controllers.Statistics.getElapsedTimeStatisticsForSeconds()
 # Response Time (or Elapsed Time) distributions - individual responses/returns
 POST	/clientResponseTimes	controllers.Statistics.clientResponseTimes()
+POST	/clientResponseTimesForSeconds	controllers.Statistics.clientResponseTimesForSeconds()
 POST	/httpResponseTimes	controllers.Statistics.httpResponseTimes()
+POST	/httpResponseTimesForSeconds	controllers.Statistics.httpResponseTimesForSeconds()
 POST	/sqlResponseTimes	controllers.Statistics.sqlResponseTimes()
-
+POST	/sqlResponseTimesForSeconds	controllers.Statistics.sqlResponseTimesForSeconds()
+# Detail of response time by significant places
+POST	/getResponseTimeDetail	controllers.Statistics.getResponseTimeDetail()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file		controllers.Assets.at(path="/public", file)
+
+## JSONP Services
+# Web Browser side : Hit Count = Arrival Rate, Throughput = Departure Rate
+POST	/uniqueClientCountP	controllers.StatisticsP.getUniqueClientCount(callback: String)
+POST	/clientHitCountP	controllers.StatisticsP.clientHitCount(callback: String)
+POST	/clientThroughputP	controllers.StatisticsP.clientThroughput(callback: String)
+# Application Server side
+POST	/httpHitCountP		controllers.StatisticsP.httpHitCount(callback: String)
+POST	/httpThroughputP	controllers.StatisticsP.httpThroughput(callback: String)
+# Database side (Application Perspectives)
+POST	/sqlHitCountP		controllers.StatisticsP.sqlHitCount(callback: String)
+POST	/sqlThroughputP		controllers.StatisticsP.sqlThroughput(callback: String)
+# Elapsed Time (or Response Time) Average/Min/Max of each tier
+GET	/elapsedTimeStatsP 	controllers.StatisticsP.getElapsedTimeStatistics(callback: String)
+# Response Time (or Elapsed Time) distributions - individual responses/returns
+POST	/clientResponseTimesP	controllers.StatisticsP.clientResponseTimes(callback: String)
+POST	/httpResponseTimesP	controllers.StatisticsP.httpResponseTimes(callback: String)
+POST	/sqlResponseTimesP	controllers.StatisticsP.sqlResponseTimes(callback: String)
 
 # For date streaming test
 #GET	/clock			controllers.ClockTutorial.liveClock()

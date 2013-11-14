@@ -8,24 +8,102 @@
 		<style>
         body {
             overflow: hidden;
+<<<<<<< HEAD
         }
+=======
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: 3px;
+            margin-right: 0px;
+            background-color: #3B3B3B;
+        }
+        
+>>>>>>> develop
         svg {
             font: 10px sans-serif;
         }
         
+<<<<<<< HEAD
         .axis path {
             fill: none;
             stroke: #335577;         
+=======
+        text {
+            fill: white;
+        }
+        
+        .axis path {
+            fill: none;
+            stroke: #ffffff;         
+>>>>>>> develop
         }
         
         .axis line {
             fill: none;
+<<<<<<< HEAD
             stroke: #3355ff;            
         }
         
         .lineX {
             fill: none;
             stroke-width: 2;
+=======
+            stroke: #ffffff;            
+        }               
+        
+        .response-avg {
+            fill: none;
+            stroke-width: 1;
+            stroke: #F6FFBD;
+        }
+        
+        .response-min {
+            fill: none;
+            stroke-width: 1;
+            stroke: #BDF7FF;
+        }
+        
+        .response-max {
+            fill: none;
+            stroke-width: 1;
+            stroke: #FFBDBD;
+        }
+        
+        .entryReturn-avg {
+            fill: none;
+            stroke-width: 1;
+            stroke: #F6FFBD;
+        }
+        
+        .entryReturn-min {
+            fill: none;
+            stroke-width: 1;
+            stroke: #BDF7FF;
+        }
+        
+        .entryReturn-max {
+            fill: none;
+            stroke-width: 1;
+            stroke: #FFBDBD;
+        }
+        
+        .sqlReturn-avg {
+            fill: none;
+            stroke-width: 1;
+            stroke: #F6FFBD;
+        }
+        
+        .sqlReturn-min {
+            fill: none;
+            stroke-width: 1;
+            stroke: #BDF7FF;
+        }
+        
+        .sqlReturn-max {
+            fill: none;
+            stroke-width: 1;
+            stroke: #FFBDBD;
+>>>>>>> develop
         }
         
         .h, .v {
@@ -62,12 +140,21 @@
         */
         
         // svg 사이즈 및 위치
+<<<<<<< HEAD
         var width = 350, // 실제 데이타 영역의 폭
             height = 50, // 실제 데이타 영역이 높이
             margin = { // 제목, X축, Y축 emd 비 데이타 영역을 위한 공간
                 top : 30,
                 bottom : 20,
                 left : 20,
+=======
+        var width = 300, // 실제 데이타 영역의 폭
+            height = 100, // 실제 데이타 영역이 높이
+            margin = { // 제목, X축, Y축 emd 비 데이타 영역을 위한 공간
+                top : 5,
+                bottom : 18,
+                left : 35,
+>>>>>>> develop
                 right : 20
             };              
         
@@ -87,7 +174,12 @@
                            
         // Data 관련
         var yMax = 10; // 초기값이며 추후 데이타값에 따라 동적으로 변경됨
+<<<<<<< HEAD
         var dataLength = 60; // 차트는 분단위로 작성하므로 60이면 1시간동안의 데이타 표시
+=======
+        var yMargin = 10; // 차트의 y 영역을 yMax보다 yMargin 만큼의 여유를 둔다.
+        var dataLength = 100; // 차트 영역에 표현되는 x좌표의 갯수
+>>>>>>> develop
 		
         // Data Series
         //   데이타 계열
@@ -174,8 +266,13 @@
         // line의 물리적 DOM인 <path>를 저장하는 배열
 		var hitCountPathArray = [];
         
+<<<<<<< HEAD
         // 주기적 차트 업데이트
         redraw();
+=======
+        // 서버에 데이타 조회 시 조회시간에 처리 중일 수 있는 수치가 안나올 수 있으므로 시간차를 둔다
+        var queryLatency = 4000;
+>>>>>>> develop
         
 		
 		
@@ -188,13 +285,21 @@
         // ajax로 데이타 가져와서 renderWithNewData 호출
         //   multiLine의 경우 apiURL은 고정이므로
         //   queryString을 ajax 요청 시 target 값으로 전달
+<<<<<<< HEAD
         //   Request JSON : {"second": 1382415328000, "target":"<선택>"}, 
+=======
+        //   Request JSON : {"second": 1382415328000, "duration": (timeRange/60/1000-1), "target":"<선택>"}, 
+>>>>>>> develop
         //                    target은 "response" (to get client side response time statistics)
         //                             "entryReturn" (to get server side response time statistics), 
         //                             "opeationReturn" (for all operations), 
         //                             "sqlReturn" (for all SQL executions)
         //   Response JSON : {"status":"OK",
         //                    "data":{"second":1382415328000,
+<<<<<<< HEAD
+=======
+        //                            "duration":4,
+>>>>>>> develop
         //                            "target":"entryReturn",
         //                            "statistics":{"cnt":0,"avg":0,"min":0,"max":0}
         //                           }
@@ -203,7 +308,11 @@
             var target = window.location.search.substring(1),
                 dataSourceURL = "/elapsedTimeStats",
                 timeStamp000 = Math.floor((new Date().getTime())/1000)*1000;
+<<<<<<< HEAD
                 timeStamp000 = timeStamp000 - 1000;
+=======
+                timeStamp000 = timeStamp000 - queryLatency;
+>>>>>>> develop
             var renderWithNewData = function (data) {
 
                 // data를 이용하여 handleData의 파라미터를 구성하고 handleData호출
@@ -214,26 +323,43 @@
                         var statsSet = item.data.statistics;
                         for ( var stats in statsSet ) {
                             if ( stats !== "cnt" ) {
+<<<<<<< HEAD
                                 handleNewData(stats, item.data.second, statsSet[stats]);
+=======
+console.log("[INFO]  " + target+"-"+stats + " : " + item.data.second + ", " + statsSet[stats]);
+                                handleNewData(target+"-"+stats, item.data.second, statsSet[stats]);
+>>>>>>> develop
                             }
                         }
                         
                     } else if ( item.status === "KO") {
                         // 일단 0으로 차트 그려지게 처리
+<<<<<<< HEAD
                         handleNewData(target, timeStamp000, 0);
+=======
+                        handleNewData(target+"-"+stats, timeStamp000, 0);
+>>>>>>> develop
                     }
                 });
             };
 
             var handleError =  function (data) {
+<<<<<<< HEAD
                 alert("Data Receiving Error : " + target);
+=======
+                console.log("Data Receiving Error : " + target);
+>>>>>>> develop
             };
             
             $.ajax({
                 type: "POST",
                 url: dataSourceURL,
                 contentType: "application/json",
+<<<<<<< HEAD
                 data: JSON.stringify({"second": timeStamp000, "target": target }),
+=======
+                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1), "target": target }),
+>>>>>>> develop
                 success: renderWithNewData,
                 error: handleError
             });
@@ -241,6 +367,12 @@
             setTimeout(getDataFromServer, updateInterval);
         };
         getDataFromServer();        
+<<<<<<< HEAD
+=======
+
+        // 주기적 차트 업데이트
+        redraw();
+>>>>>>> develop
         
 		// 주기적으로 차트 렌더링 반복
         function redraw() {
@@ -252,6 +384,7 @@
             // 축 정의역 업데이트
             var now = new Date().getTime();
             xScale.domain([now - timeRange, now]);
+<<<<<<< HEAD
             // y 축 정의역 동적 변경
             //   데이타 계열이 하나인 경우이며, 멀티계열의 경우 수정 필요
             if ( dataSeries.length ) {
@@ -270,11 +403,50 @@
                 // 데이타 수신 후 차트 y 값을 0으로 해야할 경우에만 사용
                 //dataSeries[i].dataArray.push({ x: now, y: 0 });
 			}
+=======
+
+            // y 축 정의역 동적 변경
+            var lastYValue;
+            var len = dataSeries.length;
+            while ( len-- ) {
+                lastYValue = dataSeries[len].dataArray[dataSeries[len].dataArray.length-1].y;
+                yMax = (yMax > lastYValue) ? yMax : lastYValue;
+            }
+            yScale.domain([0, yMax+yMargin]);
+            
+            
+            // tab blur 로 redraw()가 호출되지 않다가 tab focus로 redraw()가 호출되어 데이타 개수가 바뀌는 문제 보정
+//            restoreDataLength(now);
+
+//			var i = dataSeries.length;
+//			while (i--) {			
+
+//				dataSeries[i].dataArray.shift();
+/*
+console.log("in redraw() dataArray---------------------start");
+var arrVal = "[";
+var dataArr = dataSeries[i].dataArray;
+var arrLen = dataArr.length;
+while (arrLen--) {
+    arrVal += "{"+dataArr[arrLen].x +", "+ dataArr[arrLen].y+"}, ";
+}
+arrVal += "]";
+console.log(arrVal);
+console.log("in redraw() dataArray---------------------end");
+*/
+                // 데이타 수신 후 차트 y 값을 0으로 해야할 경우에만 사용
+                //dataSeries[i].dataArray.push({ x: now, y: 0 });
+//			}
+>>>>>>> develop
 			
 			// 각 데이타 계열 라인 갱신을 위한 변수
 			var j = hitCountPathArray.length,
 				hitCountPath;
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> develop
 			if ( useAnimation ) {
 				// 각 데이타 계열 라인 갱신
 				while(j--) {
@@ -299,13 +471,22 @@
 			} else {
 				// 각 데이타 계열 라인 갱신
 				while(j--) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 					hitCountPath = hitCountPathArray[j];
 					hitCountPath.attr("d", hitCountLine)
 								.attr("transform", "translate("+(-xScale(now-timeRange+durationTime))+")");
 				}
 				
 				// 축 다시 그리기
+<<<<<<< HEAD
 				xAxis(gXAxis);				
+=======
+				xAxis(gXAxis);
+				yAxis(gYAxis);
+>>>>>>> develop
 				
 				setTimeout(redraw, updateInterval);
 			}
@@ -315,6 +496,7 @@
         //   y값을
         //   dataLength-1만큼을 0으로 채우고
         //   마지막에 value로 채운다
+<<<<<<< HEAD
         function makeInitialDataArray(dataLength, value) {
             
             var tmpDataLength = dataLength-1,
@@ -327,6 +509,19 @@
             }
             dataArray.push({ x: now - durationTime, y: 0});
             dataArray.push({ x: now, y: value});
+=======
+        function makeInitialDataArray(dataLength, baseTime, value) {
+            
+            var tmpDataLength = dataLength-1,
+			    dataArray = [];
+            
+            while ( tmpDataLength-- ) {
+                // tmpDataLength+3로 해야 x=0 근처의 라인이 나온다
+                dataArray.push({ x: baseTime - (tmpDataLength+3)*durationTime, y: 0});                
+            }
+            dataArray.push({ x: baseTime - durationTime, y: 0});
+            dataArray.push({ x: baseTime, y: value});
+>>>>>>> develop
 			return dataArray;
         }
 		
@@ -367,6 +562,22 @@
 			
 				if ( lineName === dataSeries[tmpDataSeriesLength].lineName ) { 
                     dataSeries[tmpDataSeriesLength].dataArray.push({x: timeStamp, y: counts});
+<<<<<<< HEAD
+=======
+//console.log("[lineName : " + lineName + ", dataLength : " + dataSeries[tmpDataSeriesLength].dataArray.length + ", x : " + timeStamp + ", y : " + counts);
+/*
+console.log("in handleNewData() dataArray---------------------start");
+var arrVal = "[";
+var dataArr = dataSeries[tmpDataSeriesLength].dataArray;
+var arrLen = dataArr.length;
+while (arrLen--) {
+    arrVal += "{"+dataArr[arrLen].x +", "+ dataArr[arrLen].y+"}, ";
+}
+arrVal += "]";
+console.log(arrVal);
+console.log("in handleNewData() dataArray---------------------end");
+*/
+>>>>>>> develop
                     isNewSeries = false;
 				}
 			}
@@ -376,6 +587,7 @@
                 var newDataSeries = {
                     lineName: lineName,
                     lineColor: randomColorString(),
+<<<<<<< HEAD
                     dataArray: makeInitialDataArray(dataLength, counts)
                 };
                 dataSeries.push(newDataSeries);
@@ -390,6 +602,33 @@
             }
 		}      
 		
+=======
+                    dataArray: makeInitialDataArray(dataLength, timeStamp, counts)
+                };
+                dataSeries.push(newDataSeries);
+/*
+console.log("in handleNewData() dataArray NEW---------------------start");
+var arrVal = "[";
+var dataArr = dataSeries[0].dataArray;
+var arrLen = dataArr.length;
+while (arrLen--) {
+    arrVal += "{"+dataArr[arrLen].x +", "+ dataArr[arrLen].y+"}, ";
+}
+arrVal += "]";
+console.log(arrVal);
+console.log("in handleNewData() dataArray NEW---------------------end");
+*/
+                newPath = clipperG.append("path")
+                                  .datum(newDataSeries.dataArray) // .data([dataArray])로 해도 됨
+                                  .attr("class", newDataSeries.lineName)                                  
+                                  .attr("id", newDataSeries.lineName);
+                hitCountPathArray.push(newPath);
+            }
+		}
+		
+
+/*
+>>>>>>> develop
 		// Test Invoker
         //   새 데이타 계열 추가        
 		$("#btnAdd1DataSeries").click( addNewSeries );
@@ -413,7 +652,11 @@
             var lineName = event.currentTarget.id;            
 			handleNewData(lineName, new Date().getTime(), Math.random()*yMax);
         }
+<<<<<<< HEAD
         
+=======
+*/      
+>>>>>>> develop
 		
 /*
         // 서버의 Server Sent Events를 통해 데이타를 수동적으로 받아오는 방식
@@ -447,7 +690,11 @@
         */
     });
 	</script>
+<<<<<<< HEAD
     <!-- Test Invokers
+=======
+    <!--
+>>>>>>> develop
 	<div id='actionArea'>
 		<button id='btnAdd1DataSeries' type='button'>Add a Data Series</button>
         <br />
