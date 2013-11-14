@@ -7,6 +7,15 @@
         <script type="text/javascript" src="javascripts/APMJsUtil.js"></script>
         <style>
         <!-- 전체 레이아웃 테이블 -->
+        body {
+            background-color: #3B3B3B;
+            margin: 0px;
+        }
+        
+        table {
+            background-color: #3B3B3B;
+        }
+        
         .layoutTable {
             width: 100%;
             height: 100%;
@@ -14,8 +23,9 @@
         }
         
         td, th {
-            border: 1px solid #e0e0e0;
+            border: 1px solid #d3d3d3;
             padding: 2px;
+            color: #ffffff;
         }
         
         <!-- iframe Container-->
@@ -27,18 +37,21 @@
             border: 5px;
             top: 0;
             left: 0;
+            width: 100%;
         }
         .chartContainer2 iframe {
             position: relative;
             border: 5px;
             top: 0;
             left: 0;
+            width: 100%;
         }
         .chartContainer3 iframe {
             position: relative;
             border: 5px;
             top: 0;
             left: 0;
+            width: 100%;
         }
         </style>        
         <title> Fresto DashBoard </title>
@@ -52,30 +65,30 @@
                 <th width=30%>SQL</th>
             </tr>
             <tr>
-                <th>Hit<br>Counts</th>
-                <td><div id="hcBrowser" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?clientHitCount"><p>Your browser does not support iframes.</p></iframe></div></td>
-                <td><div id="hcServer" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?httpHitCount"><p>Your browser does not support iframes.</p></iframe></div></td>
-                <td><div id="hcSQL" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?sqlHitCount"><p>Your browser does not support iframes.</p></iframe></div></td>
+                <th>Hit<br>Counts<br>(counts/sec)</th>
+                <td><div id="hcBrowser" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?clientHitCountForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="hcServer" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?httpHitCountForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="hcSQL" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?sqlHitCountForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
             </tr>
             <tr>
-                <th>Throughput</th>
-                <td><div id="tpBrowser" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?clientThroughput"><p>Your browser does not support iframes.</p></iframe></div></td>
-                <td><div id="tpServer" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?httpThroughput"><p>Your browser does not support iframes.</p></iframe></div></td>
-                <td><div id="tpSQL" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?sqlThroughput"><p>Your browser does not support iframes.</p></iframe></div></td>
+                <th>Throughput<br>(tps)</th>
+                <td><div id="tpBrowser" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?clientThroughputForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="tpServer" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?httpThroughputForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
+                <td><div id="tpSQL" class="chartContainer1"><iframe src="./SingleLineChart-embedded.html?sqlThroughputForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
             </tr>
             <tr>
-                <th>Response<br>Time</th>
+                <th>Response<br>Time<br>(mils)</th>
                 <td><div id="rtBrowser" class="chartContainer1"><iframe src="./MultiLineChart-embedded.html?response"><p>Your browser does not support iframes.</p></iframe></div></td>
                 <td><div id="rtServer" class="chartContainer1"><iframe src="./MultiLineChart-embedded.html?entryReturn"><p>Your browser does not support iframes.</p></iframe></div></td>
                 <td><div id="rtSQL" class="chartContainer1"><iframe src="./MultiLineChart-embedded.html?sqlReturn"><p>Your browser does not support iframes.</p></iframe></div></td>
             </tr>
             <tr>
-                <th>UniqueIP</th>
-                <td colspan="3"><div id="ipUnique" class="chartContainer2"><iframe src="./SingleLineChart-embedded.html?uniqueClientCount" width=100%><p>Your browser does not support iframes.</p></iframe></div></td>
+                <th>UniqueIP<br>(counts/sec)</th>
+                <td colspan="3"><div id="ipUnique" class="chartContainer2"><iframe src="./SingleLineChart-embedded.html?uniqueClientCountForSeconds"><p>Your browser does not support iframes.</p></iframe></div></td>
             </tr>
             <tr>
-                <th>All Requests</th>
-                <td colspan="3"><div id="allRequests" class="chartContainer3"><iframe src="./PointChart-ClientResponsesTimes-embedded.html?clientResponseTimes" width=100% height='250'><p>Your browser does not support iframes.</p></iframe></div></td>
+                <th>All Requests<br>(mils)</th>
+                <td colspan="3"><div id="allRequests" class="chartContainer3"><iframe src="./PointChart-ClientResponsesTimes-embedded.html?clientResponseTimesForSeconds" width=100% height='250'><p>Your browser does not support iframes.</p></iframe></div></td>
             </tr>
         </table>
     </body>    

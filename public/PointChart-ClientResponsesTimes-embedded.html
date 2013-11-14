@@ -8,10 +8,18 @@
 		<style>
         body {
             overflow: hidden;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: 3px;
+            margin-right: 0px;
         }
         
         svg {
             font: 10px sans-serif;
+        }
+                
+        text {
+            fill: white;
         }
         
         .point.selected {
@@ -28,12 +36,12 @@
         
         .axis path {
             fill: none;
-            stroke: #335577;         
+            stroke: #ffffff;         
         }
         
         .axis line {
             fill: none;
-            stroke: #3355ff;            
+            stroke: #ffffff;            
         }
         
         .h, .v {
@@ -72,21 +80,40 @@
             font-size: 9pt;
             padding: 3px;
         }
+        
+        div.tooltip {   
+            position: absolute;    
+            height: 40px;                 
+            padding: 2px;             
+            font: 12px sans-serif;
+            color: white;       
+            background: lightorange;   
+            border: 0px;      
+            border-radius: 4px;           
+            pointer-events: none;         
+        }
+        
+        div.tooltip tooltipTable {
+            border-collapse: collapse;
+            border: 1px solid #e0e0e0;
+            padding: 2px;
+        }
+        
         </style>
     </head>
-    <body>  
+    <body>
     <!--
     <div id='actionArea'>
         <button id='btnAdd1Point' type='button'>Add a Point</button>
         <button id='btnAdd100Point' type='button'>Add 100 Points</button>
         <br />
     </div>
-    -->      
+    -->
     <script>
     jQuery(document).ready( function () {
         // svg 사이즈 및 위치
-        var width = 1200,
-            height = 250,
+        var width = 1000,
+            height = 200,
             margin = {
                 top : 5,
                 bottom : 18,
@@ -97,8 +124,8 @@
         // svg DOM 생성
         var svgScatter = d3.select("body")
                            .append("svg")
-                           .attr("width", width)
-                           .attr("height", height);
+                           .attr("width", width + margin.left + margin.right)
+                           .attr("height", height + margin.top + margin.bottom);
 
         // root g 생성
         //   svg는 transform 속성이 없으므로
@@ -111,8 +138,8 @@
         // Data Max
         var xMax = 10, // X축이 시간인 경우 필요 없음
             yMax = 10,
-            yMargin = 10;
-	// TODO How to adjust Y axis scale by actual elapsed time (or response time)
+            yMargin = 10,
+            dataLength = 60; // 차트 영역에 표현되는 x좌표의 갯수
         //    yMax = 1000;
             
         // Data Array
@@ -130,25 +157,25 @@
         
         // Point 사이즈
         //   그려지는 circle의 반지름
-        var radius = 4;
+        var radius = 3;
             
         // 축 사이즈
         //   xHeight > margin.top+알파 이어야 x축이 안 사라진다
         //   yWidth > margin.right+알파 이어야 x축 라벨이 안 잘린다
-        var axisMargin = { xHeight : 80, yWidth : 80 }; 
+        var axisMargin = { xHeight : 20, yWidth : 30 }; 
                            
         // scale 생성을 위한 변수
         var now = new Date(),
-            durationTime = 1000,
-            timeRange = 5 * 60 * 1000;
+            timeRange = 5 * 60 * 1000, // 차트의 시간 범위, # mils초 전
+            durationTime = timeRange/dataLength; // 축 이동의 단위시간, 늘 timeRange/dataLength로 한다            
             
         // scale 생성
         //   domain(정의역)에는 실제 데이터의 값을 쓰고,
         //   range(치역)에는 화면에 그려질 픽셀 값을 쓴다.
         //   차트의 원점이 브라우저의 기본 픽셀 체계 원점인 좌상단이 아닐 경우
         //   range 값의 1번째와 2번째 요소를 뒤봐꿔서 맞춰야 한다.
-        var xScale = d3.time.scale().domain([now - timeRange, now]).range([0, width - axisMargin.yWidth]),      
-            yScale = d3.scale.linear().domain([0, yMax]).range([height - axisMargin.xHeight, 0]);
+        var xScale = d3.time.scale().domain([now - timeRange - durationTime, now - durationTime]).range([0, width]),      
+            yScale = d3.scale.linear().domain([0, yMax]).range([height, 0]);
             
         // x, y 축(d3 object) 생성
         // typeof xAxis||yAxis === "function" 임, 즉, svg.axis()는 함수를 반환한다.
@@ -158,13 +185,12 @@
         // x, y 축 DOM 생성
         var gXAxis = rootG.append("g")
                           .attr("class", "axis")
-                          .attr("transform", "translate(0," + (height-axisMargin.xHeight) + ")")
+                          .attr("transform", "translate(0," + (height) + ")")
                           .call(xAxis),
             gYAxis = rootG.append("g")
                           .attr("class", "axis")
                           .call(yAxis);
                           
-	// TODO The below drawing is too thick when yMax is larger than 10
         // y축선상 보조선(수평선)
         //var numOfLine = yMax/0.5; // 좌측 계산값이 보조선의 수
         //rootG.append("g").selectAll(".h")
@@ -179,7 +205,7 @@
                                .attr("id", "dataClipper")
                                .append("rect")
                                .attr("width", width)
-                               .attr("height", height - axisMargin.xHeight)
+                               .attr("height", height)
                                .attr("fill", "#777777");
                                
         // clipper DOM 생성
@@ -192,6 +218,7 @@
         //   clipper에 append 해야 clipping이 적용된다.
         var circleG = clippingG.append("g");               
         
+/*
         // drag&drop 으로 영역을 그릭고 그 영역 내의 데이타 처리하는 기능을
         // d3에서는 brush를 통해 수행한다
         var d3Brush = d3.svg.brush()
@@ -213,9 +240,12 @@
 		// brush 처리
 		//   mouseUp 시 brush 영역을 완성하고, 해당되는 request를 채색처리
         function brushend() {
-console.log("brushend invoked");
+//console.log("brushend invoked");
             var extent = d3Brush.extent();
-            circleJoin.each(function(d) { d.selected = false; });
+            circleJoin.each(function(d) {
+//console.dir(d);
+                d.selected = false; 
+            });
             search(quadtree, extent[0][0], extent[0][1], extent[1][0], extent[1][1]);
             circleJoin.classed("selected", function(d) { return d.selected; });
         }
@@ -228,17 +258,21 @@ console.log("brushend invoked");
             quadtree.visit(function(node, x1, y1, x2, y2) {
                 var p = node.point;
 //console.log("x1 : " + x1 + ", y1 : " + y1 + ", x2 : " + x2 + ", y2 : " + y2);
-console.dir(p);
+//console.dir(p);
                 if (p) p.selected = (p[0] >= x0) && (p[0] < x3) && (p[1] >= y0) && (p[1] < y3);
                 return x1 >= x3 || y1 >= y3 || x2 < x0 || y2 < y0;
             });
         }
-               
+*/
+
 		// animation 여부
 		var useAnimation = false;
 		
 		// 갱신 주기
 		var updateInterval = 5000;
+        
+        // 서버에 데이타 조회 시 조회시간에 처리 중일 수 있는 수치가 안나올 수 있으므로 시간차를 둔다
+        var queryLatency = 4000;
         
 ///////////////// 이하는 APM Server에서 데이타를 받아오는 부분
 /////////////////   받아온 데이타로 handleNewData(lineName, timeStamp, counts)만 호출하면 차트 생성 됨
@@ -248,11 +282,29 @@ console.dir(p);
 
         // ajax로 데이타 가져와서 renderWithNewData 호출
         //   html?apiURL 형식으로 호출
+        //
+        //   Request JSON : { "second": timeStamp000, 
+        //                    "duration": (timeRange/60/1000-1) 
+        //                  }
+        //   Response JSON :  { "status":"OK",
+        //                      "data":{ "second":1383066899000, 
+        //                               "duration":5,
+        //                               "responseTimes":[ {"rid":"#20",
+        //                                                  "r0":178},
+        //                                                 {"rid":"#20",
+        //                                                  "r0":178}
+        //                               ]
+        //                       }
+        //                    }
+        //                    OR 
+        //                    { "status":"KO",
+        //                      "message":"<reason>"
+        //                    }
         var getDataFromServer = function () {
             var targetAPI = window.location.search.substring(1),
                 dataSourceURL = "/" + targetAPI,
                 timeStamp000 = Math.floor((new Date().getTime())/1000)*1000;
-                timeStamp000 = timeStamp000 - 1000;
+                timeStamp000 = timeStamp000 - queryLatency;
             var renderWithNewData = function (data) {
 
                 var coord = [];
@@ -268,14 +320,14 @@ console.dir(p);
                         for ( var tmp in item.data ) {
                             coord.push(item.data[tmp]);
                         }
-                        len = coord[1].length;
-console.log("requests : " + len);
+                        len = coord[2].length;
+//console.log("requests : " + len);
                         while ( len-- ) {
                             x = coord[0];
-                            y = coord[1][len].r0;   
-console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
-                            addCircleToChart({ clientID : coord[1][len].rid,
-                                               targetURL : randomString(),
+                            y = coord[2][len].r0;   
+console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", " + y);
+                            addCircleToChart({ clientID : coord[2][len].rid,
+                                               targetURL : coord[2][len].targetURL || randomString(),
                                                endTime : x,
                                                responseTime : y
                             });
@@ -298,7 +350,7 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
                 type: "POST",
                 url: dataSourceURL,
                 contentType: "application/json",
-                data: JSON.stringify({"second": timeStamp000 }),
+                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1) }),
                 success: renderWithNewData,
                 error: handleError
             });
@@ -375,15 +427,15 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
         
         // randomData로 생성한 chartData 객체를 반환하는 함수
         function makeNewData() {
-            var now = new Date().getTime();
+            var now = Math.floor((new Date().getTime())/1000)*1000;
             var xhrReadyStateNum = [0, 1, 2, 3, 4], // 삭제 예정
                 xhrStatusNum = [200, 403, 404, 500]; // 삭제 예정
                 
             var result = {
                 clientID: randomString(),
                 targetURL: randomString(),
-                xhrReadyState: xhrReadyStateNum[now%5],
-                xhrStatus: xhrStatusNum[now%4],
+//                xhrReadyState: xhrReadyStateNum[now%5],
+//                xhrStatus: xhrStatusNum[now%4],
                 endTime: now,
                 responseTime: (Math.random()*yMax)
             };
@@ -423,7 +475,7 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
 			
 			///////////////////////////////
             var r = radius,
-                correctionTime = 10; // circle 그려진 후 redraw 되기 전 까지 축의 이동에 대한 보정
+                correctionTime = 0; // circle 그려진 후 redraw 되기 전 까지 축의 이동에 대한 보정, useAnimation===false이면 0으로 한다
             
             var currentDomainLeft = xScale.domain()[0].getTime();
             
@@ -444,7 +496,8 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
 									   .attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } )
 									   .attr("cy", function(d) { return yScale(d.responseTime); } );
 				
-				// 새로 join된 데이타 처리
+				// 새로 join된 데이타 처리 > 이건 데이타 받을 때 addCircleToChart() 가 처리하므로 불필요
+				/*
 				circleJoin.enter()
 						  .append("circle").attr("id", function(d) { return "circle_"+d.clientID; } )
 										   .attr("cx", function(d) { return xScale(d.endTime); } )
@@ -454,6 +507,7 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
 										   .transition().duration(1000)
 														.ease("linear")
 														.attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } );
+				*/
 
 				// 좌측으로 사라져야 할 데이타 처리
 				circleJoin.exit().remove();
@@ -467,13 +521,16 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
 				circleJoin.attr("cx", function(d) { return xScale(d.endTime) - correctionTime; } )
 						  .attr("cy", function(d) { return yScale(d.responseTime); } );
 				
-				// 새로 join된 데이타 처리
+				// 새로 join된 데이타 처리 > 이건 데이타 받을 때 addCircleToChart() 가 처리하므로 불필요
+                /*
 				circleJoin.enter()
 						  .append("circle").attr("id", function(d) { return "circle_"+d.clientID; } )
 										   .attr("cx", function(d) { return xScale(d.endTime); } )
 										   .attr("cy", function(d) { return yScale(d.responseTime); } )
 										   .attr("r", r)
-										   .style("fill", function (d) { return getColorString(d.targetURL); });
+                                           .style("fill", function (d) { return getColorString(d.targetURL); });
+                */                           
+										   
 
 				// 좌측으로 사라져야 할 데이타 처리
 				circleJoin.exit().remove();
@@ -544,7 +601,12 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
                                 .attr("cy", function (d) { return yScale(d.responseTime); })
                                 .attr("r", r)
                                 .attr("class", "classCircle")
-                                .style("fill", function (d) { return getColorString(d.targetURL); });
+                                .style("fill", function (d) { return getColorString(d.targetURL); })
+//                                .style("fill", "#FFFFFF")
+                                .style("stroke", "#ffffff")
+                                .style("stroke-width", 1)
+                                .on("mouseover", tooltipOver)                  
+                                .on("mouseout", tooltipOut);
                                 
             circleArray.push(chartData);    
         }   
@@ -559,6 +621,95 @@ console.log("  " + targetAPI + " : " + coord[1][len].rid + ", " + x + ", " + y);
                 addCircleToChart(makeNewData());
             }           
         });
+        
+        var tooltipDiv = d3.select("body").append("div")   
+                            .attr("class", "tooltip")               
+                            .style("opacity", 0);
+                    
+        var tooltipOver =  function(d) {
+            /* 실데이타용
+            var successHTML = function (detail) {
+            
+                var tooltipHTML = "<table class='tooltipTable'>"+
+                                    "<tr>"+
+                                      "<th>RemoteIP</th>"+
+                                      "<td>REMOTE-IP</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>TargetURL</th>"+
+                                      "<td>"+detail.targetURL+"</td>"+
+                                    "</tr>"+
+                                  "</table>";
+                renderToolTip(tooltipHTML, detail.targetURL.length);
+            };
+            
+            var errorHTML = function () {
+            
+                var tooltipHTML = "<table class='tooltipTable'>"+
+                                   "<tr>"+
+                                     "<td>N/A</td>"+
+                                   "</tr>"+
+                                 "</table>";
+                renderTooltip(tooltipHTML, 10);
+            };
+            
+            var renderToolTip = function(tooltipHTML, longestStringLength) {
+            
+                // 글자크기 12px 기준, 제목 15글자와 표시될 가장 긴 string 길이로 동적으로 width 결정
+                var tooltipWidth = 12 * ( 15 + longestStringLength );
+            
+                tooltipDiv.transition()        
+                    .duration(200)      
+                    .style("opacity", .9);
+                
+                tooltipDiv.html(tooltipHTML)
+                    .style("width", tooltipWidth + "px")
+                    .style("left", (d3.event.pageX) + "px")     
+                    .style("top", (d3.event.pageY - 28) + "px");
+            };            
+            
+
+            $.ajax({
+                type: "POST",
+                url: "/requestDetail",
+                contentType: "application/json",
+                data: JSON.stringify({"rid": d.clientID}),
+                success: successHTML,
+                error: errorHTML,
+            });
+            */
+            
+            // 아래는 버튼을 통한 테스트 용
+            var tooltipHTML = "<table class='tooltipTable'>"+
+                                    "<tr>"+
+                                      "<th>RemoteIP</th>"+
+                                      "<td>REMOTE-IP</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>TargetURL</th>"+
+                                      "<td>"+d.targetURL+"</td>"+
+                                    "</tr>"+
+                                  "</table>";
+            
+            tooltipDiv.transition()        
+                    .duration(200)      
+                    .style("opacity", .9);
+                
+            tooltipDiv.html(tooltipHTML)
+                .style("width", 280 + "px")
+                .style("left", (d3.event.pageX) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");
+        };
+        
+        
+        
+        var tooltipOut = function(d) {       
+            tooltipDiv.transition()        
+                .duration(500)      
+                .style("opacity", 0);   
+        };
+        
+        
     });
 	</script>
 	</body>

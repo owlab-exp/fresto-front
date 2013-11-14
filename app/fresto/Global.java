@@ -59,7 +59,8 @@ public class Global extends GlobalSettings {
 		Configuration conf = new BaseConfiguration(); 
 		conf.setProperty("storage.backend", "cassandra"); 
 		conf.setProperty("storage.hostname", "fresto2.owlab.com"); 
-		conf.setProperty("storage.connection-pool-size", 64); 
+		// Default
+		//conf.setProperty("storage.connection-pool-size", 32); 
 		g = TitanFactory.open(conf); 
 		return g;
 	}

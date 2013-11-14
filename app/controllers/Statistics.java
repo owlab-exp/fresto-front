@@ -975,11 +975,48 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result getResponseTimeDetail() {
+		Logger.info("getResponseTimeDetail called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(result);
+		}
+
+		JsonNode idNode = json.findPath("rid");
+
+		if(idNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [rid]");
+			return badRequest(result);
+		} 
+
+		result.put("status", "OK");
+
+		long id = idNode.getLongValue();
+		ObjectNode dataObject = result.putObject("data");
+		boolean isSuccess = getElapsedTimeDetail(id, dataObject);
+		if(!isSuccess) {
+			result.remove("status");
+			result.remove("data");
+			result.put("status", "KO");
+			result.put("message", "The ID is not valid or nor valid results");
+			return badRequest(result);
+		}
+		return ok(result);
+	}
+
 	private static int getCountForSeconds(long secondInMillis, int previousSeconds, String target) {
 		int count = 0;
 		long second = (secondInMillis/1000) * 1000;
 
-		for(int i = 0; i < previousSeconds; i++) {
+		//for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
 			count += getCount(second - (i * 1000), target);
 		}
 		return count;
@@ -1027,7 +1064,8 @@ public class Statistics extends Controller {
 		Set<Object> strSet = new HashSet<Object>();
 		Vertex v = null;
 
-		for(int i = 0; i < previousSeconds; i++) {
+		//for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
 			//count += getUniqueCount(second - (i * 1000), target, fieldOfTarget);
 			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
 			if(it.hasNext()) {
@@ -1077,7 +1115,8 @@ public class Statistics extends Controller {
 
 	private static void getResponseTimesForSeconds(long secondInMillis, int previousSeconds, String target, String responseTimeTag, ArrayNode responseTimeArray) {
 		long second = (secondInMillis/1000) * 1000;
-		for(int i = 0; i < previousSeconds; i++) {
+		//for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
 			getResponseTimes(second - (i * 1000), target, responseTimeTag, responseTimeArray);
 		}
 	}
@@ -1129,15 +1168,18 @@ public class Statistics extends Controller {
 		int sum = 0;
 		int count = 0;
 
-		for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
 			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
 			Vertex v = null;
 
 			if(it.hasNext()) {
 				v = it.next();
 				for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
-					count++;
+					if(vertex == null) {
+						continue;
+					}
 					value = (Integer) vertex.getProperty("elapsedTime");
+					count++;
 					sum += value;
 					numSet.add(value);
 				}
@@ -1171,8 +1213,11 @@ public class Statistics extends Controller {
 		if(it.hasNext()) {
 			v = it.next();
 			for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
-				count++;
+				if(vertex == null) {
+					continue;
+				}
 				value = (Integer) vertex.getProperty("elapsedTime");
+				count++;
 				sum += value;
 				numSet.add(value);
 			}
@@ -1189,6 +1234,81 @@ public class Statistics extends Controller {
 			objectNode.put("min", 0);
 			objectNode.put("max", 0);
 		}
+	}
+
+	private static boolean getElapsedTimeDetail(long vertexId, ObjectNode objectNode) {
+		boolean isSuccess = true;
+
+		TitanGraph g = Global.getGraph();
+
+		Vertex aVertex = g.getVertex(vertexId);
+		if(aVertex == null) {
+			Logger.info("The vertex does not exist: [" + vertexId + "]");
+			isSuccess = false;
+			return isSuccess;
+		}
+		String guuid = aVertex.getProperty("uuid");
+		if(guuid == null) {
+			Logger.info("The vertex has no uuid property");
+			isSuccess = false;
+			return isSuccess;
+		}
+
+		String eventName = null;
+		String clientIp = null;
+		String url = null;
+		int browserResponseTime = 0;
+		int serverResponseTime = 0;
+		int controllerElapsedTime = 0;
+		int daoElapsedTime = 0;
+		int sqlElapsedTime = 0;
+
+		Iterator<Vertex> it = g.getVertices("guuid", guuid).iterator();
+		if(it.hasNext()) {
+			Vertex guuidVertex = it.next();
+			for(Vertex eventVertex : guuidVertex.query().labels("flow").vertices()) {
+				if(eventVertex == null) {
+					continue;
+				}
+				
+				eventName = eventVertex.getProperty("event");
+				//Logger.info("Event Name =======> " + eventName);
+				//int depth = (Integer) eventVertex.getProperty("depth");
+				if(eventName != null) {
+					if("Request".equals(eventName)) {
+						clientIp = eventVertex.getProperty("clientIp");
+						url = eventVertex.getProperty("url");
+					}
+					if("Response".equals(eventName)) {
+						browserResponseTime = (Integer) eventVertex.getProperty("elapsedTime");
+					}
+					if("EntryOperationReturn".equals(eventName)) {
+						serverResponseTime += (Integer) eventVertex.getProperty("elapsedTime");
+					}
+					if("OperationReturn".equals(eventName)) {
+						if(eventVertex.getProperty("depth") == 2) {
+							controllerElapsedTime += (Integer) eventVertex.getProperty("elapsedTime"); 
+						}
+						if(eventVertex.getProperty("depth") == 3) {
+							daoElapsedTime += (Integer) eventVertex.getProperty("elapsedTime"); 
+						}
+					}
+					if("SqlReturn".equals(eventName)) {
+						sqlElapsedTime += (Integer) eventVertex.getProperty("elapsedTime"); 
+					}
+				}
+			}
+		}
+		objectNode.put("clientIp", clientIp);
+		objectNode.put("url", url);
+		objectNode.put("r0", browserResponseTime);
+		objectNode.put("r1", serverResponseTime);
+		objectNode.put("r2", controllerElapsedTime);
+		objectNode.put("r3", daoElapsedTime);
+		objectNode.put("r4", sqlElapsedTime);
+		
+		return isSuccess;
+	}
 
 
 		//OGraphDatabase oGraph = Global.openDatabase();
@@ -1224,5 +1344,5 @@ public class Statistics extends Controller {
 		//} finally {
 		//	oGraph.close();
 		//}
-	}
+	//}
 }

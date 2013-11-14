@@ -12,73 +12,79 @@
             margin-bottom: 0px;
             margin-left: 3px;
             margin-right: 0px;
+            background-color: #3B3B3B;
         }
+        
         svg {
             font: 10px sans-serif;
         }
         
+        text {
+            fill: white;
+        }
+        
         .axis path {
             fill: none;
-            stroke: #335577;         
+            stroke: #ffffff;         
         }
         
         .axis line {
             fill: none;
-            stroke: #3355ff;            
+            stroke: #ffffff;            
         }               
         
         .response-avg {
             fill: none;
-            stroke-width: 2;
-            stroke: #333333;
+            stroke-width: 1;
+            stroke: #F6FFBD;
         }
         
         .response-min {
             fill: none;
-            stroke-width: 2;
-            stroke: #3333CC;
+            stroke-width: 1;
+            stroke: #BDF7FF;
         }
         
         .response-max {
             fill: none;
-            stroke-width: 2;
-            stroke: #CC3333;
+            stroke-width: 1;
+            stroke: #FFBDBD;
         }
         
         .entryReturn-avg {
             fill: none;
-            stroke-width: 2;
-            stroke: #333333;
+            stroke-width: 1;
+            stroke: #F6FFBD;
         }
         
         .entryReturn-min {
             fill: none;
-            stroke-width: 2;
-            stroke: #3333CC;
+            stroke-width: 1;
+            stroke: #BDF7FF;
         }
         
         .entryReturn-max {
             fill: none;
-            stroke-width: 2;
-            stroke: #CC3333;
+            stroke-width: 1;
+            stroke: #FFBDBD;
         }
         
         .sqlReturn-avg {
             fill: none;
-            stroke-width: 2;
-            stroke: #333333;
+            stroke-width: 1;
+            stroke: #F6FFBD;
         }
         
         .sqlReturn-min {
             fill: none;
-            stroke-width: 2;
-            stroke: #3333CC;
+            stroke-width: 1;
+            stroke: #BDF7FF;
         }
         
         .sqlReturn-max {
             fill: none;
-            stroke-width: 2;
-            stroke: #CC3333;
+            stroke-width: 1;
+            stroke: #FFBDBD;
         }
         
         .h, .v {
@@ -115,7 +121,7 @@
         */
         
         // svg 사이즈 및 위치
-        var width = 350, // 실제 데이타 영역의 폭
+        var width = 300, // 실제 데이타 영역의 폭
             height = 100, // 실제 데이타 영역이 높이
             margin = { // 제목, X축, Y축 emd 비 데이타 영역을 위한 공간
                 top : 5,
@@ -141,7 +147,7 @@
         // Data 관련
         var yMax = 10; // 초기값이며 추후 데이타값에 따라 동적으로 변경됨
         var yMargin = 10; // 차트의 y 영역을 yMax보다 yMargin 만큼의 여유를 둔다.
-        var dataLength = 60; // 차트는 분단위로 작성하므로 60이면 1시간동안의 데이타 표시
+        var dataLength = 100; // 차트 영역에 표현되는 x좌표의 갯수
 		
         // Data Series
         //   데이타 계열
@@ -228,7 +234,8 @@
         // line의 물리적 DOM인 <path>를 저장하는 배열
 		var hitCountPathArray = [];
         
-
+        // 서버에 데이타 조회 시 조회시간에 처리 중일 수 있는 수치가 안나올 수 있으므로 시간차를 둔다
+        var queryLatency = 4000;
         
 		
 		
@@ -241,13 +248,14 @@
         // ajax로 데이타 가져와서 renderWithNewData 호출
         //   multiLine의 경우 apiURL은 고정이므로
         //   queryString을 ajax 요청 시 target 값으로 전달
-        //   Request JSON : {"second": 1382415328000, "target":"<선택>"}, 
+        //   Request JSON : {"second": 1382415328000, "duration": (timeRange/60/1000-1), "target":"<선택>"}, 
         //                    target은 "response" (to get client side response time statistics)
         //                             "entryReturn" (to get server side response time statistics), 
         //                             "opeationReturn" (for all operations), 
         //                             "sqlReturn" (for all SQL executions)
         //   Response JSON : {"status":"OK",
         //                    "data":{"second":1382415328000,
+        //                            "duration":4,
         //                            "target":"entryReturn",
         //                            "statistics":{"cnt":0,"avg":0,"min":0,"max":0}
         //                           }
@@ -256,7 +264,7 @@
             var target = window.location.search.substring(1),
                 dataSourceURL = "/elapsedTimeStats",
                 timeStamp000 = Math.floor((new Date().getTime())/1000)*1000;
-                timeStamp000 = timeStamp000 - 1000;
+                timeStamp000 = timeStamp000 - queryLatency;
             var renderWithNewData = function (data) {
 
                 // data를 이용하여 handleData의 파라미터를 구성하고 handleData호출
@@ -267,6 +275,7 @@
                         var statsSet = item.data.statistics;
                         for ( var stats in statsSet ) {
                             if ( stats !== "cnt" ) {
+console.log("[INFO]  " + target+"-"+stats + " : " + item.data.second + ", " + statsSet[stats]);
                                 handleNewData(target+"-"+stats, item.data.second, statsSet[stats]);
                             }
                         }
@@ -286,7 +295,7 @@
                 type: "POST",
                 url: dataSourceURL,
                 contentType: "application/json",
-                data: JSON.stringify({"second": timeStamp000, "target": target }),
+                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1), "target": target }),
                 success: renderWithNewData,
                 error: handleError
             });
@@ -310,11 +319,11 @@
             xScale.domain([now - timeRange, now]);
 
             // y 축 정의역 동적 변경
-            //   데이타 계열이 하나인 경우이며, 멀티계열의 경우 수정 필요
             var lastYValue;
-            if ( dataSeries.length ) {
-                lastYValue = dataSeries[0].dataArray[dataSeries[0].dataArray.length-1].y;
-                yMax = (yMax > lastYValue)?yMax:lastYValue;
+            var len = dataSeries.length;
+            while ( len-- ) {
+                lastYValue = dataSeries[len].dataArray[dataSeries[len].dataArray.length-1].y;
+                yMax = (yMax > lastYValue) ? yMax : lastYValue;
             }
             yScale.domain([0, yMax+yMargin]);
             
@@ -322,10 +331,10 @@
             // tab blur 로 redraw()가 호출되지 않다가 tab focus로 redraw()가 호출되어 데이타 개수가 바뀌는 문제 보정
 //            restoreDataLength(now);
 
-			var i = dataSeries.length;
-			while (i--) {			
+//			var i = dataSeries.length;
+//			while (i--) {			
 
-				dataSeries[i].dataArray.shift();
+//				dataSeries[i].dataArray.shift();
 /*
 console.log("in redraw() dataArray---------------------start");
 var arrVal = "[";
@@ -340,7 +349,7 @@ console.log("in redraw() dataArray---------------------end");
 */
                 // 데이타 수신 후 차트 y 값을 0으로 해야할 경우에만 사용
                 //dataSeries[i].dataArray.push({ x: now, y: 0 });
-			}
+//			}
 			
 			// 각 데이타 계열 라인 갱신을 위한 변수
 			var j = hitCountPathArray.length,
@@ -439,6 +448,7 @@ console.log("in redraw() dataArray---------------------end");
 			
 				if ( lineName === dataSeries[tmpDataSeriesLength].lineName ) { 
                     dataSeries[tmpDataSeriesLength].dataArray.push({x: timeStamp, y: counts});
+//console.log("[lineName : " + lineName + ", dataLength : " + dataSeries[tmpDataSeriesLength].dataArray.length + ", x : " + timeStamp + ", y : " + counts);
 /*
 console.log("in handleNewData() dataArray---------------------start");
 var arrVal = "[";
