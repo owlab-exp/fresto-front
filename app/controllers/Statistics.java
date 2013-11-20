@@ -148,6 +148,7 @@ public class Statistics extends Controller {
 			return badRequest(result);
 		} else {
 			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			Logger.info("second=" + secondInUnix);
 
 			result.put("status", "OK");
 			//Random random = new Random();
@@ -1028,6 +1029,7 @@ public class Statistics extends Controller {
 
 		//for(int i = 0; i < previousSeconds; i++) {
 		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
 			count += getCount(second - (i * 1000), target);
 		}
 		return count;
@@ -1078,6 +1080,7 @@ public class Statistics extends Controller {
 		//for(int i = 0; i < previousSeconds; i++) {
 		for(int i = (previousSeconds - 1); i > -1; i--) {
 			//count += getUniqueCount(second - (i * 1000), target, fieldOfTarget);
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
 			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
 			if(it.hasNext()) {
 				v = it.next();
@@ -1128,6 +1131,7 @@ public class Statistics extends Controller {
 		long second = (secondInMillis/1000) * 1000;
 		//for(int i = 0; i < previousSeconds; i++) {
 		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
 			getResponseTimes(second - (i * 1000), target, responseTimeTag, responseTimeArray);
 		}
 	}
@@ -1180,6 +1184,7 @@ public class Statistics extends Controller {
 		int count = 0;
 
 		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
 			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
 			Vertex v = null;
 
