@@ -2,6 +2,7 @@
 <html lang='ko'>
     <head>
 	    <meta charset="UTF-8">
+        <script type="text/javascript" src="javascripts/json2.js"></script>
 		<script type="text/javascript" src="javascripts/jquery-2.0.3.min.js"></script>
 	    <script type="text/javascript" src="javascripts/d3.v3.min.js"></script>
 		<script type="text/javascript" src="javascripts/APMJsUtil.js"></script>
@@ -12,6 +13,7 @@
             margin-bottom: 0px;
             margin-left: 3px;
             margin-right: 0px;
+            background-color: #3B3B3B;
         }
         
         svg {
@@ -83,7 +85,6 @@
         
         div.tooltip {   
             position: absolute;    
-            height: 40px;                 
             padding: 2px;             
             font: 12px sans-serif;
             color: white;       
@@ -95,7 +96,7 @@
         
         div.tooltip tooltipTable {
             border-collapse: collapse;
-            border: 1px solid #e0e0e0;
+            border: 1px solid white;
             padding: 2px;
         }
         
@@ -117,7 +118,7 @@
             margin = {
                 top : 5,
                 bottom : 18,
-                left : 35,
+                left : 45,
                 right : 20
             };                      
         
@@ -138,7 +139,7 @@
         // Data Max
         var xMax = 10, // X축이 시간인 경우 필요 없음
             yMax = 10,
-            yMargin = 10,
+            yMargin = 50,
             dataLength = 60; // 차트 영역에 표현되는 x좌표의 갯수
         //    yMax = 1000;
             
@@ -325,7 +326,11 @@
                         while ( len-- ) {
                             x = coord[0];
                             y = coord[2][len].r0;   
+/*
+if ( y !== 0 ) {
 console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", " + y);
+}
+*/
                             addCircleToChart({ clientID : coord[2][len].rid,
                                                targetURL : coord[2][len].targetURL || randomString(),
                                                endTime : x,
@@ -350,7 +355,8 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
                 type: "POST",
                 url: dataSourceURL,
                 contentType: "application/json",
-                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1) }),
+                //data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1) }),
+                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000) }),
                 success: renderWithNewData,
                 error: handleError
             });
@@ -471,6 +477,13 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
 			xScale.domain([now - timeRange, now]);
             
             // y 축 정의역 동적 변경            
+/*
+            Array.max = function (arr) {
+                return Math.max.apply(Math, arr);
+            };
+            yMax = (circleArray.length) ? Math.max(Array.max(circleArray), 10) : 10;
+console.log("Array.max(circleArray) : " + Array.max(circleArray));
+*/
             yScale.domain([0, yMax+yMargin]);
 			
 			///////////////////////////////
@@ -481,8 +494,8 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
             
             // 데이타 영역을 벗어난 과거의 데이타를 Array에서 삭제
             removePastData(currentDomainLeft);
-
-//console.log($('circle').length);
+//console.dir(circleArray);
+console.log($('circle').length);
             
             circleJoin = circleG.selectAll("circle")
                                     .data(circleArray, function(d, i) { return i })
@@ -542,6 +555,8 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
                 setTimeout(redraw, updateInterval);
 			}
         }
+        
+        
         
         // domainLeft 를 지나 데이타 영역을 벗어난 과거 데이타를 Array에서 삭제
         //   해당 데이타와 bind된 <circle>도 삭제
@@ -622,25 +637,48 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
             }           
         });
         
-        var tooltipDiv = d3.select("body").append("div")   
+        var tooltipDiv = d3.select("body").append("div")
+                            .attr("id", "tooltip")
                             .attr("class", "tooltip")               
                             .style("opacity", 0);
                     
         var tooltipOver =  function(d) {
-            /* 실데이타용
+            //* 실데이타용
+            var mouseX = d3.event.pageX;
+            var mouseY = d3.event.pageY;
             var successHTML = function (detail) {
             
                 var tooltipHTML = "<table class='tooltipTable'>"+
                                     "<tr>"+
                                       "<th>RemoteIP</th>"+
-                                      "<td>REMOTE-IP</td>"+
+                                      "<td>"+detail.data.clientIp+"</td>"+
                                     "</tr>"+
                                     "<tr>"+
                                       "<th>TargetURL</th>"+
-                                      "<td>"+detail.targetURL+"</td>"+
+                                      "<td>"+detail.data.url+"</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>Browser</th>"+
+                                      "<td>"+detail.data.r0+"</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>EndPoint</th>"+
+                                      "<td>"+detail.data.r1+"</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>Controller</th>"+
+                                      "<td>"+detail.data.r2+"</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>DAO</th>"+
+                                      "<td>"+detail.data.r3+"</td>"+
+                                    "</tr>"+
+                                    "<tr>"+
+                                      "<th>SQL</th>"+
+                                      "<td>"+detail.data.r4+"</td>"+
                                     "</tr>"+
                                   "</table>";
-                renderToolTip(tooltipHTML, detail.targetURL.length);
+                renderToolTip(tooltipHTML, detail.data.url.length);
             };
             
             var errorHTML = function () {
@@ -656,29 +694,50 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
             var renderToolTip = function(tooltipHTML, longestStringLength) {
             
                 // 글자크기 12px 기준, 제목 15글자와 표시될 가장 긴 string 길이로 동적으로 width 결정
-                var tooltipWidth = 12 * ( 15 + longestStringLength );
-            
+//console.log("---tooltipCheck---");
+//console.log(longestStringLength);
+                var tooltipWidth = 6 * ( 15 + longestStringLength );
+                var tooltipHeight = 7 * 12;
+//console.log(mouseX);
+//console.log(tooltipWidth);
+//console.log(mouseY);
+//console.log(tooltipHeight);
+                
+                var tooltipX = ( (mouseX + tooltipWidth) > width ) ? (mouseX - tooltipWidth) : mouseX,
+                    tooltipY = ( (mouseY + tooltipHeight) > height ) ? (mouseY - tooltipHeight) : mouseY;
+//console.log(tooltipX);
+//console.log(tooltipY);
+//console.log("---tooltipCheck---");                    
                 tooltipDiv.transition()        
                     .duration(200)      
                     .style("opacity", .9);
                 
+                // 고정 위치에 Tooltip 표시
+                tooltipDiv.html(tooltipHTML)
+                    .style("width", 400 + "px")
+                    .style("height", 100 + "px")
+                    .style("left", 130 + "px")     
+                    .style("top", 10 + "px");
+                /* 마우스 위치따라 생성 위치 변동 - TODO
                 tooltipDiv.html(tooltipHTML)
                     .style("width", tooltipWidth + "px")
-                    .style("left", (d3.event.pageX) + "px")     
-                    .style("top", (d3.event.pageY - 28) + "px");
+                    .style("height", tooltipHeight + "px")
+                    .style("left", tooltipX + "px")     
+                    .style("top", tooltipX + "px");
+                */
             };            
             
 
             $.ajax({
                 type: "POST",
-                url: "/requestDetail",
+                url: "/getResponseTimeDetail",
                 contentType: "application/json",
                 data: JSON.stringify({"rid": d.clientID}),
                 success: successHTML,
                 error: errorHTML,
             });
-            */
             
+            /*
             // 아래는 버튼을 통한 테스트 용
             var tooltipHTML = "<table class='tooltipTable'>"+
                                     "<tr>"+
@@ -699,6 +758,7 @@ console.log("[INFO]  " + targetAPI + " : " + coord[2][len].rid + ", " + x + ", "
                 .style("width", 280 + "px")
                 .style("left", (d3.event.pageX) + "px")     
                 .style("top", (d3.event.pageY - 28) + "px");
+            */
         };
         
         

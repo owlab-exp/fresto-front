@@ -2,7 +2,8 @@
 <html lang='ko'>
     <head>
 	    <meta charset="UTF-8">
-		<script type="text/javascript" src="javascripts/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="javascripts/json2.js"></script>
+		<script type="text/javascript" src="javascripts/jquery-2.0.3.min.js"></script>        
 	    <script type="text/javascript" src="javascripts/d3.v3.min.js"></script>
 		<script type="text/javascript" src="javascripts/APMJsUtil.js"></script>
 		<style>
@@ -119,7 +120,7 @@
             margin = { // 제목, X축, Y축 emd 비 데이타 영역을 위한 공간
                 top : 5,
                 bottom : 18,
-                left : 35,
+                left : 45,
                 right : 20
             };              
         
@@ -137,10 +138,7 @@
         var rootG = svgLine.append("g")
                            .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
                            
-        // Data 관련
-        var yMax = 10; // 초기값이며 추후 데이타값에 따라 동적으로 변경됨
-        var yMargin = 10; // 차트의 y 영역을 yMax보다 yMargin 만큼의 여유를 둔다.
-        var dataLength = 100; // 차트 영역에 표현되는 x좌표의 갯수
+        
 		
         // Data Series
         //   데이타 계열
@@ -169,7 +167,12 @@
         // scale 생성을 위한 변수
         var now = new Date(),
             timeRange = 5 * 60 * 1000, // 차트의 시간 범위, # mils초 전
+            dataLength = timeRange/updateInterval; // 차트 영역에 표현되는 x좌표의 갯수
             durationTime = timeRange/dataLength; // 축 이동의 단위시간, 늘 timeRange/dataLength로 한다
+            
+        // Data 관련
+        var yMax = 10; // 초기값이며 추후 데이타값에 따라 동적으로 변경됨
+        var yMargin = 30; // 차트의 y 영역을 yMax보다 yMargin 만큼의 여유를 둔다.
 
         // scale 생성
         //   domain(정의역)에는 실제 데이터의 값을 쓰고,
@@ -270,7 +273,11 @@
                         for ( var tmp in item.data ) {
                             coord.push(item.data[tmp]);
                         }
-//console.log("[INFO]  " + targetAPI + " : " + coord[0] + ", " + coord[2]);
+/*
+if ( coord[2] !== 0 ) {
+console.log("[INFO]  " + targetAPI + " : " + coord[0] + ", " + coord[2]);
+}
+*/
                         handleNewData(targetAPI, coord[0], coord[2]);
                     } else if ( item.status === "KO") {
                         // 일단 0으로 차트 그려지게 처리
@@ -287,7 +294,8 @@
                 type: "POST",
                 url: dataSourceURL,
                 contentType: "application/json",
-                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1) }),
+                //data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000-1) }),
+                data: JSON.stringify({"second": timeStamp000, "duration": (timeRange/60/1000) }),
                 success: renderWithNewData,
                 error: handleError
             });
@@ -391,7 +399,7 @@ console.log("in redraw() dataArray---------------------end");
         //   마지막에 value로 채운다
         function makeInitialDataArray(dataLength, baseTime, value) {
             
-            var tmpDataLength = dataLength-1,
+            var tmpDataLength = dataLength-2,
 			    dataArray = [];
             
             while ( tmpDataLength-- ) {
@@ -400,6 +408,7 @@ console.log("in redraw() dataArray---------------------end");
             }
             dataArray.push({ x: baseTime - durationTime, y: 0});
             dataArray.push({ x: baseTime, y: value});
+//console.log("initial Data Array length : " + dataArray.length);
 			return dataArray;
         }
 		
@@ -415,7 +424,8 @@ console.log("in redraw() dataArray---------------------end");
             
         }
         
-        // domainLeft 를 지나 데이타 영역을 벗어난 과거 데이타를 Array에서 삭제
+        // 사용 안함 - tab blur 로 redraw()가 호출되지 않다가 tab focus로 redraw()가 호출되어 데이타 개수가 바뀌는 문제 보정
+        /*
         function restoreDataLength(time) {
             
             var i = dataSeries.length;
@@ -425,7 +435,8 @@ console.log("in redraw() dataArray---------------------end");
                     dataSeries[i].dataArray.push({ x: time - dataGap*durationTime, y: 0});                                    
                 }
 			}            
-        } 
+        }
+        */
 		
 		// APM에서 받아온 데이타 처리
 		//   신규 데이타 계열에 대한 데이타는 dataSeries와 dataArray를 만들어 저장하고,
