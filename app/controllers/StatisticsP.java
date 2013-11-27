@@ -42,7 +42,9 @@ public class StatisticsP extends Controller {
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getUniqueClientCount(String callback) {
-		Logger.info("getUniqueClientCount:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("getUniqueClientCount called.");
+
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -59,7 +61,7 @@ public class StatisticsP extends Controller {
 		if(secondNode.isMissingNode()) {
 			result.put("status", "KO");
 			result.put("message", "Missing parameter [second]");
-			return badRequest(result);
+			return badRequest(Jsonp.jsonp(callback, result));
 		} else {
 			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
 
@@ -77,8 +79,50 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	//public static Result getUniqueClientCountForSeconds(String callback) {
+	public static Result getUniqueClientCountForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("getUniqueClientCountForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(result);
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(result);
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+
+			int count = getUniqueCountForSeconds(secondInUnix, durationSeconds, "Request", "clientIp");
+			dataObject.put("u0", count);
+
+			return ok(result);
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientHitCount(String callback) {
-		Logger.info("clientHitCount:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("clientHitCount called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -98,6 +142,7 @@ public class StatisticsP extends Controller {
 			return badRequest(Jsonp.jsonp(callback, result));
 		} else {
 			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			Logger.info("second=" + secondInUnix);
 
 			result.put("status", "OK");
 			//Random random = new Random();
@@ -116,8 +161,52 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result clientHitCountForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("clientHitCountForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+
+		if(json == null) {
+			Logger.info("Body is not JSON");	
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			//dataObject.put("h0", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCountForSeconds(secondInUnix, durationSeconds, "Request");
+			dataObject.put("h0", hitCount);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientThroughput(String callback) {
-		Logger.info("clientThroughput:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("clientThroughput called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -154,8 +243,51 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result clientThroughputForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("clientThroughputForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			//dataObject.put("h0", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCountForSeconds(secondInUnix, durationSeconds, "Response");
+			dataObject.put("t0", hitCount);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpHitCount(String callback) {
-		Logger.info("httpHitCount:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("httpHitCount called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -182,7 +314,48 @@ public class StatisticsP extends Controller {
 			//ObjectNode dataObject = result.putObject("data");
 			//dataObject.put("second", secondInUnix);
 
-			int hitCount = getCount(secondInUnix, "EntryCall");
+			int hitCount = getCount(secondInUnix, "EntryOperationCall");
+			dataObject.put("h1", hitCount);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result httpHitCountForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("httpHitCountForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			result.put("status", "KO");
+			result.put("message", "Body is not json");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCountForSeconds(secondInUnix, durationSeconds, "EntryOperationCall");
 			dataObject.put("h1", hitCount);
 
 			return ok(Jsonp.jsonp(callback, result));
@@ -191,7 +364,8 @@ public class StatisticsP extends Controller {
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpThroughput(String callback) {
-		Logger.info("httpThroughput:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("httpThroughput called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -220,7 +394,49 @@ public class StatisticsP extends Controller {
 			//ObjectNode dataObject = result.putObject("data");
 			//dataObject.put("second", secondInUnix);
 
-			int hitCount = getCount(secondInUnix, "EntryReturn");
+			int hitCount = getCount(secondInUnix, "EntryOperationReturn");
+			dataObject.put("t1", hitCount);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result httpThroughputForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("httpThroughputForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duratioin]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCountForSeconds(secondInUnix, durationSeconds, "EntryOperationReturn");
 			dataObject.put("t1", hitCount);
 
 			return ok(Jsonp.jsonp(callback, result));
@@ -229,7 +445,8 @@ public class StatisticsP extends Controller {
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlHitCount(String callback) {
-		Logger.info("sqlHitCount:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("sqlHitCount called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -264,8 +481,50 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result sqlHitCountForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("sqlHitCountForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			result.put("status", "KO");
+			result.put("message", "Body is not json");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCountForSeconds(secondInUnix, durationSeconds, "SqlCall");
+			dataObject.put("h9", hitCount);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlThroughput(String callback) {
-		Logger.info("sqlThroughput:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("sqlThroughput called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -302,8 +561,51 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result sqlThroughputForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("sqlThroughputForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+			//Random random = new Random();
+			//int hitCount = random.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			//dataObject.put("h1", hitCount);
+			//ObjectNode dataObject = result.putObject("data");
+			//dataObject.put("second", secondInUnix);
+
+			int hitCount = getCountForSeconds(secondInUnix, durationSeconds, "SqlReturn");
+			dataObject.put("t9", hitCount);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientResponseTimes(String callback) {
-		Logger.info("clientResponseTimes:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("clientResponseTimes called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -344,8 +646,55 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
+	public static Result clientResponseTimesForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("clientResponseTimesForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+
+			//Random clientCountRandom = new Random();
+			//Random responseTimeRandom = new Random();
+
+			//int clientCount = clientCountRandom.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			ArrayNode responseTimeArray = dataObject.putArray("responseTimes");
+			//for(int i = 0; i < clientCount; i++) {
+			//	ObjectNode responseTimeObject = responseTimeArray.addObject();
+			//	responseTimeObject.put("rid", i);
+			//	responseTimeObject.put("r0", responseTimeRandom.nextInt(3000));
+			//}
+			getResponseTimesForSeconds(secondInUnix, durationSeconds, "Response", "r0", responseTimeArray);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpResponseTimes(String callback) {
-		Logger.info("httpResponseTimes:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("httpResponseTimes called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -379,7 +728,53 @@ public class StatisticsP extends Controller {
 			//	responseTimeObject.put("rid", i);
 			//	responseTimeObject.put("r1", responseTimeRandom.nextInt(3000));
 			//}
-			getResponseTimes(secondInUnix, "EntryReturn", "r1", responseTimeArray);
+			getResponseTimes(secondInUnix, "EntryOperationReturn", "r1", responseTimeArray);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result httpResponseTimesForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("httpResponseTimesForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+
+			//Random clientCountRandom = new Random();
+			//Random responseTimeRandom = new Random();
+
+			//int clientCount = clientCountRandom.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			ArrayNode responseTimeArray = dataObject.putArray("responseTimes");
+			//for(int i = 0; i < clientCount; i++) {
+			//	ObjectNode responseTimeObject = responseTimeArray.addObject();
+			//	responseTimeObject.put("rid", i);
+			//	responseTimeObject.put("r1", responseTimeRandom.nextInt(3000));
+			//}
+			getResponseTimesForSeconds(secondInUnix, durationSeconds, "EntryOperationReturn", "r1", responseTimeArray);
 
 			return ok(Jsonp.jsonp(callback, result));
 		}
@@ -387,7 +782,8 @@ public class StatisticsP extends Controller {
 
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlResponseTimes(String callback) {
-		Logger.info("sqlResponseTimes:callback called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("sqlResponseTimes called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -428,10 +824,55 @@ public class StatisticsP extends Controller {
 	}
 
 	@BodyParser.Of(BodyParser.Json.class)
-	public static Result getElapsedTimeStatistics(String callback) {
-		Logger.info("getElapsedTimeStatistics:callback called.");
+	public static Result sqlResponseTimesForSeconds(String callback) {
 		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("sqlResponseTimesForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
 
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+
+		if(secondNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+
+			result.put("status", "OK");
+
+			//Random clientCountRandom = new Random();
+			//Random responseTimeRandom = new Random();
+
+			//int clientCount = clientCountRandom.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+			ArrayNode responseTimeArray = dataObject.putArray("responseTimes");
+			//for(int i = 0; i < clientCount; i++) {
+			//	ObjectNode responseTimeObject = responseTimeArray.addObject();
+			//	responseTimeObject.put("rid", i);
+			//	responseTimeObject.put("r1", responseTimeRandom.nextInt(3000));
+			//}
+			getResponseTimesForSeconds(secondInUnix, durationSeconds, "SqlReturn", "r9", responseTimeArray);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result getElapsedTimeStatistics(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("getElapsedTimeStatistics called.");
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -473,7 +914,7 @@ public class StatisticsP extends Controller {
 			if(target.equalsIgnoreCase("response")) 
 				target = "Response";
 			else if(target.equalsIgnoreCase("entryReturn"))
-				target = "EntryReturn";
+				target = "EntryOperationReturn";
 			else if(target.equalsIgnoreCase("operationReturn"))
 				target = "OperationReturn";
 			else if(target.equalsIgnoreCase("sqlReturn"))
@@ -492,6 +933,122 @@ public class StatisticsP extends Controller {
 		}
 	}
 
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result getElapsedTimeStatisticsForSeconds(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("getElapsedTimeStatisticsForSeconds called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode secondNode = json.findPath("second");
+		JsonNode durationNode = json.findPath("duration");
+		JsonNode targetNode = json.findPath("target");
+
+		if(secondNode.isMissingNode() || targetNode.isMissingNode() || durationNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [second] or [duration] or [target]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} else if(!targetNode.getTextValue().equals("response")  
+				&& !targetNode.getTextValue().equals("entryReturn")
+				&& !targetNode.getTextValue().equals("operationReturn") 
+				&& !targetNode.getTextValue().equals("sqlReturn")) {
+			result.put("status", "KO");
+			result.put("message", "Possible targets : response, entryReturn, operationReturn, sqlReturn");
+			return badRequest(Jsonp.jsonp(callback, result));
+
+		} else {
+			long secondInUnix = (secondNode.getLongValue()/1000) * 1000;
+			int durationSeconds = durationNode.getIntValue();
+			String target = targetNode.getTextValue();
+
+			result.put("status", "OK");
+
+			//Random clientCountRandom = new Random();
+			//Random responseTimeRandom = new Random();
+
+			//int clientCount = clientCountRandom.nextInt(300);
+			ObjectNode dataObject = result.putObject("data");
+			dataObject.put("second", secondInUnix);
+			dataObject.put("duration", durationSeconds);
+
+			if(target.equalsIgnoreCase("response")) 
+				target = "Response";
+			else if(target.equalsIgnoreCase("entryReturn"))
+				target = "EntryOperationReturn";
+			else if(target.equalsIgnoreCase("operationReturn"))
+				target = "OperationReturn";
+			else if(target.equalsIgnoreCase("sqlReturn"))
+				target = "SqlReturn";
+
+			dataObject.put("target", target);
+			ObjectNode innObject = dataObject.putObject("statistics");
+			//for(int i = 0; i < clientCount; i++) {
+			//	ObjectNode responseTimeObject = responseTimeArray.addObject();
+			//	responseTimeObject.put("rid", i);
+			//	responseTimeObject.put("r1", responseTimeRandom.nextInt(3000));
+			//}
+			getElapsedTimeStatisticsForSeconds(secondInUnix, durationSeconds, target, innObject);
+
+			return ok(Jsonp.jsonp(callback, result));
+		}
+	}
+
+	@BodyParser.Of(BodyParser.Json.class)
+	public static Result getResponseTimeDetail(String callback) {
+		response().setHeader("Access-Control-Allow-Origin", "*");
+		Logger.info("getResponseTimeDetail called.");
+		ObjectNode result = Json.newObject();
+		
+		JsonNode json = request().body().asJson();
+		if(json == null) {
+			Logger.info("Body is not JSON");
+			result.put("status", "KO");
+			result.put("message","Not JSON body");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+
+		JsonNode idNode = json.findPath("rid");
+
+		if(idNode.isMissingNode()) {
+			result.put("status", "KO");
+			result.put("message", "Missing parameter [rid]");
+			return badRequest(Jsonp.jsonp(callback, result));
+		} 
+
+		result.put("status", "OK");
+
+		long id = idNode.getLongValue();
+		ObjectNode dataObject = result.putObject("data");
+		boolean isSuccess = getElapsedTimeDetail(id, dataObject);
+		if(!isSuccess) {
+			result.remove("status");
+			result.remove("data");
+			result.put("status", "KO");
+			result.put("message", "The ID is not valid or nor valid results");
+			return badRequest(Jsonp.jsonp(callback, result));
+		}
+		return ok(Jsonp.jsonp(callback, result));
+	}
+
+	private static int getCountForSeconds(long secondInMillis, int previousSeconds, String target) {
+		int count = 0;
+		long second = (secondInMillis/1000) * 1000;
+
+		//for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
+			count += getCount(second - (i * 1000), target);
+		}
+		return count;
+	}
+
 	private static int getCount(long secondInMillis, String target) {
 		TitanGraph g = Global.getGraph();
 
@@ -503,6 +1060,7 @@ public class StatisticsP extends Controller {
 		if(it.hasNext()) {
 			v = it.next();
 			count = (int) v.query().labels("include").has("event", target).count();
+			Logger.info("Number of vertices of this second/target: " + count);
 		}
 
 		return count;
@@ -524,6 +1082,33 @@ public class StatisticsP extends Controller {
 		//return count;
 	}
 
+	private static int getUniqueCountForSeconds(long secondInMillis, int previousSeconds, String target, String fieldOfTarget) {
+		TitanGraph g = Global.getGraph();
+
+		int count = 0;
+		long second = (secondInMillis/1000) * 1000;
+
+		Set<Object> strSet = new HashSet<Object>();
+		Vertex v = null;
+
+		//for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//count += getUniqueCount(second - (i * 1000), target, fieldOfTarget);
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
+			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
+			if(it.hasNext()) {
+				v = it.next();
+				for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
+					strSet.add(vertex.getProperty(fieldOfTarget));
+				}
+			}
+		}
+		count = strSet.size();
+		Logger.info("Number of vertices for " + previousSeconds + " seconds: " + count);
+
+		return count;
+	}
+
 	private static int getUniqueCount(long secondInMillis, String target, String fieldOfTarget) {
 		TitanGraph g = Global.getGraph();
 
@@ -539,6 +1124,7 @@ public class StatisticsP extends Controller {
 				strSet.add(vertex.getProperty(fieldOfTarget));
 			}
 			count = strSet.size();
+			Logger.info("Number of vertices of this second: " + count);
 		}
 		return count;
 
@@ -553,6 +1139,15 @@ public class StatisticsP extends Controller {
 		//}
 
 		//return count;
+	}
+
+	private static void getResponseTimesForSeconds(long secondInMillis, int previousSeconds, String target, String responseTimeTag, ArrayNode responseTimeArray) {
+		long second = (secondInMillis/1000) * 1000;
+		//for(int i = 0; i < previousSeconds; i++) {
+		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
+			getResponseTimes(second - (i * 1000), target, responseTimeTag, responseTimeArray);
+		}
 	}
 
 	private static void getResponseTimes(long secondInMillis, String target, String responseTimeTag, ArrayNode responseTimeArray) {
@@ -593,6 +1188,47 @@ public class StatisticsP extends Controller {
 		//}
 	}
 
+	private static void getElapsedTimeStatisticsForSeconds(long secondInMillis, int previousSeconds, String target, ObjectNode objectNode) {
+		TitanGraph g = Global.getGraph();
+		long second = (secondInMillis/1000) * 1000;
+
+		SortedSet<Integer> numSet = new TreeSet<Integer>();
+		int value = 0;
+		int sum = 0;
+		int count = 0;
+
+		for(int i = (previousSeconds - 1); i > -1; i--) {
+			//Logger.info("previousSeconds=" + (second - (i * 1000)));
+			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
+			Vertex v = null;
+
+			if(it.hasNext()) {
+				v = it.next();
+				for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
+					if(vertex == null) {
+						continue;
+					}
+					value = (Integer) vertex.getProperty("elapsedTime");
+					count++;
+					sum += value;
+					numSet.add(value);
+				}
+			}
+		}
+
+		objectNode.put("cnt", count);
+		if(count > 0) {
+			objectNode.put("avg", sum/count);
+			objectNode.put("min", numSet.first());
+			objectNode.put("max", numSet.last());
+		} else {
+			objectNode.put("avg", 0);
+			objectNode.put("min", 0);
+			objectNode.put("max", 0);
+		}
+
+	}
+
 	private static void getElapsedTimeStatistics(long secondInMillis, String target, ObjectNode objectNode) {
 		TitanGraph g = Global.getGraph();
 
@@ -607,8 +1243,11 @@ public class StatisticsP extends Controller {
 		if(it.hasNext()) {
 			v = it.next();
 			for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
-				count++;
+				if(vertex == null) {
+					continue;
+				}
 				value = (Integer) vertex.getProperty("elapsedTime");
+				count++;
 				sum += value;
 				numSet.add(value);
 			}
@@ -625,6 +1264,81 @@ public class StatisticsP extends Controller {
 			objectNode.put("min", 0);
 			objectNode.put("max", 0);
 		}
+	}
+
+	private static boolean getElapsedTimeDetail(long vertexId, ObjectNode objectNode) {
+		boolean isSuccess = true;
+
+		TitanGraph g = Global.getGraph();
+
+		Vertex aVertex = g.getVertex(vertexId);
+		if(aVertex == null) {
+			Logger.info("The vertex does not exist: [" + vertexId + "]");
+			isSuccess = false;
+			return isSuccess;
+		}
+		String guuid = aVertex.getProperty("uuid");
+		if(guuid == null) {
+			Logger.info("The vertex has no uuid property");
+			isSuccess = false;
+			return isSuccess;
+		}
+
+		String eventName = null;
+		String clientIp = null;
+		String url = null;
+		int browserResponseTime = 0;
+		int serverResponseTime = 0;
+		int controllerElapsedTime = 0;
+		int daoElapsedTime = 0;
+		int sqlElapsedTime = 0;
+
+		Iterator<Vertex> it = g.getVertices("guuid", guuid).iterator();
+		if(it.hasNext()) {
+			Vertex guuidVertex = it.next();
+			for(Vertex eventVertex : guuidVertex.query().labels("flow").vertices()) {
+				if(eventVertex == null) {
+					continue;
+				}
+				
+				eventName = eventVertex.getProperty("event");
+				//Logger.info("Event Name =======> " + eventName);
+				//int depth = (Integer) eventVertex.getProperty("depth");
+				if(eventName != null) {
+					if("Request".equals(eventName)) {
+						clientIp = eventVertex.getProperty("clientIp");
+						url = eventVertex.getProperty("url");
+					}
+					if("Response".equals(eventName)) {
+						browserResponseTime = (Integer) eventVertex.getProperty("elapsedTime");
+					}
+					if("EntryOperationReturn".equals(eventName)) {
+						serverResponseTime += (Integer) eventVertex.getProperty("elapsedTime");
+					}
+					if("OperationReturn".equals(eventName)) {
+						if(eventVertex.getProperty("depth") == 2) {
+							controllerElapsedTime += (Integer) eventVertex.getProperty("elapsedTime"); 
+						}
+						if(eventVertex.getProperty("depth") == 3) {
+							daoElapsedTime += (Integer) eventVertex.getProperty("elapsedTime"); 
+						}
+					}
+					if("SqlReturn".equals(eventName)) {
+						sqlElapsedTime += (Integer) eventVertex.getProperty("elapsedTime"); 
+					}
+				}
+			}
+		}
+		objectNode.put("clientIp", clientIp);
+		objectNode.put("url", url);
+		objectNode.put("r0", browserResponseTime);
+		objectNode.put("r1", serverResponseTime);
+		objectNode.put("r2", controllerElapsedTime);
+		objectNode.put("r3", daoElapsedTime);
+		objectNode.put("r4", sqlElapsedTime);
+		
+		return isSuccess;
+	}
 
 
 		//OGraphDatabase oGraph = Global.openDatabase();
@@ -660,5 +1374,5 @@ public class StatisticsP extends Controller {
 		//} finally {
 		//	oGraph.close();
 		//}
-	}
+	//}
 }

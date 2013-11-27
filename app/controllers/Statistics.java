@@ -45,15 +45,19 @@ import com.tinkerpop.blueprints.Vertex;
 //import com.orientechnologies.orient.core.metadata.schema.OType;
 
 import fresto.Global;
+import fresto.CORSAction;
 
 public class Statistics extends Controller {
 	//private static OGraphDatabasePool oGraphPool = OGraphDatabasePool.global();
 
 	//final static ActorRef r0Actor = R0Actor.instance;
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getUniqueClientCount() {
 		Logger.info("getUniqueClientCount called.");
+		response().setHeader("Access-Control-Allow-Origin", "*");
+
 		ObjectNode result = Json.newObject();
 		
 		JsonNode json = request().body().asJson();
@@ -87,8 +91,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getUniqueClientCountForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("getUniqueClientCountForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -126,8 +132,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientHitCount() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("clientHitCount called.");
 		ObjectNode result = Json.newObject();
 		
@@ -166,8 +174,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientHitCountForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("clientHitCountForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -208,8 +218,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientThroughput() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("clientThroughput called.");
 		ObjectNode result = Json.newObject();
 		
@@ -246,8 +258,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientThroughputForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("clientThroughputForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -287,8 +301,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpHitCount() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("httpHitCount called.");
 		ObjectNode result = Json.newObject();
 		
@@ -323,8 +339,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpHitCountForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("httpHitCountForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -363,8 +381,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpThroughput() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("httpThroughput called.");
 		ObjectNode result = Json.newObject();
 		
@@ -401,8 +421,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpThroughputForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("httpThroughputForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -442,8 +464,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlHitCount() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("sqlHitCount called.");
 		ObjectNode result = Json.newObject();
 		
@@ -478,8 +502,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlHitCountForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("sqlHitCountForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -518,8 +544,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlThroughput() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("sqlThroughput called.");
 		ObjectNode result = Json.newObject();
 		
@@ -556,8 +584,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlThroughputForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("sqlThroughputForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -597,8 +627,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientResponseTimes() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("clientResponseTimes called.");
 		ObjectNode result = Json.newObject();
 		
@@ -639,8 +671,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result clientResponseTimesForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("clientResponseTimesForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -684,8 +718,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpResponseTimes() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("httpResponseTimes called.");
 		ObjectNode result = Json.newObject();
 		
@@ -726,8 +762,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result httpResponseTimesForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("httpResponseTimesForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -771,8 +809,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlResponseTimes() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("sqlResponseTimes called.");
 		ObjectNode result = Json.newObject();
 		
@@ -813,8 +853,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result sqlResponseTimesForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("sqlResponseTimesForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -858,8 +900,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getElapsedTimeStatistics() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("getElapsedTimeStatistics called.");
 		ObjectNode result = Json.newObject();
 		
@@ -921,8 +965,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getElapsedTimeStatisticsForSeconds() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("getElapsedTimeStatisticsForSeconds called.");
 		ObjectNode result = Json.newObject();
 		
@@ -987,8 +1033,10 @@ public class Statistics extends Controller {
 		}
 	}
 
+	@With(CORSAction.class)
 	@BodyParser.Of(BodyParser.Json.class)
 	public static Result getResponseTimeDetail() {
+		response().setHeader("Access-Control-Allow-Origin", "*");
 		Logger.info("getResponseTimeDetail called.");
 		ObjectNode result = Json.newObject();
 		
@@ -1043,11 +1091,16 @@ public class Statistics extends Controller {
 
 		Iterator<Vertex> it = g.getVertices("second", second).iterator();
 		Vertex v = null;
-		if(it.hasNext()) {
+		while(it.hasNext()) {
 			v = it.next();
-			count = (int) v.query().labels("include").has("event", target).count();
-			Logger.info("Number of vertices of this second/target: " + count);
+			count += (int) v.query().labels("include").has("event", target).count();
+			//Logger.info("Number of vertices of this target (" + target + "): " + second  + ": " + count);
 		}
+		//if(it.hasNext()) {
+		//	v = it.next();
+		//	count = (int) v.query().labels("include").has("event", target).count();
+		//	Logger.info("Number of vertices of this target (" + target + "): " + second  + ": " + count);
+		//}
 
 		return count;
 		//OGraphDatabase oGraph = Global.openDatabase();
@@ -1082,7 +1135,8 @@ public class Statistics extends Controller {
 			//count += getUniqueCount(second - (i * 1000), target, fieldOfTarget);
 			//Logger.info("previousSeconds=" + (second - (i * 1000)));
 			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
-			if(it.hasNext()) {
+			//if(it.hasNext()) {
+			while(it.hasNext()) {
 				v = it.next();
 				for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
 					strSet.add(vertex.getProperty(fieldOfTarget));
@@ -1090,7 +1144,7 @@ public class Statistics extends Controller {
 			}
 		}
 		count = strSet.size();
-		Logger.info("Number of vertices for " + previousSeconds + " seconds: " + count);
+		//Logger.info("Number of vertices for " + previousSeconds + " seconds: " + count);
 
 		return count;
 	}
@@ -1104,7 +1158,8 @@ public class Statistics extends Controller {
 		Iterator<Vertex> it = g.getVertices("second", second).iterator();
 		Vertex v = null;
 		Set<Object> strSet = new HashSet<Object>();
-		if(it.hasNext()) {
+		//if(it.hasNext()) {
+		while(it.hasNext()) {
 			v = it.next();
 			for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
 				strSet.add(vertex.getProperty(fieldOfTarget));
@@ -1143,7 +1198,8 @@ public class Statistics extends Controller {
 
 		Iterator<Vertex> it = g.getVertices("second", second).iterator();
 		Vertex v = null;
-		if(it.hasNext()) {
+		//if(it.hasNext()) {
+		while(it.hasNext()) {
 			v = it.next();
 			for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
 				ObjectNode responseTimeObject = responseTimeArray.addObject();
@@ -1188,7 +1244,8 @@ public class Statistics extends Controller {
 			Iterator<Vertex> it = g.getVertices("second", second - (i * 1000)).iterator();
 			Vertex v = null;
 
-			if(it.hasNext()) {
+			//if(it.hasNext()) {
+			while(it.hasNext()) {
 				v = it.next();
 				for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
 					if(vertex == null) {
@@ -1226,7 +1283,8 @@ public class Statistics extends Controller {
 		int value = 0;
 		int sum = 0;
 		int count = 0;
-		if(it.hasNext()) {
+		//if(it.hasNext()) {
+		while(it.hasNext()) {
 			v = it.next();
 			for(Vertex vertex : v.query().labels("include").has("event", target).vertices()) {
 				if(vertex == null) {
@@ -1280,7 +1338,8 @@ public class Statistics extends Controller {
 		int sqlElapsedTime = 0;
 
 		Iterator<Vertex> it = g.getVertices("guuid", guuid).iterator();
-		if(it.hasNext()) {
+		//if(it.hasNext()) {
+		while(it.hasNext()) {
 			Vertex guuidVertex = it.next();
 			for(Vertex eventVertex : guuidVertex.query().labels("flow").vertices()) {
 				if(eventVertex == null) {
@@ -1296,9 +1355,11 @@ public class Statistics extends Controller {
 						url = eventVertex.getProperty("url");
 					}
 					if("Response".equals(eventName)) {
-						browserResponseTime = (Integer) eventVertex.getProperty("elapsedTime");
+						// "=" in really, "+=" is nonsense
+						browserResponseTime += (Integer) eventVertex.getProperty("elapsedTime");
 					}
 					if("EntryOperationReturn".equals(eventName)) {
+						// "=" in really, "+=" is nonsense
 						serverResponseTime += (Integer) eventVertex.getProperty("elapsedTime");
 					}
 					if("OperationReturn".equals(eventName)) {
