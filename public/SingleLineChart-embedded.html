@@ -528,7 +528,7 @@ console.log("in handleNewData() dataArray NEW---------------------end");
             alert("EventSource is not supported on your browser!");
             return false; 
         } else {
-            var source = new EventSource("http://fresto1.owlab.com:9999/r1Stream");
+            var source = new EventSource("http://sample-front.owlab.com:9999/r1Stream");
             source.addEventListener("message", function(e) {
                 console.log(e.data);
                 var uiEvent = JSON.parse(e.data);
